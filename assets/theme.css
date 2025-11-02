@@ -364,11 +364,13 @@ img {
   grid-template-columns: 1fr;
   gap: 3rem;
   align-items: center;
+  padding: 2rem 0;
 }
 
 @media (min-width: 1024px) {
   .hero-grid {
     grid-template-columns: 1fr 1fr;
+    gap: 4rem;
   }
 }
 
@@ -563,12 +565,12 @@ img {
 .hero-media {
   position: relative;
   width: 100%;
-  transform: scale(1.15);
+  transform: scale(1.1);
 }
 
 @media (min-width: 1024px) {
   .hero-media {
-    transform: scale(1.2);
+    transform: scale(1.15);
   }
 }
 
