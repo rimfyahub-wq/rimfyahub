@@ -69,7 +69,7 @@
           ============================================
           {%- endcomment -%}
           
-          {%- assign video_url = "YOUR_VIDEO_URL_HERE" -%}
+          {%- assign video_url = "https://cdn.shopify.com/videos/c/o/v/8ee2c1a0f7cb4931ad7af0b7fad38e16.mov" -%}
           
           {% if video_url != "YOUR_VIDEO_URL_HERE" %}
             <video 
@@ -80,6 +80,7 @@
               playsinline
               data-video-fade
             >
+              <source src="{{ video_url }}" type="video/quicktime">
               <source src="{{ video_url }}" type="video/mp4">
             </video>
           {% else %}
