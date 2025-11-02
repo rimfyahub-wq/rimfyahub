@@ -144,26 +144,30 @@ class AnimationController {
     nextLayer.style.opacity = '0';
 
     const cycleGradients = () => {
-      // Smooth simultaneous fade: current fades to 0, next fades to 0.6
+      // Immediately prepare next gradient in hidden layer
+      nextLayer.style.background = gradients[nextIndex];
+      
+      // Smooth fade transition
       currentLayer.style.opacity = '0';
       nextLayer.style.opacity = '0.6';
 
+      // After fade completes, swap for next cycle
       setTimeout(() => {
-        // Swap: next becomes current
         currentLayer.style.background = gradients[nextIndex];
         currentLayer.style.opacity = '0.6';
         
-        // Update indices for next cycle
+        nextLayer.style.opacity = '0';
+        
+        // Move to next gradient
         currentIndex = nextIndex;
         nextIndex = (nextIndex + 1) % gradients.length;
-        
-        // Prepare next layer with upcoming gradient
-        nextLayer.style.background = gradients[nextIndex];
-        nextLayer.style.opacity = '0';
-      }, 3000); // Match the CSS transition duration
+      }, 3000); // CSS transition is 3s
     };
 
-    // Change every 6 seconds (3s fade + 3s hold)
+    // Start first cycle after 5 seconds to let current gradient be visible
+    setTimeout(cycleGradients, 5000);
+    
+    // Then repeat every 6 seconds (3s fade + 3s hold)
     setInterval(cycleGradients, 6000);
   }
 
