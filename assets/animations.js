@@ -1,129 +1,57 @@
 /**
- * Animations Module
- * Handles scroll-based animations, parallax effects, and background gradients
- * Optimized for performance and browser compatibility
+ * Revolutionary Features Cards Animation
+ * Simple and bulletproof scroll animation system
  */
 
-class AnimationController {
-  constructor() {
-    // Check if animations are enabled in theme settings
-    this.animationsEnabled = document.body.dataset.animationsEnabled !== 'false';
-    
-    if (this.animationsEnabled) {
-      this.initScrollAnimations();
-      this.initParallax();
-      this.initBackgroundGradient();
+(function() {
+  'use strict';
+
+  // Wait for DOM to be fully loaded
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+  function init() {
+    try {
+      animateFeatureCards();
+      animateGradientBackground();
+    } catch (error) {
+      console.error('Animation init error:', error);
     }
   }
 
-  // Intersection Observer for scroll-triggered animations
-  initScrollAnimations() {
-    try {
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '-100px 0px'
-      };
+  // Animate feature cards on scroll
+  function animateFeatureCards() {
+    const cards = document.querySelectorAll('.feature-card[data-animate-card]');
+    
+    if (cards.length === 0) return;
 
-      const observer = new IntersectionObserver((entries) => {
+    // Show cards immediately on page load
+    cards.forEach((card, index) => {
+      setTimeout(() => {
+        card.classList.add('is-visible');
+      }, index * 150);
+    });
+
+    // Also trigger on scroll for dynamic loading
+    const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          // Animate feature cards with 3D effect
-          const cards = entry.target.querySelectorAll('[data-animate-card]');
-          cards.forEach((card, index) => {
-            setTimeout(() => {
-              card.classList.add('is-visible');
-            }, index * 100);
-          });
-
-          // Animate lifestyle images
-          const slides = entry.target.querySelectorAll('[data-animate-slide]');
-          slides.forEach((slide, index) => {
-            setTimeout(() => {
-              slide.classList.add('is-visible');
-            }, index * 200);
-          });
-
-          // Add 3D parallax to feature section
-          if (entry.target.classList.contains('features-grid')) {
-            this.init3DCardEffect(entry.target);
-          }
+          entry.target.classList.add('is-visible');
         }
       });
-    }, observerOptions);
-
-    // Observe all animated sections
-    document.querySelectorAll('[data-animate-on-scroll]').forEach(section => {
-      observer.observe(section);
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
     });
+
+    cards.forEach(card => observer.observe(card));
   }
 
-  // 3D Card Effect on Scroll
-  init3DCardEffect(container) {
-    const cards = container.querySelectorAll('.feature-card');
-    
-    window.addEventListener('scroll', () => {
-      const rect = container.getBoundingClientRect();
-      const viewportHeight = window.innerHeight;
-      
-      // Only apply effect when section is in view
-      if (rect.top < viewportHeight && rect.bottom > 0) {
-        const scrollProgress = (viewportHeight - rect.top) / (viewportHeight + rect.height);
-        
-        cards.forEach((card, index) => {
-          const delay = index * 0.1;
-          const cardProgress = Math.max(0, Math.min(1, scrollProgress - delay));
-          
-          // 3D perspective transform based on scroll position
-          const rotateX = (1 - cardProgress) * 15;
-          const translateZ = (1 - cardProgress) * -50;
-          
-          card.style.transform = `
-            perspective(1000px) 
-            rotateX(${rotateX}deg) 
-            translateZ(${translateZ}px)
-            translateY(${card.classList.contains('is-visible') ? 0 : '30px'})
-            scale(${card.classList.contains('is-visible') ? 1 : 0.95})
-          `;
-        });
-      }
-    });
-  }
-
-  // Parallax scroll effect
-  initParallax() {
-    const parallaxContent = document.querySelector('[data-parallax-content]');
-    const parallaxMedia = document.querySelector('[data-parallax-media]');
-    
-    if (!parallaxContent && !parallaxMedia) return;
-
-    window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
-      const maxScroll = 500;
-      
-      if (scrollY < maxScroll) {
-        const progress = scrollY / maxScroll;
-        
-        if (parallaxContent) {
-          const yOffset = scrollY * 0.3;
-          const opacity = 1 - progress;
-          const scale = 1 - (progress * 0.2);
-          
-          parallaxContent.style.transform = `translateY(${yOffset}px) scale(${scale})`;
-          parallaxContent.style.opacity = opacity;
-        }
-        
-        if (parallaxMedia) {
-          const yOffset = scrollY * -0.2;
-          const scale = 1 - (progress * 0.2);
-          
-          parallaxMedia.style.transform = `translateY(${yOffset}px) scale(${scale})`;
-        }
-      }
-    });
-  }
-
-  // Animated background gradient color cycling
-  initBackgroundGradient() {
+  // Animated gradient background
+  function animateGradientBackground() {
     const currentLayer = document.querySelector('[data-gradient-layer="current"]');
     const nextLayer = document.querySelector('[data-gradient-layer="next"]');
     
@@ -143,63 +71,28 @@ class AnimationController {
     let currentIndex = 0;
     let nextIndex = 1;
 
-    // Initialize with first two gradients
+    // Set initial gradients
     currentLayer.style.background = gradients[currentIndex];
     currentLayer.style.opacity = '0.6';
     nextLayer.style.background = gradients[nextIndex];
     nextLayer.style.opacity = '0';
 
-    const cycleGradients = () => {
-      // Immediately prepare next gradient in hidden layer
+    function cycleGradients() {
       nextLayer.style.background = gradients[nextIndex];
-      
-      // Smooth fade transition
       currentLayer.style.opacity = '0';
       nextLayer.style.opacity = '0.6';
 
-      // After fade completes, swap for next cycle
       setTimeout(() => {
         currentLayer.style.background = gradients[nextIndex];
         currentLayer.style.opacity = '0.6';
-        
         nextLayer.style.opacity = '0';
         
-        // Move to next gradient
         currentIndex = nextIndex;
         nextIndex = (nextIndex + 1) % gradients.length;
-      }, 3000); // CSS transition is 3s
-    };
-
-    // Start first cycle after 5 seconds to let current gradient be visible
-    setTimeout(cycleGradients, 5000);
-    
-    // Then repeat every 6 seconds (3s fade + 3s hold)
-    setInterval(cycleGradients, 6000);
-    } catch (error) {
-      console.error('Background gradient animation error:', error);
+      }, 3000);
     }
-  }
 
-  // Video fade effect for seamless loop
-  initVideoFade() {
-    // Disabled - videos loop seamlessly without fade
-    // Videos are set to autoplay, loop, and muted for seamless playback
+    setTimeout(cycleGradients, 5000);
+    setInterval(cycleGradients, 6000);
   }
-}
-
-// Initialize on DOM ready with error handling
-try {
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-      new AnimationController();
-    });
-  } else {
-    new AnimationController();
-  }
-} catch (error) {
-  console.error('Animation controller initialization error:', error);
-}
-  });
-} else {
-  new AnimationController();
-}
+})();
