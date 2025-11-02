@@ -1,9 +1,10 @@
 <section class="collection-section" data-mouse-glow>
+  <!-- Animated Background Gradients -->
+  <div class="collection-bg-gradient collection-bg-current" data-gradient-layer="current"></div>
+  <div class="collection-bg-gradient collection-bg-next" data-gradient-layer="next"></div>
+  
   <!-- Mouse Follow Glow -->
   <div class="mouse-glow-overlay"></div>
-  
-  <!-- Background Gradient -->
-  <div class="collection-bg-gradient"></div>
 
   <div class="container">
     <div class="collection-header">
@@ -56,14 +57,21 @@
     overflow: hidden;
   }
 
-    .collection-bg-glow {
+  .collection-bg-gradient {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(147, 51, 234, 0.15), rgba(59, 130, 246, 0.15));
-    opacity: 0.9;
     filter: blur(120px);
-    pointer-events: none;
-    z-index: 0;
+    transition: opacity 3000ms ease-in-out;
+  }
+
+  .collection-bg-current {
+    background: linear-gradient(135deg, hsl(193, 100%, 65%), hsl(280, 100%, 70%), hsl(330, 100%, 70%));
+    opacity: 0.6;
+  }
+
+  .collection-bg-next {
+    background: linear-gradient(135deg, hsl(30, 100%, 65%), hsl(330, 100%, 70%), hsl(280, 100%, 70%));
+    opacity: 0;
   }
 
   @keyframes gradientMove {
@@ -116,6 +124,41 @@
     }
   }
 </style>
+
+<script>
+  // Gradient Animation for Collection Page
+  (function() {
+    const gradients = [
+      'linear-gradient(135deg, hsl(193, 100%, 65%), hsl(280, 100%, 70%), hsl(330, 100%, 70%))',
+      'linear-gradient(135deg, hsl(30, 100%, 65%), hsl(330, 100%, 70%), hsl(280, 100%, 70%))',
+      'linear-gradient(135deg, hsl(280, 100%, 70%), hsl(193, 100%, 65%), hsl(30, 100%, 65%))',
+      'linear-gradient(135deg, hsl(330, 100%, 70%), hsl(30, 100%, 65%), hsl(193, 100%, 65%))'
+    ];
+    
+    let currentIndex = 0;
+    const currentLayer = document.querySelector('.collection-bg-current');
+    const nextLayer = document.querySelector('.collection-bg-next');
+    
+    if (currentLayer && nextLayer) {
+      function changeGradient() {
+        const nextIndex = (currentIndex + 1) % gradients.length;
+        
+        nextLayer.style.background = gradients[nextIndex];
+        nextLayer.style.opacity = '0.6';
+        currentLayer.style.opacity = '0';
+        
+        setTimeout(() => {
+          currentLayer.style.background = gradients[nextIndex];
+          currentLayer.style.opacity = '0.6';
+          nextLayer.style.opacity = '0';
+          currentIndex = nextIndex;
+        }, 3000);
+      }
+      
+      setInterval(changeGradient, 6000);
+    }
+  })();
+</script>
 
 {% schema %}
 {
