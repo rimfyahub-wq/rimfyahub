@@ -29,11 +29,11 @@
         </div>
 
         <div class="hero-cta">
-          <a href="/collections/all" class="btn btn-primary glow-pulse">
-            Shop Now
+          <a href="{{ section.settings.button_primary_link | default: '/collections/all' }}" class="btn btn-primary glow-pulse">
+            {{ section.settings.button_primary_text | default: "Shop Now" }}
           </a>
-          <a href="#features" class="btn btn-outline">
-            Learn More
+          <a href="{{ section.settings.button_secondary_link | default: '#features' }}" class="btn btn-outline">
+            {{ section.settings.button_secondary_text | default: "Learn More" }}
           </a>
         </div>
 
