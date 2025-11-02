@@ -30,9 +30,16 @@
                 <div class="product-image-wrapper">
                   <img 
                     src="{{ product.featured_image | img_url: '500x500' }}" 
+                    srcset="{{ product.featured_image | img_url: '300x300' }} 300w,
+                            {{ product.featured_image | img_url: '500x500' }} 500w,
+                            {{ product.featured_image | img_url: '800x800' }} 800w"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     alt="{{ product.title | escape }}"
                     loading="lazy"
                     class="product-image"
+                    decoding="async"
+                    width="500"
+                    height="500"
                   >
                   {% if product.compare_at_price > product.price %}
                     <span class="product-badge">Sale</span>

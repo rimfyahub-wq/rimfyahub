@@ -36,6 +36,13 @@
   
   {{ content_for_header }}
   
+  <!-- JSON-LD Structured Data for SEO -->
+  {% render 'schema-organization' %}
+  {% render 'schema-breadcrumb', template: template, collection: collection, product: product %}
+  {% if template contains 'product' %}
+    {% render 'schema-product', product: product %}
+  {% endif %}
+  
   <!-- Theme stylesheet -->
   {{ 'theme.css' | asset_url | stylesheet_tag }}
   

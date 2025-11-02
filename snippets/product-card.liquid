@@ -3,10 +3,17 @@
     {% if product.featured_image %}
       <div class="product-image-wrapper">
         <img 
-          src="{{ product.featured_image | img_url: '500x' }}" 
+          src="{{ product.featured_image | img_url: '500x500' }}" 
+          srcset="{{ product.featured_image | img_url: '300x300' }} 300w,
+                  {{ product.featured_image | img_url: '500x500' }} 500w,
+                  {{ product.featured_image | img_url: '800x800' }} 800w"
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           alt="{{ product.title | escape }}"
           class="product-image"
           loading="lazy"
+          decoding="async"
+          width="500"
+          height="500"
         >
       </div>
     {% endif %}
@@ -31,11 +38,12 @@
     </div>
   </a>
 
-  <form action="/cart/add" method="post" class="product-form">
+  <form action="/cart/add" method="post" class="product-form" data-product-form>
     <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
     <button 
       type="submit" 
       class="add-to-cart"
+      data-product-title="{{ product.title | escape }}"
       {% unless product.available %}disabled{% endunless %}
     >
       {% if product.available %}

@@ -17,9 +17,18 @@
           <div class="product-main-image">
             <img 
               src="{{ product.featured_image | img_url: '800x' }}" 
+              srcset="{{ product.featured_image | img_url: '400x' }} 400w,
+                      {{ product.featured_image | img_url: '600x' }} 600w,
+                      {{ product.featured_image | img_url: '800x' }} 800w,
+                      {{ product.featured_image | img_url: '1200x' }} 1200w"
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 80vw, 50vw"
               alt="{{ product.featured_image.alt | escape }}"
               class="product-image"
               id="mainProductImage"
+              loading="eager"
+              decoding="async"
+              width="{{ product.featured_image.width }}"
+              height="{{ product.featured_image.height }}"
             >
           </div>
 
@@ -30,9 +39,15 @@
                   <div class="thumbnail-glow"></div>
                   <img 
                     src="{{ image | img_url: '150x' }}" 
+                    srcset="{{ image | img_url: '150x' }} 150w,
+                            {{ image | img_url: '200x' }} 200w"
                     alt="{{ image.alt | escape }}"
                     class="thumbnail-image"
                     onclick="changeMainImage('{{ image | img_url: '800x' }}', {{ forloop.index0 }})"
+                    loading="lazy"
+                    decoding="async"
+                    width="150"
+                    height="150"
                   >
                 </div>
               {% endfor %}
