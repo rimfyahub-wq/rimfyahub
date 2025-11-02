@@ -124,22 +124,8 @@ class AnimationController {
 
   // Video fade effect for seamless loop
   initVideoFade() {
-    const videos = document.querySelectorAll('[data-video-fade]');
-    
-    videos.forEach(video => {
-      video.addEventListener('timeupdate', () => {
-        const duration = video.duration;
-        const currentTime = video.currentTime;
-        
-        // Fade out 1 second before end
-        if (duration - currentTime < 1) {
-          video.style.opacity = '0';
-        } else if (currentTime < 1) {
-          // Fade in at start
-          video.style.opacity = '1';
-        }
-      });
-    });
+    // Disabled - videos loop seamlessly without fade
+    // Videos are set to autoplay, loop, and muted for seamless playback
   }
 }
 
