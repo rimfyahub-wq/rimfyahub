@@ -115,11 +115,11 @@ class AnimationController {
         // Update indices
         currentIndex = (currentIndex + 1) % gradients.length;
         nextIndex = (nextIndex + 1) % gradients.length;
-      }, 3000);
+      }, 1200);
     };
 
-    // Change every 8 seconds
-    setInterval(cycleGradients, 8000);
+    // Change every 4 seconds
+    setInterval(cycleGradients, 4000);
   }
 
   // Video fade effect for seamless loop
