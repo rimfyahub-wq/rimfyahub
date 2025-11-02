@@ -627,13 +627,13 @@
     }
   });
 
-  // Gradient Animation for Product Page
+  // Smooth Gradient Animation for Product Page
   (function() {
     const gradients = [
       'linear-gradient(135deg, hsl(193, 100%, 65%), hsl(280, 100%, 70%), hsl(330, 100%, 70%))',
-      'linear-gradient(135deg, hsl(30, 100%, 65%), hsl(330, 100%, 70%), hsl(280, 100%, 70%))',
-      'linear-gradient(135deg, hsl(280, 100%, 70%), hsl(193, 100%, 65%), hsl(30, 100%, 65%))',
-      'linear-gradient(135deg, hsl(330, 100%, 70%), hsl(30, 100%, 65%), hsl(193, 100%, 65%))'
+      'linear-gradient(135deg, hsl(280, 100%, 70%), hsl(330, 100%, 70%), hsl(193, 100%, 65%))',
+      'linear-gradient(135deg, hsl(330, 100%, 70%), hsl(193, 100%, 65%), hsl(280, 100%, 70%))',
+      'linear-gradient(135deg, hsl(193, 100%, 65%), hsl(330, 100%, 70%), hsl(280, 100%, 70%))'
     ];
     
     let currentIndex = 0;
@@ -644,19 +644,26 @@
       function changeGradient() {
         const nextIndex = (currentIndex + 1) % gradients.length;
         
+        // Prepare next gradient
         nextLayer.style.background = gradients[nextIndex];
-        nextLayer.style.opacity = '0.6';
-        currentLayer.style.opacity = '0';
         
+        // Crossfade
+        setTimeout(() => {
+          nextLayer.style.opacity = '0.6';
+          currentLayer.style.opacity = '0';
+        }, 50);
+        
+        // After transition, swap layers
         setTimeout(() => {
           currentLayer.style.background = gradients[nextIndex];
           currentLayer.style.opacity = '0.6';
           nextLayer.style.opacity = '0';
           currentIndex = nextIndex;
-        }, 3000);
+        }, 3050);
       }
       
-      setInterval(changeGradient, 6000);
+      // Start animation
+      setInterval(changeGradient, 8000);
     }
   })();
 </script>
