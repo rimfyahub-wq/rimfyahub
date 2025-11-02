@@ -37,24 +37,36 @@
           </a>
         </div>
 
-        <!-- Key Features -->
+        <!-- Key Features / Stats -->
         <div class="hero-stats">
-          <div class="stat-item">
-            <p class="stat-value">&lt;2 min</p>
-            <p class="stat-label">Setup</p>
-          </div>
-          <div class="stat-item">
-            <p class="stat-value">16M+</p>
-            <p class="stat-label">Colors</p>
-          </div>
-          <div class="stat-item">
-            <p class="stat-value">Voice</p>
-            <p class="stat-label">Control</p>
-          </div>
-          <div class="stat-item">
-            <p class="stat-value">Tool-Free</p>
-            <p class="stat-label">Install</p>
-          </div>
+          {% if section.blocks.size > 0 %}
+            {% for block in section.blocks %}
+              {% if block.type == 'stat' %}
+                <div class="stat-item" {{ block.shopify_attributes }}>
+                  <p class="stat-value">{{ block.settings.value }}</p>
+                  <p class="stat-label">{{ block.settings.label }}</p>
+                </div>
+              {% endif %}
+            {% endfor %}
+          {% else %}
+            <!-- Default stats -->
+            <div class="stat-item">
+              <p class="stat-value">&lt;2 min</p>
+              <p class="stat-label">Setup</p>
+            </div>
+            <div class="stat-item">
+              <p class="stat-value">16M+</p>
+              <p class="stat-label">Colors</p>
+            </div>
+            <div class="stat-item">
+              <p class="stat-value">Voice</p>
+              <p class="stat-label">Control</p>
+            </div>
+            <div class="stat-item">
+              <p class="stat-value">Tool-Free</p>
+              <p class="stat-label">Install</p>
+            </div>
+          {% endif %}
         </div>
       </div>
 
@@ -453,10 +465,63 @@
       "label": "Hero Image (fallback)"
     }
   ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Value",
+          "default": "<2 min",
+          "info": "e.g., <2 min, 16M+, Voice"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Setup",
+          "info": "e.g., Setup, Colors, Control"
+        }
+      ]
+    }
+  ],
   "presets": [
     {
-      "name": "Hero"
+      "name": "Hero",
+      "blocks": [
+        {
+          "type": "stat",
+          "settings": {
+            "value": "<2 min",
+            "label": "Setup"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "value": "16M+",
+            "label": "Colors"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "value": "Voice",
+            "label": "Control"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "value": "Tool-Free",
+            "label": "Install"
+          }
+        }
+      ]
     }
-  ]
+  ],
+  "max_blocks": 8
 }
 {% endschema %}
