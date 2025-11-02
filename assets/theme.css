@@ -583,20 +583,16 @@ img {
   border-radius: 1rem;
   overflow: hidden;
   width: 100%;
-  min-height: 500px;
+  aspect-ratio: 9 / 16;
+  max-height: 700px;
   box-shadow: 0 0 60px rgba(147, 51, 234, 0.5);
   transition: box-shadow 0.5s;
 }
 
-@media (min-width: 768px) {
-  .hero-video-wrapper {
-    min-height: 650px;
-  }
-}
-
 @media (min-width: 1024px) {
   .hero-video-wrapper {
-    min-height: 800px;
+    aspect-ratio: auto;
+    height: 600px;
   }
 }
 
