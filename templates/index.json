@@ -22,10 +22,20 @@
         "enable_mouse_glow": true,
         "enable_3d_scroll": true
       }
+    },
+    "products": {
+      "type": "product-grid",
+      "settings": {
+        "title": "Featured Products",
+        "subtitle": "Explore our premium LED ambient lighting solutions",
+        "products_per_row": 3,
+        "products_to_show": 6
+      }
     }
   },
   "order": [
     "hero",
-    "features"
+    "features",
+    "products"
   ]
 }
