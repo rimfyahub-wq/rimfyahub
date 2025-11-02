@@ -141,12 +141,12 @@ class AnimationController {
       // Fade out current, fade in next
       currentLayer.style.opacity = '0';
       nextLayer.style.background = gradients[nextIndex];
-      nextLayer.style.opacity = '0.3';
+      nextLayer.style.opacity = '0.6';
 
       setTimeout(() => {
         // Swap backgrounds
         currentLayer.style.background = gradients[nextIndex];
-        currentLayer.style.opacity = '0.3';
+        currentLayer.style.opacity = '0.6';
         nextLayer.style.opacity = '0';
 
         // Update indices

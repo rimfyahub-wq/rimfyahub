@@ -99,46 +99,4 @@
   </div>
 </section>
 
-<script>
-  // Smooth Gradient Animation for Homepage
-  (function() {
-    const gradients = [
-      'linear-gradient(135deg, hsl(193, 100%, 65%), hsl(280, 100%, 70%), hsl(330, 100%, 70%))',
-      'linear-gradient(135deg, hsl(280, 100%, 70%), hsl(330, 100%, 70%), hsl(193, 100%, 65%))',
-      'linear-gradient(135deg, hsl(330, 100%, 70%), hsl(193, 100%, 65%), hsl(280, 100%, 70%))',
-      'linear-gradient(135deg, hsl(193, 100%, 65%), hsl(330, 100%, 70%), hsl(280, 100%, 70%))'
-    ];
-    
-    let currentIndex = 0;
-    const currentLayer = document.querySelector('.hero-bg-current');
-    const nextLayer = document.querySelector('.hero-bg-next');
-    
-    if (currentLayer && nextLayer) {
-      function changeGradient() {
-        const nextIndex = (currentIndex + 1) % gradients.length;
-        
-        // Prepare next gradient
-        nextLayer.style.background = gradients[nextIndex];
-        
-        // Crossfade
-        setTimeout(() => {
-          nextLayer.style.opacity = '0.6';
-          currentLayer.style.opacity = '0';
-        }, 50);
-        
-        // After transition, swap layers
-        setTimeout(() => {
-          currentLayer.style.background = gradients[nextIndex];
-          currentLayer.style.opacity = '0.6';
-          nextLayer.style.opacity = '0';
-          currentIndex = nextIndex;
-        }, 3050);
-      }
-      
-      // Start animation
-      setInterval(changeGradient, 8000);
-    }
-  })();
-</script>
-
 {% section 'features' %}
