@@ -161,6 +161,8 @@
     margin-bottom: 5rem;
     position: relative;
     z-index: 10;
+    perspective: 1000px;
+    transform-style: preserve-3d;
   }
 
   @media (min-width: 768px) {
@@ -186,6 +188,10 @@
     transform: translateY(30px) scale(0.95);
     animation-delay: var(--card-delay);
     position: relative;
+    box-shadow: 
+      0 0 30px var(--glow-color, rgba(0, 229, 255, 0.4)),
+      0 0 60px var(--glow-color, rgba(0, 229, 255, 0.2)),
+      0 10px 30px rgba(0, 0, 0, 0.2);
   }
 
   .feature-card::before {
@@ -194,7 +200,7 @@
     inset: -2px;
     border-radius: 1rem;
     background: linear-gradient(135deg, var(--glow-color, rgba(0, 229, 255, 0.9)), transparent);
-    opacity: 0;
+    opacity: 0.5;
     transition: opacity 0.2s ease-in-out;
     z-index: -1;
     filter: blur(20px);
@@ -218,8 +224,8 @@
     border-color: var(--glow-color, rgba(0, 229, 255, 0.8));
     background: rgba(255, 255, 255, 0.15);
     box-shadow: 
-      0 0 40px var(--glow-color, rgba(0, 229, 255, 0.6)),
-      0 0 80px var(--glow-color, rgba(0, 229, 255, 0.4)),
+      0 0 50px var(--glow-color, rgba(0, 229, 255, 0.7)),
+      0 0 100px var(--glow-color, rgba(0, 229, 255, 0.5)),
       0 20px 40px rgba(0, 0, 0, 0.3);
   }
 

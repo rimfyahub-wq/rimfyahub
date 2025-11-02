@@ -21,7 +21,7 @@ class AnimationController {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          // Animate feature cards
+          // Animate feature cards with 3D effect
           const cards = entry.target.querySelectorAll('[data-animate-card]');
           cards.forEach((card, index) => {
             setTimeout(() => {
@@ -36,6 +36,11 @@ class AnimationController {
               slide.classList.add('is-visible');
             }, index * 200);
           });
+
+          // Add 3D parallax to feature section
+          if (entry.target.classList.contains('features-grid')) {
+            this.init3DCardEffect(entry.target);
+          }
         }
       });
     }, observerOptions);
@@ -43,6 +48,38 @@ class AnimationController {
     // Observe all animated sections
     document.querySelectorAll('[data-animate-on-scroll]').forEach(section => {
       observer.observe(section);
+    });
+  }
+
+  // 3D Card Effect on Scroll
+  init3DCardEffect(container) {
+    const cards = container.querySelectorAll('.feature-card');
+    
+    window.addEventListener('scroll', () => {
+      const rect = container.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      
+      // Only apply effect when section is in view
+      if (rect.top < viewportHeight && rect.bottom > 0) {
+        const scrollProgress = (viewportHeight - rect.top) / (viewportHeight + rect.height);
+        
+        cards.forEach((card, index) => {
+          const delay = index * 0.1;
+          const cardProgress = Math.max(0, Math.min(1, scrollProgress - delay));
+          
+          // 3D perspective transform based on scroll position
+          const rotateX = (1 - cardProgress) * 15;
+          const translateZ = (1 - cardProgress) * -50;
+          
+          card.style.transform = `
+            perspective(1000px) 
+            rotateX(${rotateX}deg) 
+            translateZ(${translateZ}px)
+            translateY(${card.classList.contains('is-visible') ? 0 : '30px'})
+            scale(${card.classList.contains('is-visible') ? 1 : 0.95})
+          `;
+        });
+      }
     });
   }
 
