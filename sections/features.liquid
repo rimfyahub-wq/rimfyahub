@@ -11,66 +11,54 @@
     </div>
 
     <div class="features-grid" data-animate-on-scroll>
-      {% if section.blocks.size > 0 %}
-        {% for block in section.blocks %}
-          <div class="feature-card" data-animate-card style="--card-delay: {{ forloop.index0 | times: 0.1 }}s; --glow-color: {{ block.settings.glow_color }};">
-            <div class="feature-icon" style="color: {{ block.settings.icon_color }};">
-              {{ block.settings.icon_svg }}
-            </div>
-            <h3 class="feature-title">{{ block.settings.title }}</h3>
-            <p class="feature-description">{{ block.settings.description }}</p>
-          </div>
-        {% endfor %}
-      {% else %}
-        <!-- Default Features -->
-        <div class="feature-card" data-animate-card style="--card-delay: 0s; --glow-color: rgba(0, 229, 255, 0.9);">
-          <div class="feature-icon" style="color: #00E5FF;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-          </div>
-          <h3 class="feature-title">Easy Setup</h3>
-          <p class="feature-description">No tools, no adhesives. Install in under 2 minutes with our innovative snap-on design.</p>
+      <!-- Default Features -->
+      <div class="feature-card" data-animate-card style="--card-delay: 0s; --glow-color: rgba(0, 229, 255, 0.9);">
+        <div class="feature-icon" style="color: #00E5FF;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
         </div>
+        <h3 class="feature-title">Easy Setup</h3>
+        <p class="feature-description">No tools, no adhesives. Install in under 2 minutes with our innovative snap-on design.</p>
+      </div>
 
-        <div class="feature-card" data-animate-card style="--card-delay: 0.1s; --glow-color: rgba(191, 0, 255, 0.9);">
-          <div class="feature-icon" style="color: #BF00FF;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
-          </div>
-          <h3 class="feature-title">RGBIC LED Technology</h3>
-          <p class="feature-description">Access over 16 million colors with independent color control for stunning ambient effects.</p>
+      <div class="feature-card" data-animate-card style="--card-delay: 0.1s; --glow-color: rgba(191, 0, 255, 0.9);">
+        <div class="feature-icon" style="color: #BF00FF;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
         </div>
+        <h3 class="feature-title">RGBIC LED Technology</h3>
+        <p class="feature-description">Access over 16 million colors with independent color control for stunning ambient effects.</p>
+      </div>
 
-        <div class="feature-card" data-animate-card style="--card-delay: 0.2s; --glow-color: rgba(255, 0, 191, 0.9);">
-          <div class="feature-icon" style="color: #FF00BF;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
-          </div>
-          <h3 class="feature-title">Smart Home Integration</h3>
-          <p class="feature-description">Control via Tuya App, compatible with Alexa and Google Home for seamless voice control.</p>
+      <div class="feature-card" data-animate-card style="--card-delay: 0.2s; --glow-color: rgba(255, 0, 191, 0.9);">
+        <div class="feature-icon" style="color: #FF00BF;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
         </div>
+        <h3 class="feature-title">Smart Home Integration</h3>
+        <p class="feature-description">Control via Tuya App, compatible with Alexa and Google Home for seamless voice control.</p>
+      </div>
 
-        <div class="feature-card" data-animate-card style="--card-delay: 0.3s; --glow-color: rgba(0, 255, 128, 0.9);">
-          <div class="feature-icon" style="color: #00FF80;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
-          </div>
-          <h3 class="feature-title">Universal VESA Compatibility</h3>
-          <p class="feature-description">Fits all standard VESA mount sizes (75x75, 100x100, 200x100, 200x200, 400x400mm).</p>
+      <div class="feature-card" data-animate-card style="--card-delay: 0.3s; --glow-color: rgba(0, 255, 128, 0.9);">
+        <div class="feature-icon" style="color: #00FF80;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
         </div>
+        <h3 class="feature-title">Universal VESA Compatibility</h3>
+        <p class="feature-description">Fits all standard VESA mount sizes (75x75, 100x100, 200x100, 200x200, 400x400mm).</p>
+      </div>
 
-        <div class="feature-card" data-animate-card style="--card-delay: 0.4s; --glow-color: rgba(255, 200, 0, 0.9);">
-          <div class="feature-icon" style="color: #FFC800;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
-          </div>
-          <h3 class="feature-title">Dual Control Options</h3>
-          <p class="feature-description">Includes wireless remote control and attached control unit for maximum convenience.</p>
+      <div class="feature-card" data-animate-card style="--card-delay: 0.4s; --glow-color: rgba(255, 200, 0, 0.9);">
+        <div class="feature-icon" style="color: #FFC800;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
         </div>
+        <h3 class="feature-title">Dual Control Options</h3>
+        <p class="feature-description">Includes wireless remote control and attached control unit for maximum convenience.</p>
+      </div>
 
-        <div class="feature-card" data-animate-card style="--card-delay: 0.5s; --glow-color: rgba(255, 100, 100, 0.9);">
-          <div class="feature-icon" style="color: #FF6464;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-          </div>
-          <h3 class="feature-title">Premium Quality</h3>
-          <p class="feature-description">Durable construction designed for 40-50\" TVs with long-lasting LED performance.</p>
+      <div class="feature-card" data-animate-card style="--card-delay: 0.5s; --glow-color: rgba(255, 100, 100, 0.9);">
+        <div class="feature-icon" style="color: #FF6464;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
         </div>
-      {% endif %}
+        <h3 class="feature-title">Premium Quality</h3>
+        <p class="feature-description">Durable construction designed for 40-50\" TVs with long-lasting LED performance.</p>
+      </div>
     </div>
 
     <!-- Lifestyle Images -->
@@ -356,109 +344,6 @@
       "type": "image_picker",
       "id": "lifestyle_image_2",
       "label": "Lifestyle Image 2"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "feature",
-      "name": "Feature",
-      "settings": [
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Title"
-        },
-        {
-          "type": "textarea",
-          "id": "description",
-          "label": "Description"
-        },
-        {
-          "type": "html",
-          "id": "icon_svg",
-          "label": "Icon SVG"
-        },
-        {
-          "type": "color",
-          "id": "icon_color",
-          "label": "Icon Color",
-          "default": "#00E5FF"
-        },
-        {
-          "type": "text",
-          "id": "glow_color",
-          "label": "Glow Color (rgba format)",
-          "default": "rgba(0, 229, 255, 0.9)",
-          "info": "Use rgba format, e.g., rgba(0, 229, 255, 0.9)"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Features",
-      "blocks": [
-        {
-          "type": "feature",
-          "settings": {
-            "title": "Easy Setup",
-            "description": "No tools, no adhesives. Install in under 2 minutes with our innovative snap-on design.",
-            "icon_svg": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><polygon points=\"13 2 3 14 12 14 11 22 21 10 12 10 13 2\"></polygon></svg>",
-            "icon_color": "#00E5FF",
-            "glow_color": "rgba(0, 229, 255, 0.9)"
-          }
-        },
-        {
-          "type": "feature",
-          "settings": {
-            "title": "RGBIC LED Technology",
-            "description": "Access over 16 million colors with independent color control for stunning ambient effects.",
-            "icon_svg": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z\"></path></svg>",
-            "icon_color": "#BF00FF",
-            "glow_color": "rgba(191, 0, 255, 0.9)"
-          }
-        },
-        {
-          "type": "feature",
-          "settings": {
-            "title": "Smart Home Integration",
-            "description": "Control via Tuya App, compatible with Alexa and Google Home for seamless voice control.",
-            "icon_svg": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><rect x=\"5\" y=\"2\" width=\"14\" height=\"20\" rx=\"2\" ry=\"2\"></rect><line x1=\"12\" y1=\"18\" x2=\"12.01\" y2=\"18\"></line></svg>",
-            "icon_color": "#FF00BF",
-            "glow_color": "rgba(255, 0, 191, 0.9)"
-          }
-        },
-        {
-          "type": "feature",
-          "settings": {
-            "title": "Universal VESA Compatibility",
-            "description": "Fits all standard VESA mount sizes (75x75, 100x100, 200x100, 200x200, 400x400mm).",
-            "icon_svg": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z\"></path></svg>",
-            "icon_color": "#00FF80",
-            "glow_color": "rgba(0, 255, 128, 0.9)"
-          }
-        },
-        {
-          "type": "feature",
-          "settings": {
-            "title": "Dual Control Options",
-            "description": "Includes wireless remote control and attached control unit for maximum convenience.",
-            "icon_svg": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><polygon points=\"11 5 6 9 2 9 2 15 6 15 11 19 11 5\"></polygon><path d=\"M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07\"></path></svg>",
-            "icon_color": "#FFC800",
-            "glow_color": "rgba(255, 200, 0, 0.9)"
-          }
-        },
-        {
-          "type": "feature",
-          "settings": {
-            "title": "Premium Quality",
-            "description": "Durable construction designed for 40-50\" TVs with long-lasting LED performance.",
-            "icon_svg": "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"></path></svg>",
-            "icon_color": "#FF6464",
-            "glow_color": "rgba(255, 100, 100, 0.9)"
-          }
-        }
-      ]
     }
   ]
 }
