@@ -22,38 +22,49 @@
         {% assign products_to_display = collections.all.products %}
       {% endif %}
       
-      {% for product in products_to_display limit: section.settings.products_to_show %}
-        <div class="product-card feature-card" data-animate-card style="--card-delay: {{ forloop.index0 | times: 0.1 }}s;">
-          <a href="{{ product.url }}" class="product-link">
-            {% if product.featured_image %}
-              <div class="product-image-wrapper">
-                <img 
-                  src="{{ product.featured_image | img_url: '500x500' }}" 
-                  alt="{{ product.title | escape }}"
-                  loading="lazy"
-                  class="product-image"
-                >
-                {% if product.compare_at_price > product.price %}
-                  <span class="product-badge">Sale</span>
-                {% endif %}
-              </div>
-            {% endif %}
-            
-            <div class="product-info">
-              <h3 class="product-title">{{ product.title }}</h3>
-              {% if section.settings.show_description %}
-                <p class="product-description">{{ product.description | strip_html | truncate: 100 }}</p>
+      {% if products_to_display.size > 0 %}
+        {% for product in products_to_display limit: section.settings.products_to_show %}
+          <div class="product-card feature-card" data-animate-card style="--card-delay: {{ forloop.index0 | times: 0.1 }}s;">
+            <a href="{{ product.url }}" class="product-link">
+              {% if product.featured_image %}
+                <div class="product-image-wrapper">
+                  <img 
+                    src="{{ product.featured_image | img_url: '500x500' }}" 
+                    alt="{{ product.title | escape }}"
+                    loading="lazy"
+                    class="product-image"
+                  >
+                  {% if product.compare_at_price > product.price %}
+                    <span class="product-badge">Sale</span>
+                  {% endif %}
+                </div>
               {% endif %}
-              <div class="product-price">
-                <span class="price-current">{{ product.price | money }}</span>
-                {% if product.compare_at_price > product.price %}
-                  <span class="price-compare">{{ product.compare_at_price | money }}</span>
+              
+              <div class="product-info">
+                <h3 class="product-title">{{ product.title }}</h3>
+                {% if section.settings.show_description %}
+                  <p class="product-description">{{ product.description | strip_html | truncate: 100 }}</p>
                 {% endif %}
+                <div class="product-price">
+                  <span class="price-current">{{ product.price | money }}</span>
+                  {% if product.compare_at_price > product.price %}
+                    <span class="price-compare">{{ product.compare_at_price | money }}</span>
+                  {% endif %}
+                </div>
               </div>
-            </div>
-          </a>
+            </a>
+          </div>
+        {% endfor %}
+      {% else %}
+        <div style="grid-column: 1/-1; text-align: center; padding: 3rem;">
+          <p style="color: rgba(255,255,255,0.7); font-size: 1.125rem;">
+            No products found. Make sure your products are published to the "Online Store" sales channel.
+          </p>
+          <p style="color: rgba(255,255,255,0.5); margin-top: 1rem;">
+            Go to Shopify Admin → Products → Select your product → Sales channels → Add to Online Store
+          </p>
         </div>
-      {% endfor %}
+      {% endif %}
     </div>
 
     {% if section.settings.show_view_all and section.settings.collection != blank %}
