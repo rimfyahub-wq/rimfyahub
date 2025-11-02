@@ -1,0 +1,114 @@
+<div class="product-card" data-animate-card style="--card-delay: {{ index | times: 0.1 }}s;">
+  <a href="{{ product.url }}" class="product-link">
+    {% if product.featured_image %}
+      <div class="product-image-wrapper">
+        <img 
+          src="{{ product.featured_image | img_url: '500x' }}" 
+          alt="{{ product.title | escape }}"
+          class="product-image"
+          loading="lazy"
+        >
+      </div>
+    {% endif %}
+
+    <div class="product-info">
+      <h3 class="product-title">{{ product.title }}</h3>
+      
+      <div class="product-price">
+        {% if product.compare_at_price > product.price %}
+          <span class="price-compare">{{ product.compare_at_price | money }}</span>
+          <span class="price-current price-sale">{{ product.price | money }}</span>
+        {% else %}
+          <span class="price-current">{{ product.price | money }}</span>
+        {% endif %}
+      </div>
+
+      {% if product.description %}
+        <p class="product-description">
+          {{ product.description | strip_html | truncate: 100 }}
+        </p>
+      {% endif %}
+    </div>
+  </a>
+
+  <form action="/cart/add" method="post" class="product-form">
+    <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+    <button 
+      type="submit" 
+      class="add-to-cart"
+      {% unless product.available %}disabled{% endunless %}
+    >
+      {% if product.available %}
+        Add to Cart
+      {% else %}
+        Sold Out
+      {% endif %}
+    </button>
+  </form>
+</div>
+
+<style>
+  .product-card {
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transform: translateY(50px) rotateX(45deg);
+    animation-delay: var(--card-delay);
+  }
+
+  .product-card.is-visible {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+    animation: productFadeIn 0.6s forwards;
+  }
+
+  @keyframes productFadeIn {
+    to {
+      opacity: 1;
+      transform: translateY(0) rotateX(0);
+    }
+  }
+
+  .product-link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .product-image-wrapper {
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .product-info {
+    flex: 1;
+    margin-bottom: 1rem;
+  }
+
+  .price-compare {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: line-through;
+    margin-right: 0.5rem;
+  }
+
+  .price-sale {
+    color: hsl(330, 100%, 70%);
+  }
+
+  .product-form {
+    margin-top: auto;
+  }
+
+  .add-to-cart:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .add-to-cart:disabled:hover {
+    box-shadow: none;
+    transform: none;
+  }
+</style>

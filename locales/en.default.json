@@ -1,0 +1,50 @@
+{
+  "general": {
+    "shop_name": "Glow Edge",
+    "continue_shopping": "Continue Shopping",
+    "404": {
+      "title": "Page Not Found",
+      "subtext": "The page you requested does not exist."
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to Cart",
+      "sold_out": "Sold Out",
+      "unavailable": "Unavailable",
+      "price": "Price"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Shopping Cart",
+      "empty": "Your cart is empty",
+      "continue_shopping": "Continue Shopping",
+      "subtotal": "Subtotal",
+      "checkout": "Checkout"
+    }
+  },
+  "sections": {
+    "hero": {
+      "subtitle": "Transform Your Viewing Experience",
+      "title": "Glow Edge",
+      "model": "F1",
+      "shop_now": "Shop Now",
+      "learn_more": "Learn More"
+    },
+    "features": {
+      "title": "Revolutionary Features",
+      "description": "Experience the perfect blend of innovation and simplicity"
+    },
+    "products": {
+      "title": "Shop Glow Edge",
+      "description": "Transform your entertainment space with our revolutionary LED ambient lighting"
+    }
+  },
+  "footer": {
+    "quick_links": "Quick Links",
+    "legal": "Legal",
+    "contact": "Contact",
+    "social": "Follow Us"
+  }
+}
