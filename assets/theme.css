@@ -582,9 +582,22 @@ img {
   position: relative;
   border-radius: 1rem;
   overflow: hidden;
-  aspect-ratio: 16 / 9;
+  width: 100%;
+  min-height: 400px;
   box-shadow: 0 0 60px rgba(147, 51, 234, 0.5);
   transition: box-shadow 0.5s;
+}
+
+@media (min-width: 768px) {
+  .hero-video-wrapper {
+    min-height: 500px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-video-wrapper {
+    min-height: 600px;
+  }
 }
 
 .hero-media:hover .hero-video-wrapper {
