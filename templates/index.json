@@ -1,0 +1,31 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "subtitle": "Transform Your Viewing Experience",
+        "title": "Glow Edge",
+        "model": "Model F1",
+        "description": "The first-ever LED ambient lighting frame designed exclusively for 40-50\" TVs. Experience millions of colors that transform your space in less than 2 minutes.",
+        "button_primary_text": "Shop Now",
+        "button_primary_link": "/collections/all",
+        "button_secondary_text": "Learn More",
+        "button_secondary_link": "#features",
+        "video_url": "https://cdn.shopify.com/videos/c/o/v/fc5b5cbebb6f47ea97d6c5fe24eccb0f.mp4"
+      }
+    },
+    "features": {
+      "type": "features",
+      "settings": {
+        "title": "Revolutionary Features",
+        "subtitle": "Experience the perfect blend of innovation and simplicity with Glow Edge F1",
+        "enable_mouse_glow": true,
+        "enable_3d_scroll": true
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "features"
+  ]
+}

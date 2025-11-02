@@ -348,9 +348,57 @@
   "name": "Header",
   "settings": [
     {
+      "type": "header",
+      "content": "Logo Settings"
+    },
+    {
       "type": "image_picker",
       "id": "logo",
-      "label": "Logo Image"
+      "label": "Logo Image",
+      "info": "Upload your logo image"
+    },
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo Text (if no image)",
+      "default": "RIMFYA"
+    },
+    {
+      "type": "range",
+      "id": "logo_width_mobile",
+      "label": "Logo Height (Mobile)",
+      "min": 60,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "logo_width_desktop",
+      "label": "Logo Height (Desktop)",
+      "min": 80,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "default": 140
+    },
+    {
+      "type": "header",
+      "content": "Navigation"
+    },
+    {
+      "type": "link_list",
+      "id": "main_menu",
+      "label": "Main Menu",
+      "default": "main-menu",
+      "info": "Create menu in Navigation section"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sticky",
+      "label": "Enable Sticky Header",
+      "default": true
     }
   ]
 }

@@ -1,0 +1,288 @@
+<section class="image-text-section py-16 md:py-24" data-section-id="{{ section.id }}">
+  <div class="container">
+    <div class="image-text-grid {% if section.settings.image_position == 'right' %}image-right{% endif %}">
+      
+      <div class="image-column" data-aos="fade-{{ section.settings.image_position == 'right' ? 'left' : 'right' }}">
+        {% if section.settings.image != blank %}
+          <div class="image-wrapper">
+            <img 
+              src="{{ section.settings.image | img_url: '800x800' }}" 
+              alt="{{ section.settings.image_alt | escape }}"
+              class="featured-image"
+              loading="lazy"
+            >
+          </div>
+        {% else %}
+          <div class="image-placeholder">
+            <span class="text-8xl">📸</span>
+            <p class="mt-4">Add image in theme settings</p>
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="content-column" data-aos="fade-{{ section.settings.image_position == 'right' ? 'right' : 'left' }}">
+        {% if section.settings.subtitle != blank %}
+          <p class="content-subtitle">
+            {{ section.settings.subtitle }}
+          </p>
+        {% endif %}
+        
+        {% if section.settings.title != blank %}
+          <h2 class="content-title">
+            {{ section.settings.title }}
+          </h2>
+        {% endif %}
+        
+        {% if section.settings.description != blank %}
+          <div class="content-description">
+            {{ section.settings.description }}
+          </div>
+        {% endif %}
+
+        {% if section.blocks.size > 0 %}
+          <ul class="feature-list">
+            {% for block in section.blocks %}
+              {% if block.type == 'feature_item' %}
+                <li class="feature-list-item" {{ block.shopify_attributes }}>
+                  <span class="feature-icon">{{ block.settings.icon | default: "✓" }}</span>
+                  <span class="feature-text">{{ block.settings.text }}</span>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        {% endif %}
+
+        {% if section.settings.button_text != blank %}
+          <a href="{{ section.settings.button_link | default: '#' }}" class="btn btn-primary mt-8">
+            {{ section.settings.button_text }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .image-text-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  @media (min-width: 1024px) {
+    .image-text-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+    
+    .image-text-grid.image-right {
+      direction: rtl;
+    }
+    
+    .image-text-grid.image-right > * {
+      direction: ltr;
+    }
+  }
+
+  .image-wrapper {
+    border-radius: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  }
+
+  .featured-image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .image-placeholder {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 1.5rem;
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .content-subtitle {
+    color: hsl(193, 100%, 65%);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+  }
+
+  .content-title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, hsl(193, 100%, 65%), hsl(280, 100%, 70%));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  @media (min-width: 768px) {
+    .content-title {
+      font-size: 3rem;
+    }
+  }
+
+  .content-description {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .content-description p {
+    margin-bottom: 1rem;
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+  }
+
+  .feature-list-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .feature-icon {
+    font-size: 1.5rem;
+    color: hsl(193, 100%, 65%);
+  }
+
+  .feature-text {
+    font-size: 1.125rem;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Image with Text",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Image Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image Alt Text",
+      "info": "Describe the image for accessibility"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image Position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "PREMIUM QUALITY"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Why Choose Glow Edge?"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Experience the perfect blend of innovation and style with our cutting-edge LED ambient lighting solution.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Learn More"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature_item",
+      "name": "Feature Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (Emoji)",
+          "default": "✓"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Feature Text",
+          "default": "Premium quality materials"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image with Text",
+      "blocks": [
+        {
+          "type": "feature_item",
+          "settings": {
+            "icon": "✓",
+            "text": "Easy 2-minute installation"
+          }
+        },
+        {
+          "type": "feature_item",
+          "settings": {
+            "icon": "✓",
+            "text": "16 million+ vibrant colors"
+          }
+        },
+        {
+          "type": "feature_item",
+          "settings": {
+            "icon": "✓",
+            "text": "Voice control compatible"
+          }
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10
+}
+{% endschema %}

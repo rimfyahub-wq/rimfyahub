@@ -1,0 +1,263 @@
+<section class="testimonials-section py-16 md:py-24" data-section-id="{{ section.id }}">
+  <div class="container">
+    {% if section.settings.title != blank %}
+      <h2 class="section-title text-center mb-4">
+        {{ section.settings.title }}
+      </h2>
+    {% endif %}
+    
+    {% if section.settings.subtitle != blank %}
+      <p class="section-description text-center mb-12">
+        {{ section.settings.subtitle }}
+      </p>
+    {% endif %}
+
+    {% if section.blocks.size > 0 %}
+      <div class="testimonials-grid">
+        {% for block in section.blocks %}
+          <div class="testimonial-card feature-card" {{ block.shopify_attributes }} style="--card-delay: {{ forloop.index0 | times: 0.1 }}s; --glow-color: rgba(0, 229, 255, 0.6);">
+            <div class="testimonial-content">
+              <div class="quote-icon">❝</div>
+              <p class="testimonial-text">{{ block.settings.quote }}</p>
+            </div>
+            <div class="testimonial-author">
+              {% if block.settings.author_image != blank %}
+                <img 
+                  src="{{ block.settings.author_image | img_url: '80x80' }}" 
+                  alt="{{ block.settings.author_name | escape }}"
+                  class="author-avatar"
+                >
+              {% else %}
+                <div class="author-avatar-placeholder">
+                  {{ block.settings.author_name | slice: 0 }}
+                </div>
+              {% endif %}
+              <div class="author-info">
+                <div class="author-name">{{ block.settings.author_name }}</div>
+                {% if block.settings.author_title != blank %}
+                  <div class="author-title">{{ block.settings.author_title }}</div>
+                {% endif %}
+              </div>
+            </div>
+            {% if block.settings.rating > 0 %}
+              <div class="testimonial-rating">
+                {% for i in (1..5) %}
+                  <span class="star {% if i <= block.settings.rating %}filled{% endif %}">★</span>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="testimonials-grid">
+        <!-- Placeholder testimonials -->
+        <div class="testimonial-card feature-card">
+          <div class="testimonial-content">
+            <div class="quote-icon">❝</div>
+            <p class="testimonial-text">Add customer testimonials in theme customizer to build trust.</p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar-placeholder">C</div>
+            <div class="author-info">
+              <div class="author-name">Customer Name</div>
+              <div class="author-title">Position</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .testimonials-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .testimonials-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .testimonial-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .testimonial-content {
+    flex: 1;
+  }
+
+  .quote-icon {
+    font-size: 3rem;
+    color: hsl(193, 100%, 65%);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .testimonial-text {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    font-size: 1.125rem;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .author-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .author-avatar-placeholder {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, hsl(193, 100%, 65%), hsl(280, 100%, 70%));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: black;
+  }
+
+  .author-name {
+    font-weight: 600;
+    font-size: 1.125rem;
+  }
+
+  .author-title {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.875rem;
+  }
+
+  .testimonial-rating {
+    display: flex;
+    gap: 0.25rem;
+  }
+
+  .star {
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 1.25rem;
+  }
+
+  .star.filled {
+    color: #FFD700;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "What Our Customers Say"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Section Subtitle",
+      "default": "Join thousands of satisfied customers experiencing the Glow Edge difference"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "This product completely transformed my entertainment setup!"
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "Customer Name",
+          "default": "John Doe"
+        },
+        {
+          "type": "text",
+          "id": "author_title",
+          "label": "Customer Title/Location",
+          "default": "Verified Buyer"
+        },
+        {
+          "type": "image_picker",
+          "id": "author_image",
+          "label": "Customer Photo (Optional)"
+        },
+        {
+          "type": "range",
+          "id": "rating",
+          "label": "Rating (Stars)",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Installation was a breeze and the lighting effects are absolutely stunning!",
+            "author_name": "Sarah M.",
+            "author_title": "Verified Buyer",
+            "rating": 5
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The voice control works perfectly with my Alexa. Best purchase this year!",
+            "author_name": "Mike R.",
+            "author_title": "Tech Enthusiast",
+            "rating": 5
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Completely transformed my gaming setup. The 16M colors are mind-blowing!",
+            "author_name": "Alex K.",
+            "author_title": "Gamer",
+            "rating": 5
+          }
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12
+}
+{% endschema %}
