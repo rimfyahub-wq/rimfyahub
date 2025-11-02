@@ -13,7 +13,7 @@
     <div class="features-grid" data-animate-on-scroll>
       {% if section.blocks.size > 0 %}
         {% for block in section.blocks %}
-          <div class="feature-card" data-animate-card style="--card-delay: {{ forloop.index0 | times: 0.1 }}s; --glow-color: {{ block.settings.glow_color }};" {{ block.shopify_attributes }}>
+          <div class="feature-card" data-animate-card style="--card-delay: {{ forloop.index0 | times: 0.1 }}s; --glow-color: {{ block.settings.glow_color }};">
             <div class="feature-icon" style="color: {{ block.settings.icon_color }};">
               {{ block.settings.icon_svg }}
             </div>
