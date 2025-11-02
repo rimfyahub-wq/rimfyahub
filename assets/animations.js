@@ -137,26 +137,34 @@ class AnimationController {
     let currentIndex = 0;
     let nextIndex = 1;
 
+    // Initialize with first two gradients
+    currentLayer.style.background = gradients[currentIndex];
+    currentLayer.style.opacity = '0.6';
+    nextLayer.style.background = gradients[nextIndex];
+    nextLayer.style.opacity = '0';
+
     const cycleGradients = () => {
-      // Fade out current, fade in next
+      // Smooth simultaneous fade: current fades to 0, next fades to 0.6
       currentLayer.style.opacity = '0';
-      nextLayer.style.background = gradients[nextIndex];
       nextLayer.style.opacity = '0.6';
 
       setTimeout(() => {
-        // Swap backgrounds
+        // Swap: next becomes current
         currentLayer.style.background = gradients[nextIndex];
         currentLayer.style.opacity = '0.6';
-        nextLayer.style.opacity = '0';
-
-        // Update indices
-        currentIndex = (currentIndex + 1) % gradients.length;
+        
+        // Update indices for next cycle
+        currentIndex = nextIndex;
         nextIndex = (nextIndex + 1) % gradients.length;
-      }, 1200);
+        
+        // Prepare next layer with upcoming gradient
+        nextLayer.style.background = gradients[nextIndex];
+        nextLayer.style.opacity = '0';
+      }, 3000); // Match the CSS transition duration
     };
 
-    // Change every 4 seconds
-    setInterval(cycleGradients, 4000);
+    // Change every 6 seconds (3s fade + 3s hold)
+    setInterval(cycleGradients, 6000);
   }
 
   // Video fade effect for seamless loop
