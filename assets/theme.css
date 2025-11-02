@@ -328,7 +328,7 @@ img {
 
 .hero-bg-current {
   background: linear-gradient(135deg, hsl(193, 100%, 65%), hsl(280, 100%, 70%), hsl(330, 100%, 70%));
-  opacity: 0.5;
+  opacity: 0.7;
 }
 
 .hero-bg-next {
@@ -345,12 +345,12 @@ img {
 }
 
 .mouse-glow-overlay {
-  opacity: 0.7;
+  opacity: 0.8;
   filter: blur(60px);
 }
 
 .secondary-glow {
-  opacity: 0.6;
+  opacity: 0.7;
   filter: blur(100px);
 }
 
