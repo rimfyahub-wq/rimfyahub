@@ -563,6 +563,13 @@ img {
 .hero-media {
   position: relative;
   width: 100%;
+  transform: scale(1.15);
+}
+
+@media (min-width: 1024px) {
+  .hero-media {
+    transform: scale(1.2);
+  }
 }
 
 .hero-video-glow {
