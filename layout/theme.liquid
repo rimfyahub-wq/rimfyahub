@@ -2,18 +2,50 @@
 <html lang="{{ request.locale.iso_code }}">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="{{ page_description | strip_html | truncatewords: 20 }}">
+  <meta name="theme-color" content="#000000">
+  
+  <!-- Preconnect to critical resources -->
+  <link rel="preconnect" href="https://cdn.shopify.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- DNS prefetch for faster resolution -->
+  <link rel="dns-prefetch" href="https://cdn.shopify.com">
+  
   <title>{{ page_title | default: shop.name }}</title>
+  
+  {% if page_description %}
+    <meta name="description" content="{{ page_description | strip_html | truncatewords: 25 }}">
+  {% endif %}
+  
+  <!-- Open Graph Tags -->
+  <meta property="og:type" content="{% if template contains 'product' %}product{% elsif template contains 'article' %}article{% else %}website{% endif %}">
+  <meta property="og:title" content="{{ page_title | default: shop.name }}">
+  <meta property="og:url" content="{{ request.url }}">
+  {% if page.image %}
+    <meta property="og:image" content="https:{{ page.image.src | image_url: width: 1200 }}">
+  {% endif %}
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  {% if page.image %}
+    <meta name="twitter:image" content="https:{{ page.image.src | image_url: width: 1200 }}">
+  {% endif %}
   
   {{ content_for_header }}
   
+  <!-- Theme stylesheet -->
   {{ 'theme.css' | asset_url | stylesheet_tag }}
   
-  {{ 'theme.js' | asset_url | script_tag }}
-  {{ 'mouse-glow.js' | asset_url | script_tag }}
-  {{ 'animations.js' | asset_url | script_tag }}
+  <!-- Preload critical assets -->
+  <link rel="preload" as="script" href="{{ 'animations.js' | asset_url }}">
 </head>
-<body class="glow-edge-theme">
+<body class="glow-edge-theme" data-template="{{ template | replace: '.', '-' }}">
+  
+  <!-- Skip to content link for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
   
   {% section 'header' %}
   
@@ -23,5 +55,11 @@
   
   {% section 'footer' %}
   
+  <!-- Deferred scripts for better performance -->
+  <script src="{{ 'theme.js' | asset_url }}" defer></script>
+  <script src="{{ 'mouse-glow.js' | asset_url }}" defer></script>
+  <script src="{{ 'animations.js' | asset_url }}" defer></script>
+  
 </body>
 </html>
+

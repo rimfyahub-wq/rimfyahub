@@ -1,24 +1,30 @@
 /**
  * Animations Module
  * Handles scroll-based animations, parallax effects, and background gradients
+ * Optimized for performance and browser compatibility
  */
 
 class AnimationController {
   constructor() {
-    this.initScrollAnimations();
-    this.initParallax();
-    this.initBackgroundGradient();
-    this.initVideoFade();
+    // Check if animations are enabled in theme settings
+    this.animationsEnabled = document.body.dataset.animationsEnabled !== 'false';
+    
+    if (this.animationsEnabled) {
+      this.initScrollAnimations();
+      this.initParallax();
+      this.initBackgroundGradient();
+    }
   }
 
   // Intersection Observer for scroll-triggered animations
   initScrollAnimations() {
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '-100px 0px'
-    };
+    try {
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '-100px 0px'
+      };
 
-    const observer = new IntersectionObserver((entries) => {
+      const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           // Animate feature cards with 3D effect
@@ -169,6 +175,9 @@ class AnimationController {
     
     // Then repeat every 6 seconds (3s fade + 3s hold)
     setInterval(cycleGradients, 6000);
+    } catch (error) {
+      console.error('Background gradient animation error:', error);
+    }
   }
 
   // Video fade effect for seamless loop
@@ -178,10 +187,18 @@ class AnimationController {
   }
 }
 
-// Initialize on DOM ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => {
+// Initialize on DOM ready with error handling
+try {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      new AnimationController();
+    });
+  } else {
     new AnimationController();
+  }
+} catch (error) {
+  console.error('Animation controller initialization error:', error);
+}
   });
 } else {
   new AnimationController();

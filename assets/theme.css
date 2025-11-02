@@ -2,6 +2,25 @@
  * Glow Edge Shopify Theme - Main Styles
  */
 
+/* ===== Accessibility ===== */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #000;
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 100;
+  border-radius: 0 0 4px 0;
+  font-size: 14px;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 2px solid #00e5ff;
+}
+
 /* ===== CSS Variables ===== */
 :root {
   --color-primary: hsl(193, 100%, 65%);

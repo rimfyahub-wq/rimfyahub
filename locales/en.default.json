@@ -2,17 +2,33 @@
   "general": {
     "shop_name": "Glow Edge",
     "continue_shopping": "Continue Shopping",
+    "search": "Search",
+    "menu": "Menu",
+    "close_menu": "Close Menu",
     "404": {
       "title": "Page Not Found",
-      "subtext": "The page you requested does not exist."
-    }
+      "subtext": "The page you requested does not exist.",
+      "link": "Continue Shopping"
+    },
+    "skip_to_content": "Skip to content",
+    "loading": "Loading...",
+    "error": "An error occurred. Please try again."
   },
   "products": {
     "product": {
       "add_to_cart": "Add to Cart",
       "sold_out": "Sold Out",
       "unavailable": "Unavailable",
-      "price": "Price"
+      "price": "Price",
+      "quantity": "Quantity",
+      "in_stock": "In Stock",
+      "out_of_stock": "Out of Stock",
+      "sku": "SKU",
+      "description": "Description",
+      "specifications": "Specifications",
+      "reviews": "Reviews",
+      "share": "Share",
+      "similar_products": "You may also like"
     }
   },
   "cart": {
@@ -21,7 +37,12 @@
       "empty": "Your cart is empty",
       "continue_shopping": "Continue Shopping",
       "subtotal": "Subtotal",
-      "checkout": "Checkout"
+      "total": "Total",
+      "tax": "Tax",
+      "shipping": "Shipping",
+      "checkout": "Checkout",
+      "update": "Update Cart",
+      "remove": "Remove"
     }
   },
   "sections": {
@@ -34,7 +55,13 @@
     },
     "features": {
       "title": "Revolutionary Features",
-      "description": "Experience the perfect blend of innovation and simplicity"
+      "subtitle": "Experience the perfect blend of innovation and simplicity with Glow Edge F1",
+      "easy_setup": "Easy Setup",
+      "rgbic": "RGBIC LED Technology",
+      "smart_home": "Smart Home Integration",
+      "universal": "Universal VESA Compatibility",
+      "dual_control": "Dual Control Options",
+      "experience": "Ultimate Experience"
     },
     "products": {
       "title": "Shop Glow Edge",
@@ -45,6 +72,19 @@
     "quick_links": "Quick Links",
     "legal": "Legal",
     "contact": "Contact",
-    "social": "Follow Us"
+    "social": "Follow Us",
+    "about": "About Us",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "copyright": "© {{ year }} {{ shop_name }}. All rights reserved."
+  },
+  "accessibility": {
+    "previous": "Previous",
+    "next": "Next",
+    "open_menu": "Open navigation menu",
+    "close_menu": "Close navigation menu",
+    "open_search": "Open search",
+    "added_to_cart": "{{ product_title }} added to cart",
+    "error_adding": "Error adding {{ product_title }} to cart"
   }
 }
