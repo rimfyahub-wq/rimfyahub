@@ -17,55 +17,43 @@
     <div class="products-grid" style="--products-per-row: {{ section.settings.products_per_row }};">
       {% if section.settings.collection != blank %}
         {% assign collection = collections[section.settings.collection] %}
-        {% for product in collection.products limit: section.settings.products_to_show %}
-          <div class="product-card feature-card" data-animate-card style="--card-delay: {{ forloop.index0 | times: 0.1 }}s;">
-            <a href="{{ product.url }}" class="product-link">
-              {% if product.featured_image %}
-                <div class="product-image-wrapper">
-                  <img 
-                    src="{{ product.featured_image | img_url: '500x500' }}" 
-                    alt="{{ product.title | escape }}"
-                    loading="lazy"
-                    class="product-image"
-                  >
-                  {% if product.compare_at_price > product.price %}
-                    <span class="product-badge">Sale</span>
-                  {% endif %}
-                </div>
-              {% endif %}
-              
-              <div class="product-info">
-                <h3 class="product-title">{{ product.title }}</h3>
-                {% if section.settings.show_description %}
-                  <p class="product-description">{{ product.description | strip_html | truncate: 100 }}</p>
-                {% endif %}
-                <div class="product-price">
-                  <span class="price-current">{{ product.price | money }}</span>
-                  {% if product.compare_at_price > product.price %}
-                    <span class="price-compare">{{ product.compare_at_price | money }}</span>
-                  {% endif %}
-                </div>
-              </div>
-            </a>
-          </div>
-        {% endfor %}
+        {% assign products_to_display = collection.products %}
       {% else %}
-        {% comment %} Show placeholder products {% endcomment %}
-        {% for i in (1..section.settings.products_to_show) %}
-          <div class="product-card feature-card">
-            <div class="product-placeholder">
-              <div class="placeholder-image">
-                <span class="text-6xl">🛍️</span>
+        {% assign products_to_display = collections.all.products %}
+      {% endif %}
+      
+      {% for product in products_to_display limit: section.settings.products_to_show %}
+        <div class="product-card feature-card" data-animate-card style="--card-delay: {{ forloop.index0 | times: 0.1 }}s;">
+          <a href="{{ product.url }}" class="product-link">
+            {% if product.featured_image %}
+              <div class="product-image-wrapper">
+                <img 
+                  src="{{ product.featured_image | img_url: '500x500' }}" 
+                  alt="{{ product.title | escape }}"
+                  loading="lazy"
+                  class="product-image"
+                >
+                {% if product.compare_at_price > product.price %}
+                  <span class="product-badge">Sale</span>
+                {% endif %}
               </div>
-              <div class="product-info">
-                <h3 class="product-title">Product {{ i }}</h3>
-                <p class="product-description">Select a collection in theme settings</p>
-                <span class="price-current">$99.00</span>
+            {% endif %}
+            
+            <div class="product-info">
+              <h3 class="product-title">{{ product.title }}</h3>
+              {% if section.settings.show_description %}
+                <p class="product-description">{{ product.description | strip_html | truncate: 100 }}</p>
+              {% endif %}
+              <div class="product-price">
+                <span class="price-current">{{ product.price | money }}</span>
+                {% if product.compare_at_price > product.price %}
+                  <span class="price-compare">{{ product.compare_at_price | money }}</span>
+                {% endif %}
               </div>
             </div>
-          </div>
-        {% endfor %}
-      {% endif %}
+          </a>
+        </div>
+      {% endfor %}
     </div>
 
     {% if section.settings.show_view_all and section.settings.collection != blank %}
