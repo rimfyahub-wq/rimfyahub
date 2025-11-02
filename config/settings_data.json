@@ -13,11 +13,31 @@
       "header": {
         "type": "header",
         "settings": {
-          "logo": "shopify://shop_images/2.png"
+          "logo": "shopify://shop_images/2.png",
+          "logo_text": "RIMFYA",
+          "logo_width_mobile": 100,
+          "logo_width_desktop": 140,
+          "main_menu": "main-menu",
+          "enable_sticky": true
         }
       },
       "features": {
         "type": "features",
+        "blocks": {
+          "feature_eWeCYy": {
+            "type": "feature",
+            "settings": {
+              "title": "",
+              "description": "",
+              "icon_svg": "",
+              "icon_color": "#00e5ff",
+              "glow_color": "rgba(0, 229, 255, 0.9)"
+            }
+          }
+        },
+        "block_order": [
+          "feature_eWeCYy"
+        ],
         "settings": {
           "show_lifestyle_images": true
         }
