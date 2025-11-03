@@ -58,14 +58,14 @@
     if (!currentLayer || !nextLayer) return;
 
     const gradients = [
-      'linear-gradient(135deg, hsl(193, 100%, 65%), hsl(280, 100%, 70%), hsl(330, 100%, 70%))',
-      'linear-gradient(135deg, hsl(30, 100%, 65%), hsl(330, 100%, 70%), hsl(280, 100%, 70%))',
-      'linear-gradient(135deg, hsl(220, 100%, 65%), hsl(193, 100%, 65%), hsl(142, 100%, 65%))',
-      'linear-gradient(135deg, hsl(60, 100%, 65%), hsl(30, 100%, 65%), hsl(330, 100%, 70%))',
-      'linear-gradient(135deg, hsl(300, 100%, 70%), hsl(280, 100%, 70%), hsl(220, 100%, 65%))',
-      'linear-gradient(135deg, hsl(142, 100%, 65%), hsl(180, 100%, 65%), hsl(220, 100%, 65%))',
-      'linear-gradient(135deg, hsl(280, 100%, 70%), hsl(330, 100%, 70%), hsl(30, 100%, 65%))',
-      'linear-gradient(135deg, hsl(330, 100%, 70%), hsl(60, 100%, 65%), hsl(193, 100%, 65%))'
+      'linear-gradient(135deg, hsl(30, 100%, 60%), hsl(220, 100%, 60%), hsl(60, 100%, 60%))', // Orange, Blue, Yellow
+      'linear-gradient(135deg, hsl(220, 100%, 60%), hsl(120, 100%, 50%), hsl(280, 100%, 65%))', // Blue, Green, Purple
+      'linear-gradient(135deg, hsl(60, 100%, 60%), hsl(280, 100%, 65%), hsl(180, 100%, 60%))', // Yellow, Purple, Cyan
+      'linear-gradient(135deg, hsl(120, 100%, 50%), hsl(300, 100%, 65%), hsl(30, 100%, 60%))', // Green, Magenta, Orange
+      'linear-gradient(135deg, hsl(180, 100%, 60%), hsl(60, 100%, 60%), hsl(220, 100%, 60%))', // Cyan, Yellow, Blue
+      'linear-gradient(135deg, hsl(300, 100%, 65%), hsl(30, 100%, 60%), hsl(120, 100%, 50%))', // Magenta, Orange, Green
+      'linear-gradient(135deg, hsl(280, 100%, 65%), hsl(180, 100%, 60%), hsl(60, 100%, 60%))', // Purple, Cyan, Yellow
+      'linear-gradient(135deg, hsl(30, 100%, 60%), hsl(300, 100%, 65%), hsl(220, 100%, 60%))'  // Orange, Magenta, Blue
     ];
 
     let currentIndex = 0;

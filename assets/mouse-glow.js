@@ -32,14 +32,16 @@ class MouseGlow {
       if (overlay) {
         const { x, y } = this.mousePosition;
         
-        // Primary glow with multi-color gradient
+        // Primary glow with vibrant color gradient (orange, blue, yellow, green, purple, cyan, magenta)
         overlay.style.background = `
           radial-gradient(
             circle 800px at ${x}% ${y}%, 
-            hsla(193, 100%, 65%, 0.6) 0%, 
-            hsla(280, 100%, 70%, 0.5) 30%, 
-            hsla(330, 100%, 70%, 0.4) 50%, 
-            transparent 70%
+            hsla(30, 100%, 60%, 0.6) 0%, 
+            hsla(220, 100%, 60%, 0.5) 20%, 
+            hsla(60, 100%, 60%, 0.4) 35%, 
+            hsla(120, 100%, 50%, 0.3) 50%, 
+            hsla(280, 100%, 65%, 0.2) 65%,
+            transparent 80%
           )
         `;
       }
@@ -47,12 +49,13 @@ class MouseGlow {
       if (secondaryGlow) {
         const { x, y } = this.mousePosition;
         
-        // Secondary glow
+        // Secondary glow with cyan and magenta
         secondaryGlow.style.background = `
           radial-gradient(
             circle 400px at ${x}% ${y}%, 
-            hsla(193, 100%, 65%, 0.5) 0%, 
-            transparent 60%
+            hsla(180, 100%, 60%, 0.5) 0%,
+            hsla(300, 100%, 65%, 0.3) 40%,
+            transparent 70%
           )
         `;
       }
