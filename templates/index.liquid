@@ -54,38 +54,12 @@
       <div class="hero-media" data-parallax-media>
         <div class="hero-video-glow"></div>
         <div class="hero-video-wrapper">
-          {%- comment -%}
-          ============================================
-          TO ADD YOUR VIDEO:
-          1. Upload your MP4 video to Shopify:
-             - Go to: Content → Files
-             - Click "Upload files"
-             - Upload your video
-             - Copy the video URL
-          
-          2. Replace YOUR_VIDEO_URL_HERE below with the actual URL
-          
-          3. The video will autoplay, loop, and be muted
-          ============================================
-          {%- endcomment -%}
-          
-          {%- assign video_url = "https://cdn.shopify.com/videos/c/o/v/fc5b5cbebb6f47ea97d6c5fe24eccb0f.mp4" -%}
-          
-          {% if video_url != "YOUR_VIDEO_URL_HERE" %}
-            <video 
-              class="hero-video" 
-              autoplay 
-              loop 
-              muted 
-              playsinline
-            >
-              <source src="{{ video_url }}" type="video/mp4">
-            </video>
-          {% else %}
-            <div style="width: 100%; height: 100%; background: linear-gradient(135deg, rgba(0,229,255,0.2), rgba(191,0,255,0.2)); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.5); font-size: 1.5rem; border-radius: 1rem;">
-              Product Image/Video
-            </div>
-          {% endif %}
+          <img 
+            src="https://cdn.shopify.com/s/files/1/0784/8096/5890/files/Gold_Black_Classy_Personal_Business_Card.png?v=1762194398" 
+            alt="Glow Edge F1"
+            class="hero-image"
+            style="width: 100%; height: 100%; object-fit: contain;"
+          >
         </div>
       </div>
     </div>
