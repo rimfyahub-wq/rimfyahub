@@ -14,37 +14,39 @@
     </div>
 
     <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem;">
-      {% for address in customer.addresses %}
-        <div style="background: rgba(10,10,10,0.8); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 1.5rem;">
-          {% if address == customer.default_address %}
-            <span style="display: inline-block; padding: 0.25rem 0.75rem; background: rgba(0,229,255,0.2); border-radius: 20px; font-size: 0.75rem; color: hsl(193, 100%, 65%); margin-bottom: 1rem;">
-              Default
-            </span>
-          {% endif %}
-          
-          <div style="color: rgba(255,255,255,0.8); margin-bottom: 1.5rem;">
-            <p style="font-weight: 600; color: white; margin-bottom: 0.5rem;">{{ address.first_name }} {{ address.last_name }}</p>
-            <p>{{ address.address1 }}</p>
-            {% if address.address2 != blank %}
-              <p>{{ address.address2 }}</p>
+      {% paginate customer.addresses by 20 %}
+        {% for address in customer.addresses %}
+          <div style="background: rgba(10,10,10,0.8); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 1.5rem;">
+            {% if address == customer.default_address %}
+              <span style="display: inline-block; padding: 0.25rem 0.75rem; background: rgba(0,229,255,0.2); border-radius: 20px; font-size: 0.75rem; color: hsl(193, 100%, 65%); margin-bottom: 1rem;">
+                Default
+              </span>
             {% endif %}
-            <p>{{ address.city }}, {{ address.province_code }} {{ address.zip }}</p>
-            <p>{{ address.country }}</p>
-            {% if address.phone != blank %}
-              <p>{{ address.phone }}</p>
-            {% endif %}
-          </div>
+            
+            <div style="color: rgba(255,255,255,0.8); margin-bottom: 1.5rem;">
+              <p style="font-weight: 600; color: white; margin-bottom: 0.5rem;">{{ address.first_name }} {{ address.last_name }}</p>
+              <p>{{ address.address1 }}</p>
+              {% if address.address2 != blank %}
+                <p>{{ address.address2 }}</p>
+              {% endif %}
+              <p>{{ address.city }}, {{ address.province_code }} {{ address.zip }}</p>
+              <p>{{ address.country }}</p>
+              {% if address.phone != blank %}
+                <p>{{ address.phone }}</p>
+              {% endif %}
+            </div>
 
-          <div style="display: flex; gap: 0.5rem;">
-            <button onclick="openEditAddress({{ address.id }})" style="flex: 1; padding: 0.5rem; background: rgba(0,229,255,0.1); border: 1px solid rgba(0,229,255,0.3); border-radius: 6px; color: hsl(193, 100%, 65%); cursor: pointer; font-size: 0.875rem;">
-              Edit
-            </button>
-            <button onclick="deleteAddress('{{ routes.account_addresses_url }}/{{ address.id }}')" style="flex: 1; padding: 0.5rem; background: rgba(255,68,68,0.1); border: 1px solid rgba(255,68,68,0.3); border-radius: 6px; color: #ff4444; cursor: pointer; font-size: 0.875rem;">
-              Delete
-            </button>
+            <div style="display: flex; gap: 0.5rem;">
+              <button onclick="openEditAddress({{ address.id }})" style="flex: 1; padding: 0.5rem; background: rgba(0,229,255,0.1); border: 1px solid rgba(0,229,255,0.3); border-radius: 6px; color: hsl(193, 100%, 65%); cursor: pointer; font-size: 0.875rem;">
+                Edit
+              </button>
+              <button onclick="deleteAddress('{{ routes.account_addresses_url }}/{{ address.id }}')" style="flex: 1; padding: 0.5rem; background: rgba(255,68,68,0.1); border: 1px solid rgba(255,68,68,0.3); border-radius: 6px; color: #ff4444; cursor: pointer; font-size: 0.875rem;">
+                Delete
+              </button>
+            </div>
           </div>
-        </div>
-      {% endfor %}
+        {% endfor %}
+      {% endpaginate %}
 
       <!-- Add New Address Card -->
       <div onclick="openAddAddress()" style="background: rgba(10,10,10,0.5); border: 2px dashed rgba(255,255,255,0.2); border-radius: 12px; padding: 1.5rem; display: flex; align-items: center; justify-content: center; min-height: 250px; cursor: pointer; transition: all 0.2s;">
