@@ -1,0 +1,23 @@
+{
+  "name": "Bold",
+  "settings": {
+    "primary_color": "#ff0055",
+    "secondary_color": "#ff6b00",
+    "accent_color": "#ffea00",
+    "background_color": "#000000",
+    "card_background_color": "#1a1a1a",
+    "text_color": "#ffffff",
+    "text_muted_color": "#cccccc",
+    "border_color": "#333333",
+    "heading_font": "montserrat_n7",
+    "body_font": "open_sans_n4",
+    "heading_weight": "800",
+    "button_style": "pill",
+    "button_glow_effect": true,
+    "enable_mouse_glow": true,
+    "enable_gradient_animation": true,
+    "enable_parallax": true,
+    "glow_intensity": 80,
+    "animation_speed": 150
+  }
+}

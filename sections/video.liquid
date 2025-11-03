@@ -1,0 +1,209 @@
+<section class="video-section section-spacing" data-section-id="{{ section.id }}" {% if section.settings.enable_parallax %}data-scroll-parallax{% endif %}>
+  <div class="container">
+    {% if section.settings.heading != blank %}
+      <div class="section-header text-center" data-animate-on-scroll="fade-up">
+        {% if section.settings.eyebrow != blank %}
+          <p class="eyebrow-text">{{ section.settings.eyebrow }}</p>
+        {% endif %}
+        <h2 class="section-heading">{{ section.settings.heading }}</h2>
+        {% if section.settings.subheading != blank %}
+          <p class="section-subheading">{{ section.settings.subheading }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="video-container" data-animate-on-scroll="fade-up">
+      {% if section.settings.video_url contains 'youtube.com' or section.settings.video_url contains 'youtu.be' %}
+        {% assign video_id = section.settings.video_url | split: 'v=' | last | split: '/' | last | split: '&' | first %}
+        <div class="video-wrapper">
+          <iframe 
+            src="https://www.youtube.com/embed/{{ video_id }}?rel=0&modestbranding=1" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+      {% elsif section.settings.video_url contains 'vimeo.com' %}
+        {% assign video_id = section.settings.video_url | split: '/' | last %}
+        <div class="video-wrapper">
+          <iframe 
+            src="https://player.vimeo.com/video/{{ video_id }}" 
+            frameborder="0" 
+            allow="autoplay; fullscreen; picture-in-picture" 
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+      {% elsif section.settings.video_file != blank %}
+        <div class="video-wrapper">
+          <video 
+            controls 
+            {% if section.settings.autoplay %}autoplay{% endif %} 
+            {% if section.settings.loop %}loop{% endif %} 
+            {% if section.settings.muted %}muted{% endif %}
+            playsinline
+            class="custom-video"
+          >
+            <source src="{{ section.settings.video_file }}" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      {% else %}
+        <div class="video-placeholder">
+          <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+          <p>Add a video URL or upload a video file</p>
+        </div>
+      {% endif %}
+    </div>
+
+    {% if section.settings.caption != blank %}
+      <p class="video-caption">{{ section.settings.caption }}</p>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  .video-section {
+    padding: 4rem 0;
+  }
+
+  @media (min-width: 768px) {
+    .video-section {
+      padding: 6rem 0;
+    }
+  }
+
+  .section-header {
+    margin-bottom: 3rem;
+  }
+
+  .video-container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: 1rem;
+    background: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  }
+
+  .video-wrapper iframe,
+  .video-wrapper video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+  }
+
+  .custom-video {
+    object-fit: cover;
+  }
+
+  .video-placeholder {
+    aspect-ratio: 16 / 9;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: rgba(255, 255, 255, 0.3);
+    padding: 2rem;
+  }
+
+  .video-caption {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.875rem;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Video",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Header"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "header",
+      "content": "Video Settings"
+    },
+    {
+      "type": "text",
+      "id": "video_url",
+      "label": "YouTube or Vimeo URL",
+      "info": "Paste the full URL from YouTube or Vimeo"
+    },
+    {
+      "type": "url",
+      "id": "video_file",
+      "label": "OR Upload Video File",
+      "info": "Upload an MP4 file (recommended: under 50MB)"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay (Uploaded Videos Only)",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "loop",
+      "label": "Loop (Uploaded Videos Only)",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "muted",
+      "label": "Muted (Uploaded Videos Only)",
+      "default": false,
+      "info": "Videos must be muted for autoplay to work"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_parallax",
+      "label": "Enable Parallax Effect",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "caption",
+      "label": "Video Caption"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video"
+    }
+  ]
+}
+{% endschema %}

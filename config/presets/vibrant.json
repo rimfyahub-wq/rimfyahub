@@ -1,0 +1,26 @@
+{
+  "name": "Vibrant",
+  "settings": {
+    "primary_color": "#00e5ff",
+    "secondary_color": "#bf00ff",
+    "accent_color": "#ff00bf",
+    "background_color": "#000000",
+    "card_background_color": "#0a0a0a",
+    "text_color": "#ffffff",
+    "text_muted_color": "#b3b3b3",
+    "border_color": "#1a1a1a",
+    "heading_font": "assistant_n4",
+    "body_font": "assistant_n4",
+    "heading_weight": "700",
+    "button_style": "rounded",
+    "button_border_radius": 8,
+    "button_glow_effect": true,
+    "enable_mouse_glow": true,
+    "enable_gradient_animation": true,
+    "enable_parallax": true,
+    "enable_scroll_animations": true,
+    "glow_intensity": 60,
+    "glow_size": 800,
+    "animation_speed": 100
+  }
+}
