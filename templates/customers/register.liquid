@@ -1,0 +1,14 @@
+<script>
+  // Auto-open auth modal on register page
+  if (typeof openAuthModal === 'function') {
+    openAuthModal('signup');
+  }
+  // Redirect to homepage after modal opens
+  setTimeout(function() {
+    window.location.href = '/';
+  }, 100);
+</script>
+
+<div style="min-height: 50vh; display: flex; align-items: center; justify-content: center;">
+  <p style="color: rgba(255,255,255,0.6);">Redirecting to signup...</p>
+</div>
