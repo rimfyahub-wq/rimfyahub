@@ -9,6 +9,15 @@
  */
 {
   "current": {
+    "enable_mouse_glow": true,
+    "enable_animations": true,
+    "enable_parallax": true,
+    "enable_hover_effects": true,
+    "enable_gradient_animations": true,
+    "glow_intensity": 60,
+    "glow_size": 800,
+    "animation_speed": 100,
+    "parallax_intensity": 50,
     "sections": {
       "header": {
         "type": "header",

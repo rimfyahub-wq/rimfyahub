@@ -196,16 +196,16 @@
     pointer-events: none;
     transition: opacity 3s ease-in-out;
     z-index: 0;
-    opacity: 0;
-    display: none;
   }
 
   .product-bg-current {
     background: linear-gradient(135deg, hsl(193, 100%, 65%), hsl(280, 100%, 70%), hsl(330, 100%, 70%));
+    opacity: 0.6;
   }
 
   .product-bg-next {
     background: linear-gradient(135deg, hsl(30, 100%, 65%), hsl(330, 100%, 70%), hsl(280, 100%, 70%));
+    opacity: 0;
   }
 
   @keyframes productGradientMove {
