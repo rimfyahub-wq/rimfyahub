@@ -1,0 +1,350 @@
+<section id="features" class="features-section" data-mouse-glow>
+  <!-- Mouse Follow Glow -->
+  <div class="mouse-glow-overlay"></div>
+  
+  <div class="container">
+    <div class="features-header">
+      <h2 class="section-title">{{ 'sections.features.title' | t }}</h2>
+      <p class="section-description">
+        {{ 'sections.features.subtitle' | t }}
+      </p>
+    </div>
+
+    <div class="features-grid" data-animate-on-scroll>
+      <!-- Default Features -->
+      <div class="feature-card" data-animate-card style="--card-delay: 0s; --glow-color: rgba(0, 229, 255, 0.9);">
+        <div class="feature-icon" style="color: #00E5FF;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+        </div>
+        <h3 class="feature-title">{{ 'sections.features.easy_setup' | t }}</h3>
+        <p class="feature-description">{{ 'sections.features.easy_setup_desc' | t }}</p>
+      </div>
+
+      <div class="feature-card" data-animate-card style="--card-delay: 0.1s; --glow-color: rgba(191, 0, 255, 0.9);">
+        <div class="feature-icon" style="color: #BF00FF;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+        </div>
+        <h3 class="feature-title">{{ 'sections.features.rgbic' | t }}</h3>
+        <p class="feature-description">{{ 'sections.features.rgbic_desc' | t }}</p>
+      </div>
+
+      <div class="feature-card" data-animate-card style="--card-delay: 0.2s; --glow-color: rgba(255, 0, 191, 0.9);">
+        <div class="feature-icon" style="color: #FF00BF;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+        </div>
+        <h3 class="feature-title">{{ 'sections.features.smart_home' | t }}</h3>
+        <p class="feature-description">{{ 'sections.features.smart_home_desc' | t }}</p>
+      </div>
+
+      <div class="feature-card" data-animate-card style="--card-delay: 0.3s; --glow-color: rgba(0, 255, 128, 0.9);">
+        <div class="feature-icon" style="color: #00FF80;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+        </div>
+        <h3 class="feature-title">{{ 'sections.features.universal' | t }}</h3>
+        <p class="feature-description">{{ 'sections.features.universal_desc' | t }}</p>
+      </div>
+
+      <div class="feature-card" data-animate-card style="--card-delay: 0.4s; --glow-color: rgba(255, 200, 0, 0.9);">
+        <div class="feature-icon" style="color: #FFC800;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+        </div>
+        <h3 class="feature-title">{{ 'sections.features.dual_control' | t }}</h3>
+        <p class="feature-description">{{ 'sections.features.dual_control_desc' | t }}</p>
+      </div>
+
+      <div class="feature-card" data-animate-card style="--card-delay: 0.5s; --glow-color: rgba(255, 100, 100, 0.9);">
+        <div class="feature-icon" style="color: #FF6464;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        </div>
+        <h3 class="feature-title">{{ 'sections.features.premium_quality' | t }}</h3>
+        <p class="feature-description">{{ 'sections.features.premium_quality_desc' | t }}</p>
+      </div>
+    </div>
+
+    <!-- Lifestyle Images -->
+    {% if section.settings.show_lifestyle_images %}
+    <div class="lifestyle-grid" data-animate-on-scroll>
+      {% if section.settings.lifestyle_image_1 %}
+      <div class="lifestyle-item" data-animate-slide="left">
+        <div class="lifestyle-glow"></div>
+        <img 
+          src="{{ section.settings.lifestyle_image_1 | img_url: '800x' }}" 
+          alt="Glow Edge in living room"
+          class="lifestyle-image"
+        >
+      </div>
+      {% endif %}
+      
+      {% if section.settings.lifestyle_image_2 %}
+      <div class="lifestyle-item" data-animate-slide="right">
+        <div class="lifestyle-glow"></div>
+        <img 
+          src="{{ section.settings.lifestyle_image_2 | img_url: '800x' }}" 
+          alt="Glow Edge gaming setup"
+          class="lifestyle-image"
+        >
+      </div>
+      {% endif %}
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  .features-section {
+    position: relative;
+    padding: 5rem 0;
+    background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.03));
+    overflow: hidden;
+  }
+
+  @media (min-width: 640px) {
+    .features-section {
+      padding: 8rem 0;
+    }
+  }
+
+  .mouse-glow-overlay {
+    position: absolute;
+    inset: 0;
+    opacity: 0.8;
+    pointer-events: none;
+    transition: opacity 300ms;
+    filter: blur(50px);
+  }
+
+  .features-header {
+    text-align: center;
+    max-width: 48rem;
+    margin: 0 auto 4rem;
+  }
+
+  .section-title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .section-title {
+      font-size: 2.25rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .section-title {
+      font-size: 3rem;
+    }
+  }
+
+  .section-description {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 5rem;
+    position: relative;
+    z-index: 10;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+  }
+
+  @media (min-width: 768px) {
+    .features-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .features-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .feature-card {
+    padding: 1.5rem;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    animation-delay: var(--card-delay);
+    position: relative;
+    box-shadow: 
+      0 0 30px var(--glow-color, rgba(0, 229, 255, 0.4)),
+      0 0 60px var(--glow-color, rgba(0, 229, 255, 0.2)),
+      0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  .feature-card::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 1rem;
+    background: linear-gradient(135deg, var(--glow-color, rgba(0, 229, 255, 0.9)), transparent);
+    opacity: 0.7;
+    transition: opacity 0.2s ease-in-out;
+    z-index: -1;
+    filter: blur(20px);
+  }
+
+  .feature-card.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    animation: fadeInUp 0.5s forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .feature-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    border-color: var(--glow-color, rgba(0, 229, 255, 0.8));
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 
+      0 0 50px var(--glow-color, rgba(0, 229, 255, 0.7)),
+      0 0 100px var(--glow-color, rgba(0, 229, 255, 0.5)),
+      0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .feature-card:hover::before {
+    opacity: 1;
+  }
+
+  .feature-icon {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.75rem;
+    background: linear-gradient(135deg, currentColor, currentColor);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .feature-icon svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: black;
+  }
+
+  .feature-card:hover .feature-icon {
+    transform: scale(1.15) rotate(5deg);
+    filter: drop-shadow(0 0 15px currentColor);
+  }
+
+  .feature-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .feature-description {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .lifestyle-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .lifestyle-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .lifestyle-item {
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    opacity: 0;
+    transition: transform 0.5s;
+  }
+
+  .lifestyle-item[data-animate-slide="left"] {
+    transform: translateX(-100px) rotateY(-15deg);
+  }
+
+  .lifestyle-item[data-animate-slide="right"] {
+    transform: translateX(100px) rotateY(15deg);
+  }
+
+  .lifestyle-item.is-visible {
+    opacity: 1;
+    transform: translateX(0) rotateY(0);
+    animation: slideIn 0.8s forwards;
+  }
+
+  @keyframes slideIn {
+    to {
+      opacity: 1;
+      transform: translateX(0) rotateY(0);
+    }
+  }
+
+  .lifestyle-item:hover {
+    transform: scale(1.05);
+  }
+
+  .lifestyle-glow {
+    position: absolute;
+    inset: -0.5rem;
+    background: linear-gradient(135deg, hsl(193, 100%, 65%), hsl(280, 100%, 70%));
+    opacity: 0;
+    filter: blur(2rem);
+    transition: opacity 0.5s;
+  }
+
+  .lifestyle-item:hover .lifestyle-glow {
+    opacity: 0.4;
+  }
+
+  .lifestyle-image {
+    width: 100%;
+    height: auto;
+    border-radius: 1rem;
+    box-shadow: 0 0 40px rgba(147, 51, 234, 0.5);
+    transition: all 0.5s;
+  }
+
+  .lifestyle-item:hover .lifestyle-image {
+    transform: scale(1.05);
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Features",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_lifestyle_images",
+      "label": "Show Lifestyle Images",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "lifestyle_image_1",
+      "label": "Lifestyle Image 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "lifestyle_image_2",
+      "label": "Lifestyle Image 2"
+    }
+  ]
+}
+{% endschema %}

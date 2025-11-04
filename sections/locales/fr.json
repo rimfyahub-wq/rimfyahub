@@ -1,0 +1,145 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "general": {
+    "shop_name": "Glow Edge",
+    "continue_shopping": "Continuer mes achats",
+    "search": "Rechercher",
+    "menu": "Produits",
+    "close_menu": "Fermer le menu",
+    "close": "Fermer",
+    "404": {
+      "title": "Page non trouvée",
+      "subtext": "La page que vous recherchez n'existe pas.",
+      "link": "Continuer mes achats"
+    },
+    "skip_to_content": "Passer au contenu",
+    "loading": "Chargement...",
+    "error": "Une erreur s'est produite. Veuillez réessayer."
+  },
+  "customer": {
+    "account": {
+      "title": "Mon compte"
+    },
+    "login_page": {
+      "title": "Connexion"
+    },
+    "register": {
+      "title": "S'inscrire"
+    },
+    "orders": {
+      "title": "Commandes"
+    },
+    "addresses": {
+      "title": "Adresses"
+    },
+    "log_out": "Déconnexion"
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Ajouter au panier",
+      "sold_out": "Épuisé",
+      "unavailable": "Indisponible",
+      "on_sale": "En promotion",
+      "price": "Prix",
+      "quantity": "Quantité",
+      "in_stock": "En stock",
+      "out_of_stock": "Rupture de stock",
+      "sku": "SKU",
+      "description": "Description",
+      "specifications": "Spécifications",
+      "reviews": "Avis",
+      "share": "Partager",
+      "similar_products": "Vous aimerez aussi"
+    },
+    "general": {
+      "no_products": "Aucun produit trouvé",
+      "view_all": "Voir tous les produits"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Panier",
+      "empty": "Votre panier est vide",
+      "continue_shopping": "Continuer mes achats",
+      "subtotal": "Sous-total",
+      "total": "Total",
+      "tax": "Taxes",
+      "shipping": "Livraison",
+      "taxes_and_shipping": "Les frais de livraison et les taxes sont calculés au moment du paiement",
+      "checkout": "Procéder au paiement",
+      "update": "Mettre à jour le panier",
+      "remove": "Supprimer"
+    }
+  },
+  "sections": {
+    "hero": {
+      "subtitle": "Transformez votre expérience visuelle",
+      "title": "Glow Edge",
+      "model": "F1",
+      "description": "Le premier cadre d'éclairage LED ambiant conçu exclusivement pour les téléviseurs 40-50\". Découvrez des millions de couleurs qui transforment votre espace en moins de 2 minutes.",
+      "shop_now": "Acheter maintenant",
+      "learn_more": "En savoir plus",
+      "stat_setup_value": "<2 min",
+      "stat_setup_label": "Installation",
+      "stat_colors_value": "16M+",
+      "stat_colors_label": "Couleurs",
+      "stat_voice_value": "Voix",
+      "stat_voice_label": "Contrôle",
+      "stat_install_value": "Sans outils",
+      "stat_install_label": "Montage"
+    },
+    "features": {
+      "title": "Fonctionnalités révolutionnaires",
+      "subtitle": "Découvrez le mélange parfait d'innovation et de simplicité avec Glow Edge F1",
+      "easy_setup": "Installation facile",
+      "easy_setup_desc": "Pas d'outils, pas d'adhésifs. Installation en moins de 2 minutes grâce à notre conception innovante à encliquetage.",
+      "rgbic": "Technologie LED RGBIC",
+      "rgbic_desc": "Accédez à plus de 16 millions de couleurs avec un contrôle indépendant pour des effets d'ambiance époustouflants.",
+      "smart_home": "Intégration domotique",
+      "smart_home_desc": "Contrôle via l'application Tuya, compatible avec Alexa et Google Home pour un contrôle vocal fluide.",
+      "universal": "Compatibilité VESA universelle",
+      "universal_desc": "S'adapte à toutes les tailles de montage VESA standard (75x75, 100x100, 200x100, 200x200, 400x400mm).",
+      "dual_control": "Options de contrôle double",
+      "dual_control_desc": "Comprend une télécommande sans fil et une unité de contrôle attachée pour un confort maximal.",
+      "premium_quality": "Qualité premium",
+      "premium_quality_desc": "Construction durable conçue pour les téléviseurs 40-50\" avec des performances LED durables."
+    },
+    "products": {
+      "title": "Boutique Glow Edge",
+      "description": "Transformez votre espace de divertissement avec notre éclairage d'ambiance LED révolutionnaire"
+    }
+  },
+  "footer": {
+    "description": "Transformez votre expérience visuelle avec des solutions d'éclairage LED ambiantes innovantes.",
+    "quick_links": "Liens rapides",
+    "legal": "Mentions légales",
+    "contact": "Contact",
+    "social": "Suivez-nous",
+    "about": "À propos",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions d'utilisation",
+    "shipping_policy": "Politique d'expédition",
+    "refund_policy": "Politique de remboursement",
+    "cookie_policy": "Politique de cookies",
+    "accessibility": "Accessibilité",
+    "sitemap": "Plan du site",
+    "copyright": "© {{ year }} {{ shop_name }}. Tous droits réservés."
+  },
+  "accessibility": {
+    "previous": "Précédent",
+    "next": "Suivant",
+    "open_menu": "Ouvrir le menu de navigation",
+    "close_menu": "Fermer le menu de navigation",
+    "open_search": "Ouvrir la recherche",
+    "added_to_cart": "{{ product_title }} ajouté au panier",
+    "error_adding": "Erreur lors de l'ajout de {{ product_title }} au panier"
+  }
+}

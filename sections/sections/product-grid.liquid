@@ -1,0 +1,274 @@
+<section class="product-grid-section py-16 md:py-24" data-section-id="{{ section.id }}" data-mouse-glow>
+  <div class="mouse-glow-overlay"></div>
+  
+  <div class="container">
+    {% if section.settings.title != blank %}
+      <h2 class="section-title text-center mb-4">
+        {{ section.settings.title }}
+      </h2>
+    {% else %}
+      <h2 class="section-title text-center mb-4">
+        {{ 'sections.products.title' | t }}
+      </h2>
+    {% endif %}
+    
+    {% if section.settings.subtitle != blank %}
+      <p class="section-description text-center mb-12">
+        {{ section.settings.subtitle }}
+      </p>
+    {% else %}
+      <p class="section-description text-center mb-12">
+        {{ 'sections.products.description' | t }}
+      </p>
+    {% endif %}
+
+    <div class="products-grid" style="--products-per-row: {{ section.settings.products_per_row }};">
+      {% if section.settings.collection != blank %}
+        {% assign collection = collections[section.settings.collection] %}
+        {% assign products_to_display = collection.products %}
+      {% else %}
+        {% assign products_to_display = collections.all.products %}
+      {% endif %}
+      
+      {% if products_to_display.size > 0 %}
+        {% for product in products_to_display limit: section.settings.products_to_show %}
+          <div class="product-card feature-card" data-animate-card style="--card-delay: {{ forloop.index0 | times: 0.1 }}s;">
+            <a href="{{ product.url }}" class="product-link">
+              {% if product.featured_image %}
+                <div class="product-image-wrapper">
+                  <img 
+                    src="{{ product.featured_image | img_url: '500x500' }}" 
+                    srcset="{{ product.featured_image | img_url: '300x300' }} 300w,
+                            {{ product.featured_image | img_url: '500x500' }} 500w,
+                            {{ product.featured_image | img_url: '800x800' }} 800w"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    alt="{{ product.title | escape }}"
+                    loading="lazy"
+                    class="product-image"
+                    decoding="async"
+                    width="500"
+                    height="500"
+                  >
+                  {% if product.compare_at_price > product.price %}
+                    <span class="product-badge">{{ 'products.product.on_sale' | t }}</span>
+                  {% endif %}
+                </div>
+              {% endif %}
+              
+              <div class="product-info">
+                <h3 class="product-title">{{ product.title }}</h3>
+                {% if section.settings.show_description %}
+                  <p class="product-description">{{ product.description | strip_html | truncate: 100 }}</p>
+                {% endif %}
+                <div class="product-price">
+                  <span class="price-current">{{ product.price | money }}</span>
+                  {% if product.compare_at_price > product.price %}
+                    <span class="price-compare">{{ product.compare_at_price | money }}</span>
+                  {% endif %}
+                </div>
+              </div>
+            </a>
+          </div>
+        {% endfor %}
+      {% else %}
+        <div style="grid-column: 1/-1; text-align: center; padding: 3rem;">
+          <p style="color: rgba(255,255,255,0.7); font-size: 1.125rem;">
+            {{ 'products.general.no_products' | t }}
+          </p>
+        </div>
+      {% endif %}
+    </div>
+
+    {% if section.settings.show_view_all and section.settings.collection != blank %}
+      <div class="text-center mt-12">
+        <a href="{{ collections[section.settings.collection].url }}" class="btn btn-primary">
+          {% if section.settings.button_text != blank %}
+            {{ section.settings.button_text }}
+          {% else %}
+            {{ 'products.general.view_all' | t }}
+          {% endif %}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  .products-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .products-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .products-grid {
+      grid-template-columns: repeat(var(--products-per-row, 3), 1fr);
+    }
+  }
+
+  .product-card {
+    transition: all 0.3s;
+  }
+
+  .product-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .product-image-wrapper {
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    aspect-ratio: 1;
+  }
+
+  .product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+  }
+
+  .product-card:hover .product-image {
+    transform: scale(1.05);
+  }
+
+  .product-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: hsl(193, 100%, 65%);
+    color: black;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .product-info {
+    padding: 0 0.5rem;
+  }
+
+  .product-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .product-description {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+  }
+
+  .product-price {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .price-current {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: hsl(193, 100%, 65%);
+  }
+
+  .price-compare {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: line-through;
+    font-size: 1.125rem;
+  }
+
+  .product-placeholder {
+    text-align: center;
+  }
+
+  .placeholder-image {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 1rem;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Product Grid",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Shop Glow Edge"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Section Subtitle",
+      "default": "Transform your entertainment space with our revolutionary LED ambient lighting"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection",
+      "info": "Select which products to display"
+    },
+    {
+      "type": "range",
+      "id": "products_per_row",
+      "label": "Products Per Row (Desktop)",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "label": "Number of Products",
+      "min": 3,
+      "max": 12,
+      "step": 1,
+      "default": 6
+    },
+    {
+      "type": "checkbox",
+      "id": "show_description",
+      "label": "Show Product Description",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "label": "Show 'View All' Button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "View All Products"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Grid"
+    }
+  ]
+}
+{% endschema %}

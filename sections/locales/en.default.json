@@ -1,0 +1,145 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "general": {
+    "shop_name": "Glow Edge",
+    "continue_shopping": "Continue Shopping",
+    "search": "Search",
+    "menu": "Products",
+    "close_menu": "Close Menu",
+    "close": "Close",
+    "404": {
+      "title": "Page Not Found",
+      "subtext": "The page you requested does not exist.",
+      "link": "Continue Shopping"
+    },
+    "skip_to_content": "Skip to content",
+    "loading": "Loading...",
+    "error": "An error occurred. Please try again."
+  },
+  "customer": {
+    "account": {
+      "title": "My Account"
+    },
+    "login_page": {
+      "title": "Login"
+    },
+    "register": {
+      "title": "Sign Up"
+    },
+    "orders": {
+      "title": "Orders"
+    },
+    "addresses": {
+      "title": "Addresses"
+    },
+    "log_out": "Logout"
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to Cart",
+      "sold_out": "Sold Out",
+      "unavailable": "Unavailable",
+      "on_sale": "Sale",
+      "price": "Price",
+      "quantity": "Quantity",
+      "in_stock": "In Stock",
+      "out_of_stock": "Out of Stock",
+      "sku": "SKU",
+      "description": "Description",
+      "specifications": "Specifications",
+      "reviews": "Reviews",
+      "share": "Share",
+      "similar_products": "You may also like"
+    },
+    "general": {
+      "no_products": "No products found",
+      "view_all": "View All Products"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Shopping Cart",
+      "empty": "Your cart is empty",
+      "continue_shopping": "Continue Shopping",
+      "subtotal": "Subtotal",
+      "total": "Total",
+      "tax": "Tax",
+      "shipping": "Shipping",
+      "taxes_and_shipping": "Shipping and taxes calculated at checkout",
+      "checkout": "Proceed to Checkout",
+      "update": "Update Cart",
+      "remove": "Remove"
+    }
+  },
+  "sections": {
+    "hero": {
+      "subtitle": "Transform Your Viewing Experience",
+      "title": "Glow Edge",
+      "model": "F1",
+      "description": "The first-ever LED ambient lighting frame designed exclusively for 40-50\" TVs. Experience millions of colors that transform your space in less than 2 minutes.",
+      "shop_now": "Shop Now",
+      "learn_more": "Learn More",
+      "stat_setup_value": "<2 min",
+      "stat_setup_label": "Setup",
+      "stat_colors_value": "16M+",
+      "stat_colors_label": "Colors",
+      "stat_voice_value": "Voice",
+      "stat_voice_label": "Control",
+      "stat_install_value": "Tool-Free",
+      "stat_install_label": "Install"
+    },
+    "features": {
+      "title": "Revolutionary Features",
+      "subtitle": "Experience the perfect blend of innovation and simplicity with Glow Edge F1",
+      "easy_setup": "Easy Setup",
+      "easy_setup_desc": "No tools, no adhesives. Install in under 2 minutes with our innovative snap-on design.",
+      "rgbic": "RGBIC LED Technology",
+      "rgbic_desc": "Access over 16 million colors with independent color control for stunning ambient effects.",
+      "smart_home": "Smart Home Integration",
+      "smart_home_desc": "Control via Tuya App, compatible with Alexa and Google Home for seamless voice control.",
+      "universal": "Universal VESA Compatibility",
+      "universal_desc": "Fits all standard VESA mount sizes (75x75, 100x100, 200x100, 200x200, 400x400mm).",
+      "dual_control": "Dual Control Options",
+      "dual_control_desc": "Includes wireless remote control and attached control unit for maximum convenience.",
+      "premium_quality": "Premium Quality",
+      "premium_quality_desc": "Durable construction designed for 40-50\" TVs with long-lasting LED performance."
+    },
+    "products": {
+      "title": "Shop Glow Edge",
+      "description": "Transform your entertainment space with our revolutionary LED ambient lighting"
+    }
+  },
+  "footer": {
+    "description": "Transform your viewing experience with innovative LED ambient lighting solutions.",
+    "quick_links": "Quick Links",
+    "legal": "Legal",
+    "contact": "Contact",
+    "social": "Follow Us",
+    "about": "About Us",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "shipping_policy": "Shipping Policy",
+    "refund_policy": "Refund Policy",
+    "cookie_policy": "Cookie Policy",
+    "accessibility": "Accessibility",
+    "sitemap": "Sitemap",
+    "copyright": "© {{ year }} {{ shop_name }}. All rights reserved."
+  },
+  "accessibility": {
+    "previous": "Previous",
+    "next": "Next",
+    "open_menu": "Open navigation menu",
+    "close_menu": "Close navigation menu",
+    "open_search": "Open search",
+    "added_to_cart": "{{ product_title }} added to cart",
+    "error_adding": "Error adding {{ product_title }} to cart"
+  }
+}

@@ -1,0 +1,145 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "general": {
+    "shop_name": "Glow Edge",
+    "continue_shopping": "Kontynuuj zakupy",
+    "search": "Szukaj",
+    "menu": "Produkty",
+    "close_menu": "Zamknij menu",
+    "close": "Zamknij",
+    "404": {
+      "title": "Strona nie znaleziona",
+      "subtext": "Strona, której szukasz, nie istnieje.",
+      "link": "Kontynuuj zakupy"
+    },
+    "skip_to_content": "Przejdź do treści",
+    "loading": "Ładowanie...",
+    "error": "Wystąpił błąd. Spróbuj ponownie."
+  },
+  "customer": {
+    "account": {
+      "title": "Moje konto"
+    },
+    "login_page": {
+      "title": "Zaloguj się"
+    },
+    "register": {
+      "title": "Zarejestruj się"
+    },
+    "orders": {
+      "title": "Zamówienia"
+    },
+    "addresses": {
+      "title": "Adresy"
+    },
+    "log_out": "Wyloguj"
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Dodaj do koszyka",
+      "sold_out": "Wyprzedane",
+      "unavailable": "Niedostępne",
+      "on_sale": "Wyprzedaż",
+      "price": "Cena",
+      "quantity": "Ilość",
+      "in_stock": "Dostępne",
+      "out_of_stock": "Brak w magazynie",
+      "sku": "SKU",
+      "description": "Opis",
+      "specifications": "Specyfikacja",
+      "reviews": "Recenzje",
+      "share": "Udostępnij",
+      "similar_products": "Może Cię również zainteresować"
+    },
+    "general": {
+      "no_products": "Nie znaleziono produktów",
+      "view_all": "Zobacz wszystkie produkty"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Koszyk",
+      "empty": "Twój koszyk jest pusty",
+      "continue_shopping": "Kontynuuj zakupy",
+      "subtotal": "Suma częściowa",
+      "total": "Suma",
+      "tax": "Podatek",
+      "shipping": "Wysyłka",
+      "taxes_and_shipping": "Wysyłka i podatki obliczane przy kasie",
+      "checkout": "Przejdź do kasy",
+      "update": "Aktualizuj koszyk",
+      "remove": "Usuń"
+    }
+  },
+  "sections": {
+    "hero": {
+      "subtitle": "Zmień swoje doświadczenie oglądania",
+      "title": "Glow Edge",
+      "model": "F1",
+      "description": "Pierwsza na świecie ramka z oświetleniem LED zaprojektowana wyłącznie dla telewizorów 40-50\". Doświadcz milionów kolorów, które przekształcą Twoją przestrzeń w mniej niż 2 minuty.",
+      "shop_now": "Kup teraz",
+      "learn_more": "Dowiedz się więcej",
+      "stat_setup_value": "<2 min",
+      "stat_setup_label": "Instalacja",
+      "stat_colors_value": "16M+",
+      "stat_colors_label": "Kolorów",
+      "stat_voice_value": "Głos",
+      "stat_voice_label": "Sterowanie",
+      "stat_install_value": "Bez narzędzi",
+      "stat_install_label": "Montaż"
+    },
+    "features": {
+      "title": "Rewolucyjne funkcje",
+      "subtitle": "Doświadcz idealnego połączenia innowacji i prostoty z Glow Edge F1",
+      "easy_setup": "Łatwa instalacja",
+      "easy_setup_desc": "Bez narzędzi, bez klejów. Zainstaluj w mniej niż 2 minuty dzięki naszemu innowacyjnemu systemowi zatrzaskowemu.",
+      "rgbic": "Technologia LED RGBIC",
+      "rgbic_desc": "Dostęp do ponad 16 milionów kolorów z niezależną kontrolą koloru dla oszałamiających efektów ambientowych.",
+      "smart_home": "Integracja z inteligentnym domem",
+      "smart_home_desc": "Sterowanie przez aplikację Tuya, kompatybilne z Alexa i Google Home dla płynnej kontroli głosowej.",
+      "universal": "Uniwersalna kompatybilność VESA",
+      "universal_desc": "Pasuje do wszystkich standardowych rozmiarów montażu VESA (75x75, 100x100, 200x100, 200x200, 400x400mm).",
+      "dual_control": "Podwójne opcje sterowania",
+      "dual_control_desc": "Zawiera bezprzewodowy pilot i dołączoną jednostkę sterującą dla maksymalnej wygody.",
+      "premium_quality": "Najwyższa jakość",
+      "premium_quality_desc": "Trwała konstrukcja zaprojektowana dla telewizorów 40-50\" z długotrwałą wydajnością LED."
+    },
+    "products": {
+      "title": "Sklep Glow Edge",
+      "description": "Przekształć swoją przestrzeń rozrywkową dzięki naszemu rewolucyjnemu oświetleniu LED"
+    }
+  },
+  "footer": {
+    "description": "Przekształć swoje doświadczenie oglądania dzięki innowacyjnym rozwiązaniom oświetlenia LED.",
+    "quick_links": "Szybkie linki",
+    "legal": "Informacje prawne",
+    "contact": "Kontakt",
+    "social": "Śledź nas",
+    "about": "O nas",
+    "privacy": "Polityka prywatności",
+    "terms": "Warunki świadczenia usług",
+    "shipping_policy": "Polityka wysyłki",
+    "refund_policy": "Polityka zwrotów",
+    "cookie_policy": "Polityka cookies",
+    "accessibility": "Dostępność",
+    "sitemap": "Mapa strony",
+    "copyright": "© {{ year }} {{ shop_name }}. Wszelkie prawa zastrzeżone."
+  },
+  "accessibility": {
+    "previous": "Poprzedni",
+    "next": "Następny",
+    "open_menu": "Otwórz menu nawigacji",
+    "close_menu": "Zamknij menu nawigacji",
+    "open_search": "Otwórz wyszukiwanie",
+    "added_to_cart": "{{ product_title }} dodano do koszyka",
+    "error_adding": "Błąd podczas dodawania {{ product_title }} do koszyka"
+  }
+}

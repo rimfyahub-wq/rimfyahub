@@ -1,0 +1,35 @@
+{% comment %}
+  Organization Schema - JSON-LD for SEO
+  Usage: {% render 'schema-organization' %}
+{% endcomment %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "{{ shop.name }}",
+  "description": "{{ shop.description | strip_html | truncate: 200 }}",
+  "url": "{{ request.origin }}",
+  "logo": "https:{{ 'logo.png' | asset_url }}",
+  "sameAs": [
+    {% if settings.social_facebook_link %}
+      "{{ settings.social_facebook_link }}"{{ settings.social_instagram_link | default: '' | unless: settings.social_instagram_link | append: ',' }}
+    {% endif %}
+    {% if settings.social_instagram_link %}
+      "{{ settings.social_instagram_link }}"{{ settings.social_twitter_link | default: '' | unless: settings.social_twitter_link | append: ',' }}
+    {% endif %}
+    {% if settings.social_twitter_link %}
+      "{{ settings.social_twitter_link }}"{{ settings.social_youtube_link | default: '' | unless: settings.social_youtube_link | append: ',' }}
+    {% endif %}
+    {% if settings.social_youtube_link %}
+      "{{ settings.social_youtube_link }}"
+    {% endif %}
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "Customer Service",
+    "telephone": "{{ shop.phone | default: '' }}",
+    "email": "{{ shop.email | default: '' }}"
+  }
+}
+</script>

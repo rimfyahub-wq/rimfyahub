@@ -1,0 +1,423 @@
+<section class="hero-section" data-mouse-glow data-scroll-parallax>
+  <!-- Animated Background Gradients -->
+  <div class="hero-bg-gradient hero-bg-current" data-gradient-layer="current"></div>
+  <div class="hero-bg-gradient hero-bg-next" data-gradient-layer="next"></div>
+  
+  <!-- Mouse Follow Glow -->
+  <div class="mouse-glow-overlay"></div>
+  
+  <!-- Secondary Glow Layer -->
+  <div class="secondary-glow"></div>
+
+  <div class="container hero-container">
+    <div class="hero-grid">
+      <!-- Content -->
+      <div class="hero-content" data-parallax-content>
+        <div class="hero-text">
+          <p class="hero-subtitle">{{ 'sections.hero.subtitle' | t }}</p>
+          <h1 class="hero-title">
+            <span class="hero-title-main">{{ 'sections.hero.title' | t }}</span>
+            <span class="hero-title-sub">Model <span class="hero-model">{{ 'sections.hero.model' | t }}</span></span>
+          </h1>
+          <p class="hero-description">{{ 'sections.hero.description' | t }}</p>
+        </div>
+
+        <div class="hero-cta">
+          <a href="/collections/all" class="btn btn-primary glow-pulse">{{ 'sections.hero.shop_now' | t }}</a>
+          <a href="#features" class="btn btn-outline">{{ 'sections.hero.learn_more' | t }}</a>
+        </div>
+
+        <!-- Key Features -->
+        <div class="hero-stats">
+          <div class="stat-item">
+            <p class="stat-value">{{ 'sections.hero.stat_setup_value' | t }}</p>
+            <p class="stat-label">{{ 'sections.hero.stat_setup_label' | t }}</p>
+          </div>
+          <div class="stat-item">
+            <p class="stat-value">{{ 'sections.hero.stat_colors_value' | t }}</p>
+            <p class="stat-label">{{ 'sections.hero.stat_colors_label' | t }}</p>
+          </div>
+          <div class="stat-item">
+            <p class="stat-value">{{ 'sections.hero.stat_voice_value' | t }}</p>
+            <p class="stat-label">{{ 'sections.hero.stat_voice_label' | t }}</p>
+          </div>
+          <div class="stat-item">
+            <p class="stat-value">{{ 'sections.hero.stat_install_value' | t }}</p>
+            <p class="stat-label">{{ 'sections.hero.stat_install_label' | t }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Video -->
+      <div class="hero-media" data-parallax-media>
+        <div class="hero-video-glow"></div>
+        <div class="hero-video-wrapper">
+          {% if section.settings.hero_video != blank %}
+            <video 
+              class="hero-video" 
+              autoplay 
+              loop 
+              muted 
+              playsinline
+              data-video-fade
+            >
+              <source src="{{ section.settings.hero_video }}" type="video/mp4">
+            </video>
+          {% elsif section.settings.hero_image != blank %}
+            <img 
+              src="{{ section.settings.hero_image | img_url: '1200x' }}" 
+              alt="{{ section.settings.title }}"
+              class="hero-image"
+            >
+          {% else %}
+            <div style="width: 100%; height: 100%; background: linear-gradient(135deg, rgba(0,229,255,0.2), rgba(191,0,255,0.2)); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.5); font-size: 1.5rem; border-radius: 1rem;">
+              Product Image/Video
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="scroll-indicator">
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </div>
+</section>
+
+<style>
+  .hero-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding-top: 80px;
+  }
+
+  .hero-bg-gradient {
+    position: absolute;
+    inset: 0;
+    filter: blur(80px);
+    transition: opacity 3s ease-in-out;
+  }
+
+  .hero-bg-current {
+    background: linear-gradient(135deg, hsl(30, 100%, 60%), hsl(220, 100%, 60%), hsl(60, 100%, 60%));
+    opacity: 0.6;
+  }
+
+  .hero-bg-next {
+    background: linear-gradient(135deg, hsl(120, 100%, 50%), hsl(300, 100%, 65%), hsl(180, 100%, 60%));
+    opacity: 0;
+  }
+
+  .mouse-glow-overlay,
+  .secondary-glow {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    transition: opacity 300ms;
+  }
+
+  .mouse-glow-overlay {
+    opacity: 0.8;
+    filter: blur(40px);
+  }
+
+  .secondary-glow {
+    opacity: 0.7;
+  }
+
+  .hero-container {
+    position: relative;
+    z-index: 10;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  @media (min-width: 1024px) {
+    .hero-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .hero-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  @media (min-width: 1024px) {
+    .hero-content {
+      text-align: left;
+    }
+  }
+
+  .hero-subtitle {
+    color: hsl(193, 100%, 65%);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  @media (min-width: 640px) {
+    .hero-subtitle {
+      font-size: 1rem;
+    }
+  }
+
+  .hero-title {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .hero-title-main {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  @media (min-width: 640px) {
+    .hero-title-main {
+      font-size: 3rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-title-main {
+      font-size: 4.5rem;
+    }
+  }
+
+  .hero-title-sub {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  @media (min-width: 640px) {
+    .hero-title-sub {
+      font-size: 1.875rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-title-sub {
+      font-size: 2.25rem;
+    }
+  }
+
+  .hero-model {
+    color: hsl(193, 100%, 65%);
+  }
+
+  .hero-description {
+    font-size: 1.125rem;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 48rem;
+  }
+
+  @media (min-width: 640px) {
+    .hero-description {
+      font-size: 1.25rem;
+    }
+  }
+
+  .hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  @media (min-width: 640px) {
+    .hero-buttons {
+      flex-direction: row;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-buttons {
+      justify-content: flex-start;
+    }
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s;
+    text-align: center;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, hsl(193, 100%, 65%), hsl(280, 100%, 70%), hsl(330, 100%, 70%));
+    color: white;
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 0 30px rgba(0, 229, 255, 0.6);
+  }
+
+  .glow-pulse {
+    animation: glow-pulse 2s infinite;
+  }
+
+  @keyframes glow-pulse {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(0, 229, 255, 0.8);
+    }
+  }
+
+  .btn-outline {
+    border: 1px solid rgba(0, 229, 255, 0.5);
+    color: white;
+    background: transparent;
+  }
+
+  .btn-outline:hover {
+    border-color: hsl(193, 100%, 65%);
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.5);
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding-top: 2rem;
+  }
+
+  @media (min-width: 640px) {
+    .hero-stats {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .stat-item {
+    text-align: center;
+  }
+
+  @media (min-width: 1024px) {
+    .stat-item {
+      text-align: left;
+    }
+  }
+
+  .stat-value {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: hsl(193, 100%, 65%);
+  }
+
+  @media (min-width: 640px) {
+    .stat-value {
+      font-size: 2.25rem;
+    }
+  }
+
+  .stat-label {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .hero-media {
+    position: relative;
+    width: 100%;
+  }
+
+  .hero-video-glow {
+    position: absolute;
+    inset: -2rem;
+    background: linear-gradient(135deg, hsl(193, 100%, 65%), hsl(280, 100%, 70%), hsl(330, 100%, 70%));
+    opacity: 0.8;
+    filter: blur(80px);
+    border-radius: 1.5rem;
+    transition: opacity 0.5s;
+  }
+
+  .hero-media:hover .hero-video-glow {
+    opacity: 1;
+  }
+
+  .hero-video-wrapper {
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    box-shadow: 0 0 60px rgba(147, 51, 234, 0.5);
+    transition: box-shadow 0.5s;
+  }
+
+  .hero-media:hover .hero-video-wrapper {
+    box-shadow: 0 0 80px rgba(147, 51, 234, 0.7);
+  }
+
+  .hero-video,
+  .hero-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%) scale(1.5);
+    object-fit: cover;
+    transition: opacity 1000ms ease-in-out;
+  }
+
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+    color: hsl(193, 100%, 65%);
+  }
+
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateX(-50%) translateY(0);
+    }
+    50% {
+      transform: translateX(-50%) translateY(-10px);
+    }
+  }
+</style>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    {
+      "type": "url",
+      "id": "hero_video",
+      "label": "Hero Video URL (MP4)"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Image (fallback)"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="{{ page_description | strip_html | truncatewords: 20 }}">
+  <meta name="theme-color" content="#000000">
+  
+  <!-- Preconnect to critical resources -->
+  <link rel="preconnect" href="https://cdn.shopify.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- DNS prefetch for faster resolution -->
+  <link rel="dns-prefetch" href="https://cdn.shopify.com">
+  
+  <title>{{ page_title | default: shop.name }}</title>
+  
+  {% if page_description %}
+    <meta name="description" content="{{ page_description | strip_html | truncatewords: 25 }}">
+  {% endif %}
+  
+  <!-- Open Graph Tags -->
+  <meta property="og:type" content="{% if template contains 'product' %}product{% elsif template contains 'article' %}article{% else %}website{% endif %}">
+  <meta property="og:title" content="{{ page_title | default: shop.name }}">
+  <meta property="og:url" content="{{ request.url }}">
+  {% if page.image %}
+    <meta property="og:image" content="https:{{ page.image.src | image_url: width: 1200 }}">
+  {% endif %}
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  {% if page.image %}
+    <meta name="twitter:image" content="https:{{ page.image.src | image_url: width: 1200 }}">
+  {% endif %}
+  
+  {{ content_for_header }}
+  
+  <!-- Favicon -->
+  {% if settings.favicon != blank %}
+    <link rel="icon" type="image/png" href="{{ settings.favicon | img_url: '32x32' }}">
+  {% endif %}
+  {% if settings.touch_icon != blank %}
+    <link rel="apple-touch-icon" href="{{ settings.touch_icon | img_url: '180x180' }}">
+  {% endif %}
+  
+  <!-- JSON-LD Structured Data for SEO -->
+  {% if settings.enable_schema_markup %}
+    {% render 'schema-organization' %}
+    {% render 'schema-breadcrumb', template: template, collection: collection, product: product %}
+    {% if template contains 'product' %}
+      {% render 'schema-product', product: product %}
+    {% endif %}
+  {% endif %}
+  
+  <!-- Dynamic CSS Variables from Theme Settings -->
+  <style>
+    :root {
+      --color-primary: {{ settings.primary_color | default: '#00e5ff' }};
+      --color-secondary: {{ settings.secondary_color | default: '#bf00ff' }};
+      --color-accent: {{ settings.accent_color | default: '#ff00bf' }};
+      --color-background: {{ settings.background_color | default: '#000000' }};
+      --color-text: {{ settings.text_color | default: '#ffffff' }};
+      --color-text-muted: {{ settings.text_muted_color | default: '#b3b3b3' }};
+      --color-border: {{ settings.border_color | default: '#1a1a1a' }};
+      --card-background: {{ settings.card_background_color | default: '#0a0a0a' }};
+      
+      --container-max-width: {{ settings.container_max_width | default: 1280 }}px;
+      --section-spacing-mobile: {{ settings.section_spacing_mobile | default: 64 }}px;
+      --section-spacing-desktop: {{ settings.section_spacing_desktop | default: 96 }}px;
+      --grid-gap: {{ settings.grid_gap | default: 32 }}px;
+      
+      --font-heading: {{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }};
+      --font-body: {{ settings.body_font.family }}, {{ settings.body_font.fallback_families }};
+      --font-size-base: {{ settings.base_font_size | default: 16 }}px;
+      --font-weight-heading: {{ settings.heading_weight | default: 700 }};
+      --font-weight-body: {{ settings.body_weight | default: 400 }};
+      --line-height: {{ settings.line_height | default: 1.6 }};
+      --letter-spacing: {{ settings.letter_spacing | default: 0 }}px;
+      
+      --button-radius: {% if settings.button_style == 'pill' %}50px{% elsif settings.button_style == 'square' %}0{% else %}{{ settings.button_border_radius | default: 8 }}px{% endif %};
+      --input-radius: {{ settings.input_border_radius | default: 8 }}px;
+      
+      --glow-intensity: {{ settings.glow_intensity | default: 60 | divided_by: 100.0 }};
+      --glow-size: {{ settings.glow_size | default: 800 }}px;
+      --animation-speed: {{ settings.animation_speed | default: 100 | divided_by: 100.0 }};
+    }
+    
+    body {
+      font-family: var(--font-body);
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-body);
+      line-height: var(--line-height);
+      letter-spacing: var(--letter-spacing);
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      font-weight: var(--font-weight-heading);
+    }
+    
+    {% if settings.button_uppercase %}
+    .btn {
+      text-transform: uppercase;
+    }
+    {% endif %}
+    
+    {% unless settings.enable_animations %}
+    * {
+      animation: none !important;
+      transition: none !important;
+    }
+    {% endunless %}
+    
+    {% unless settings.enable_mouse_glow %}
+    .mouse-glow-overlay {
+      display: none !important;
+    }
+    {% endunless %}
+    
+    {% if settings.enable_glass_morphism %}
+    .feature-card, .product-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    {% endif %}
+  </style>
+  
+  <!-- Load theme fonts -->
+  {{ settings.heading_font | font_face: font_display: 'swap' }}
+  {{ settings.body_font | font_face: font_display: 'swap' }}
+  {% if settings.nav_font %}
+    {{ settings.nav_font | font_face: font_display: 'swap' }}
+  {% endif %}
+  
+  <!-- Theme stylesheet -->
+  {{ 'theme.css' | asset_url | stylesheet_tag }}
+  
+  <!-- Custom CSS from theme settings -->
+  {% if settings.custom_css != blank %}
+    <style>{{ settings.custom_css }}</style>
+  {% endif %}
+  
+  <!-- Preload critical assets -->
+  {% if settings.defer_js %}
+    <link rel="preload" as="script" href="{{ 'animations.js' | asset_url }}">
+  {% endif %}
+</head>
+<body class="glow-edge-theme {% if settings.high_contrast_mode %}high-contrast{% endif %}" data-template="{{ template | replace: '.', '-' }}">
+  
+  <!-- Skip to content link for accessibility -->
+  {% if settings.enable_skip_to_content %}
+    <a href="#main-content" class="skip-link">Skip to content</a>
+  {% endif %}
+  
+  <!-- DEBUG TRANSLATIONS -->
+  {% render 'test-locale' %}
+  
+  <!-- Loading animation -->
+  {% if settings.show_loading_animation %}
+    <div class="page-loader" id="pageLoader">
+      <div class="loader-{{ settings.loading_animation_type | default: 'fade' }}"></div>
+    </div>
+  {% endif %}
+  
+  <!-- Search Modal -->
+  {% if settings.show_search_icon %}
+    {% render 'search-modal' %}
+  {% endif %}
+  
+  {% section 'header' %}
+  
+  <!-- Cart Drawer -->
+  {% render 'cart-drawer' %}
+  
+  <!-- Auth Modal (Login/Signup) -->
+  {% render 'auth-modal' %}
+  
+  <main id="main-content" role="main">
+    {{ content_for_layout }}
+  </main>
+  
+  {% section 'footer' %}
+  
+  <!-- Deferred scripts for better performance -->
+  <script src="{{ 'theme.js' | asset_url }}" {% if settings.defer_js %}defer{% endif %}></script>
+  {% if settings.enable_mouse_glow %}
+    <script src="{{ 'mouse-glow.js' | asset_url }}" {% if settings.defer_js %}defer{% endif %}></script>
+  {% endif %}
+  {% if settings.enable_animations %}
+    <script src="{{ 'animations.js' | asset_url }}" {% if settings.defer_js %}defer{% endif %}></script>
+  {% endif %}
+  
+  <!-- Custom JavaScript from theme settings -->
+  {% if settings.custom_js != blank %}
+    <script>{{ settings.custom_js }}</script>
+  {% endif %}
+  
+  <!-- Loading animation script -->
+  {% if settings.show_loading_animation %}
+    <script>
+      window.addEventListener('load', function() {
+        const loader = document.getElementById('pageLoader');
+        if (loader) {
+          loader.style.opacity = '0';
+          setTimeout(() => loader.style.display = 'none', 300);
+        }
+      });
+    </script>
+  {% endif %}
+  
+</body>
+</html>
+
