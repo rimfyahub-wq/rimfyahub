@@ -32,7 +32,56 @@
       },
       "hero": {
         "type": "hero",
-        "settings": {}
+        "settings": {
+          "show_content": true,
+          "show_title": true,
+          "show_subtitle": true,
+          "show_description": true,
+          "show_buttons": true,
+          "show_stats": true,
+          "show_media": true,
+          "enable_background_gradient": true,
+          "enable_mouse_glow": true,
+          "enable_secondary_glow": true,
+          "show_scroll_indicator": true,
+          "title_text": "Transform Your Viewing Experience",
+          "subtitle_text": "Model Glow Edge",
+          "description_text": "Experience the future of ambient lighting with our revolutionary LED technology that transforms any TV into an immersive visual masterpiece.",
+          "primary_button_text": "Shop Now",
+          "primary_button_url": "/collections/all",
+          "secondary_button_text": "Learn More",
+          "secondary_button_url": "#features"
+        },
+        "blocks": [
+          {
+            "type": "statistic",
+            "settings": {
+              "value": "5 min",
+              "label": "Setup Time"
+            }
+          },
+          {
+            "type": "statistic",
+            "settings": {
+              "value": "16M",
+              "label": "Color Options"
+            }
+          },
+          {
+            "type": "statistic",
+            "settings": {
+              "value": "Voice",
+              "label": "Control"
+            }
+          },
+          {
+            "type": "statistic",
+            "settings": {
+              "value": "1 min",
+              "label": "Install Time"
+            }
+          }
+        ]
       },
       "features": {
         "type": "features",

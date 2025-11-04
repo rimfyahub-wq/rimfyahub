@@ -1,92 +1,211 @@
-<section id="features" class="features-section" data-mouse-glow>
+<section id="{{ section.settings.section_id | default: 'features' }}" class="features-section {{ section.settings.section_classes }}" data-mouse-glow
+         style="
+           {%- if section.settings.section_bg_color != blank -%}background-color: {{ section.settings.section_bg_color }};{%- endif -%}
+           {%- if section.settings.section_bg_image != blank -%}background-image: url({{ section.settings.section_bg_image | img_url: '2000x' }}); background-size: {{ section.settings.section_bg_size }}; background-position: {{ section.settings.section_bg_position }};{%- endif -%}
+           {%- if section.settings.section_padding_top > 0 -%}padding-top: {{ section.settings.section_padding_top }}px;{%- endif -%}
+           {%- if section.settings.section_padding_bottom > 0 -%}padding-bottom: {{ section.settings.section_padding_bottom }}px;{%- endif -%}
+           {%- if section.settings.section_margin_top > 0 -%}margin-top: {{ section.settings.section_margin_top }}px;{%- endif -%}
+           {%- if section.settings.section_margin_bottom > 0 -%}margin-bottom: {{ section.settings.section_margin_bottom }}px;{%- endif -%}
+         ">
+
+  {%- if section.settings.enable_mouse_glow -%}
   <!-- Mouse Follow Glow -->
-  <div class="mouse-glow-overlay"></div>
-  
-  <div class="container">
-    <div class="features-header">
-      <h2 class="section-title">{{ 'sections.features.title' | t }}</h2>
-      <p class="section-description">
-        {{ 'sections.features.subtitle' | t }}
+  <div class="mouse-glow-overlay" style="opacity: {{ section.settings.mouse_glow_opacity | divided_by: 100.0 }}; filter: blur({{ section.settings.mouse_glow_blur }}px);"></div>
+  {%- endif -%}
+
+  <div class="container {{ section.settings.container_classes }}"
+       style="max-width: {{ section.settings.container_max_width }}px;">
+
+    {%- if section.settings.show_header -%}
+    <div class="features-header {{ section.settings.header_classes }}"
+         style="text-align: {{ section.settings.header_alignment }};">
+      {%- if section.settings.show_badge and section.settings.badge_text != blank -%}
+      <div class="section-badge {{ section.settings.badge_classes }}"
+           style="
+             {%- if section.settings.badge_bg_color -%}background-color: {{ section.settings.badge_bg_color }};{%- endif -%}
+             {%- if section.settings.badge_text_color -%}color: {{ section.settings.badge_text_color }};{%- endif -%}
+             {%- if section.settings.badge_border_radius -%}border-radius: {{ section.settings.badge_border_radius }}px;{%- endif -%}
+           ">
+        {{ section.settings.badge_text }}
+      </div>
+      {%- endif -%}
+
+      {%- if section.settings.show_title and section.settings.title_text != blank -%}
+      <h2 class="section-title {{ section.settings.title_classes }}"
+          style="
+            {%- if section.settings.title_font_size -%}font-size: {{ section.settings.title_font_size }}px;{%- endif -%}
+            {%- if section.settings.title_color -%}color: {{ section.settings.title_color }};{%- endif -%}
+            {%- if section.settings.title_font_weight -%}font-weight: {{ section.settings.title_font_weight }};{%- endif -%}
+            {%- if section.settings.title_line_height -%}line-height: {{ section.settings.title_line_height }};{%- endif -%}
+          ">
+        {{ section.settings.title_text }}
+      </h2>
+      {%- endif -%}
+
+      {%- if section.settings.show_subtitle and section.settings.subtitle_text != blank -%}
+      <p class="section-description {{ section.settings.subtitle_classes }}"
+         style="
+           {%- if section.settings.subtitle_font_size -%}font-size: {{ section.settings.subtitle_font_size }}px;{%- endif -%}
+           {%- if section.settings.subtitle_color -%}color: {{ section.settings.subtitle_color }};{%- endif -%}
+           {%- if section.settings.subtitle_line_height -%}line-height: {{ section.settings.subtitle_line_height }};{%- endif -%}
+         ">
+        {{ section.settings.subtitle_text }}
       </p>
+      {%- endif -%}
     </div>
+    {%- endif -%}
 
-    <div class="features-grid" data-animate-on-scroll>
-      <!-- Default Features -->
-      <div class="feature-card" data-animate-card style="--card-delay: 0s; --glow-color: rgba(0, 229, 255, 0.9);">
-        <div class="feature-icon" style="color: #00E5FF;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-        </div>
-        <h3 class="feature-title">{{ 'sections.features.easy_setup' | t }}</h3>
-        <p class="feature-description">{{ 'sections.features.easy_setup_desc' | t }}</p>
-      </div>
+    {%- if section.settings.show_features_grid -%}
+    <div class="features-grid {{ section.settings.grid_classes }}" data-animate-on-scroll
+         style="
+           {%- if section.settings.grid_columns_mobile -%}--grid-cols-mobile: {{ section.settings.grid_columns_mobile }};{%- endif -%}
+           {%- if section.settings.grid_columns_tablet -%}--grid-cols-tablet: {{ section.settings.grid_columns_tablet }};{%- endif -%}
+           {%- if section.settings.grid_columns_desktop -%}--grid-cols-desktop: {{ section.settings.grid_columns_desktop }};{%- endif -%}
+           gap: {{ section.settings.grid_gap }}rem;
+         ">
 
-      <div class="feature-card" data-animate-card style="--card-delay: 0.1s; --glow-color: rgba(191, 0, 255, 0.9);">
-        <div class="feature-icon" style="color: #BF00FF;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
-        </div>
-        <h3 class="feature-title">{{ 'sections.features.rgbic' | t }}</h3>
-        <p class="feature-description">{{ 'sections.features.rgbic_desc' | t }}</p>
-      </div>
+      {%- for block in section.blocks -%}
+      {%- if block.type == 'feature' -%}
+      <div class="feature-card {{ section.settings.card_classes }} {{ block.settings.card_classes }}" data-animate-card
+           style="
+             --card-delay: {{ forloop.index0 | times: 0.1 }}s;
+             --glow-color: {{ block.settings.glow_color | default: 'rgba(0, 229, 255, 0.9)' }};
+             {%- if block.settings.card_bg_color -%}background-color: {{ block.settings.card_bg_color }};{%- endif -%}
+             {%- if block.settings.card_border_radius -%}border-radius: {{ block.settings.card_border_radius }}px;{%- endif -%}
+             {%- if block.settings.card_padding -%}padding: {{ block.settings.card_padding }};{%- endif -%}
+             {%- if block.settings.card_margin -%}margin: {{ block.settings.card_margin }};{%- endif -%}
+             {%- if block.settings.card_shadow_enabled -%}box-shadow: 0 0 {{ block.settings.card_shadow_blur }}px {{ block.settings.card_shadow_color | color_modify: 'alpha', block.settings.card_shadow_opacity | divided_by: 100.0 }};{%- endif -%}
+           ">
 
-      <div class="feature-card" data-animate-card style="--card-delay: 0.2s; --glow-color: rgba(255, 0, 191, 0.9);">
-        <div class="feature-icon" style="color: #FF00BF;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+        {%- if block.settings.show_icon -%}
+        <div class="feature-icon {{ section.settings.icon_classes }} {{ block.settings.icon_classes }}"
+             style="
+               {%- if block.settings.icon_color -%}color: {{ block.settings.icon_color }};{%- endif -%}
+               {%- if block.settings.icon_bg_color -%}background: {{ block.settings.icon_bg_color }};{%- endif -%}
+               {%- if block.settings.icon_size -%}width: {{ block.settings.icon_size }}px; height: {{ block.settings.icon_size }}px;{%- endif -%}
+               {%- if block.settings.icon_border_radius -%}border-radius: {{ block.settings.icon_border_radius }}px;{%- endif -%}
+             ">
+          {%- if block.settings.icon_type == 'svg' and block.settings.custom_svg != blank -%}
+            {{ block.settings.custom_svg }}
+          {%- elsif block.settings.icon_type == 'image' and block.settings.icon_image != blank -%}
+            <img src="{{ block.settings.icon_image | img_url: '100x' }}" alt="{{ block.settings.title }}" style="width: 100%; height: 100%; object-fit: contain;">
+          {%- else -%}
+            {%- assign icon_name = block.settings.icon_name | default: 'star' -%}
+            {%- case icon_name -%}
+              {%- when 'star' -%}
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              {%- when 'zap' -%}
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+              {%- when 'heart' -%}
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+              {%- when 'shield' -%}
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              {%- when 'settings' -%}
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1 1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+              {%- else -%}
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><path d="M12 17h.01"></path></svg>
+            {%- endcase -%}
+          {%- endif -%}
         </div>
-        <h3 class="feature-title">{{ 'sections.features.smart_home' | t }}</h3>
-        <p class="feature-description">{{ 'sections.features.smart_home_desc' | t }}</p>
-      </div>
+        {%- endif -%}
 
-      <div class="feature-card" data-animate-card style="--card-delay: 0.3s; --glow-color: rgba(0, 255, 128, 0.9);">
-        <div class="feature-icon" style="color: #00FF80;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
-        </div>
-        <h3 class="feature-title">{{ 'sections.features.universal' | t }}</h3>
-        <p class="feature-description">{{ 'sections.features.universal_desc' | t }}</p>
-      </div>
+        {%- if block.settings.show_title and block.settings.title != blank -%}
+        <h3 class="feature-title {{ section.settings.card_title_classes }} {{ block.settings.title_classes }}"
+            style="
+              {%- if block.settings.title_font_size -%}font-size: {{ block.settings.title_font_size }}px;{%- endif -%}
+              {%- if block.settings.title_color -%}color: {{ block.settings.title_color }};{%- endif -%}
+              {%- if block.settings.title_font_weight -%}font-weight: {{ block.settings.title_font_weight }};{%- endif -%}
+            ">
+          {{ block.settings.title }}
+        </h3>
+        {%- endif -%}
 
-      <div class="feature-card" data-animate-card style="--card-delay: 0.4s; --glow-color: rgba(255, 200, 0, 0.9);">
-        <div class="feature-icon" style="color: #FFC800;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
-        </div>
-        <h3 class="feature-title">{{ 'sections.features.dual_control' | t }}</h3>
-        <p class="feature-description">{{ 'sections.features.dual_control_desc' | t }}</p>
-      </div>
+        {%- if block.settings.show_description and block.settings.description != blank -%}
+        <p class="feature-description {{ section.settings.card_description_classes }} {{ block.settings.description_classes }}"
+           style="
+             {%- if block.settings.description_font_size -%}font-size: {{ block.settings.description_font_size }}px;{%- endif -%}
+             {%- if block.settings.description_color -%}color: {{ block.settings.description_color }};{%- endif -%}
+             {%- if block.settings.description_line_height -%}line-height: {{ block.settings.description_line_height }};{%- endif -%}
+           ">
+          {{ block.settings.description }}
+        </p>
+        {%- endif -%}
 
-      <div class="feature-card" data-animate-card style="--card-delay: 0.5s; --glow-color: rgba(255, 100, 100, 0.9);">
-        <div class="feature-icon" style="color: #FF6464;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-        </div>
-        <h3 class="feature-title">{{ 'sections.features.premium_quality' | t }}</h3>
-        <p class="feature-description">{{ 'sections.features.premium_quality_desc' | t }}</p>
+        {%- if block.settings.show_button and block.settings.button_text != blank -%}
+        <a href="{{ block.settings.button_url }}" class="feature-button {{ section.settings.button_classes }} {{ block.settings.button_classes }}"
+           style="
+             {%- if block.settings.button_bg_color -%}background-color: {{ block.settings.button_bg_color }};{%- endif -%}
+             {%- if block.settings.button_text_color -%}color: {{ block.settings.button_text_color }};{%- endif -%}
+             {%- if block.settings.button_border_radius -%}border-radius: {{ block.settings.button_border_radius }}px;{%- endif -%}
+             {%- if block.settings.button_padding -%}padding: {{ block.settings.button_padding }};{%- endif -%}
+           ">
+          {{ block.settings.button_text }}
+        </a>
+        {%- endif -%}
       </div>
+      {%- endif -%}
+      {%- endfor -%}
     </div>
+    {%- endif -%}
 
-    <!-- Lifestyle Images -->
-    {% if section.settings.show_lifestyle_images %}
-    <div class="lifestyle-grid" data-animate-on-scroll>
-      {% if section.settings.lifestyle_image_1 %}
-      <div class="lifestyle-item" data-animate-slide="left">
-        <div class="lifestyle-glow"></div>
-        <img 
-          src="{{ section.settings.lifestyle_image_1 | img_url: '800x' }}" 
-          alt="Glow Edge in living room"
-          class="lifestyle-image"
+    {%- if section.settings.show_lifestyle_images -%}
+    <div class="lifestyle-grid {{ section.settings.lifestyle_classes }}" data-animate-on-scroll
+         style="
+           {%- if section.settings.lifestyle_columns_mobile -%}--lifestyle-cols-mobile: {{ section.settings.lifestyle_columns_mobile }};{%- endif -%}
+           {%- if section.settings.lifestyle_columns_tablet -%}--lifestyle-cols-tablet: {{ section.settings.lifestyle_columns_tablet }};{%- endif -%}
+           {%- if section.settings.lifestyle_columns_desktop -%}--lifestyle-cols-desktop: {{ section.settings.lifestyle_columns_desktop }};{%- endif -%}
+           gap: {{ section.settings.lifestyle_gap }}rem;
+         ">
+
+      {%- for block in section.blocks -%}
+      {%- if block.type == 'lifestyle_image' -%}
+      <div class="lifestyle-item {{ section.settings.lifestyle_item_classes }} {{ block.settings.item_classes }}"
+           data-animate-slide="{{ block.settings.animation_direction | default: 'left' }}"
+           style="
+             {%- if block.settings.item_padding -%}padding: {{ block.settings.item_padding }};{%- endif -%}
+             {%- if block.settings.item_margin -%}margin: {{ block.settings.item_margin }};{%- endif -%}
+           ">
+
+        {%- if block.settings.show_glow -%}
+        <div class="lifestyle-glow"
+             style="
+               background: linear-gradient(135deg, {{ block.settings.glow_color_1 | default: '#00E5FF' }}, {{ block.settings.glow_color_2 | default: '#BF00FF' }});
+               opacity: {{ block.settings.glow_opacity | default: 40 | divided_by: 100.0 }};
+               filter: blur({{ block.settings.glow_blur | default: 20 }}px);
+             "></div>
+        {%- endif -%}
+
+        {%- if block.settings.image != blank -%}
+        <img
+          src="{{ block.settings.image | img_url: block.settings.image_size | default: '800x' }}"
+          alt="{{ block.settings.image_alt | default: block.settings.title }}"
+          class="lifestyle-image {{ section.settings.lifestyle_image_classes }} {{ block.settings.image_classes }}"
+          style="
+            {%- if block.settings.image_border_radius -%}border-radius: {{ block.settings.image_border_radius }}px;{%- endif -%}
+            {%- if block.settings.image_shadow_enabled -%}box-shadow: 0 0 {{ block.settings.image_shadow_blur }}px {{ block.settings.image_shadow_color | color_modify: 'alpha', block.settings.image_shadow_opacity | divided_by: 100.0 }};{%- endif -%}
+          "
         >
+        {%- endif -%}
+
+        {%- if block.settings.show_overlay and (block.settings.overlay_title != blank or block.settings.overlay_description != blank) -%}
+        <div class="lifestyle-overlay {{ block.settings.overlay_classes }}"
+             style="
+               {%- if block.settings.overlay_bg_color -%}background-color: {{ block.settings.overlay_bg_color }};{%- endif -%}
+               {%- if block.settings.overlay_text_color -%}color: {{ block.settings.overlay_text_color }};{%- endif -%}
+             ">
+          {%- if block.settings.overlay_title != blank -%}
+          <h3 class="overlay-title {{ block.settings.overlay_title_classes }}">{{ block.settings.overlay_title }}</h3>
+          {%- endif -%}
+          {%- if block.settings.overlay_description != blank -%}
+          <p class="overlay-description {{ block.settings.overlay_description_classes }}">{{ block.settings.overlay_description }}</p>
+          {%- endif -%}
+        </div>
+        {%- endif -%}
       </div>
-      {% endif %}
-      
-      {% if section.settings.lifestyle_image_2 %}
-      <div class="lifestyle-item" data-animate-slide="right">
-        <div class="lifestyle-glow"></div>
-        <img 
-          src="{{ section.settings.lifestyle_image_2 | img_url: '800x' }}" 
-          alt="Glow Edge gaming setup"
-          class="lifestyle-image"
-        >
-      </div>
-      {% endif %}
+      {%- endif -%}
+      {%- endfor -%}
     </div>
-    {% endif %}
+    {%- endif -%}
   </div>
 </section>
 
@@ -330,20 +449,1065 @@
   "name": "Features",
   "settings": [
     {
+      "type": "header",
+      "content": "🎯 Section Settings"
+    },
+    {
+      "type": "text",
+      "id": "section_id",
+      "label": "Section ID",
+      "default": "features",
+      "info": "Used for anchor links and CSS targeting"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_header",
+      "label": "Show Section Header",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_features_grid",
+      "label": "Show Features Grid",
+      "default": true
+    },
+    {
       "type": "checkbox",
       "id": "show_lifestyle_images",
       "label": "Show Lifestyle Images",
       "default": true
     },
     {
-      "type": "image_picker",
-      "id": "lifestyle_image_1",
-      "label": "Lifestyle Image 1"
+      "type": "checkbox",
+      "id": "enable_mouse_glow",
+      "label": "Enable Mouse Glow Effect",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "mouse_glow_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Mouse Glow Opacity",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "mouse_glow_blur",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Mouse Glow Blur",
+      "default": 50
+    },
+    {
+      "type": "header",
+      "content": "📝 Header Content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_badge",
+      "label": "Show Badge",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "FEATURES"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_title",
+      "label": "Show Title",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "title_text",
+      "label": "Title Text",
+      "default": "Powerful Features"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_subtitle",
+      "label": "Show Subtitle",
+      "default": true
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle_text",
+      "label": "Subtitle Text",
+      "default": "Discover what makes our LED ambient lighting solution the perfect choice for your entertainment setup."
+    },
+    {
+      "type": "select",
+      "id": "header_alignment",
+      "label": "Header Alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "🎨 Header Styling"
+    },
+    {
+      "type": "color",
+      "id": "badge_bg_color",
+      "label": "Badge Background Color",
+      "default": "#00E5FF"
+    },
+    {
+      "type": "color",
+      "id": "badge_text_color",
+      "label": "Badge Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "badge_border_radius",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "label": "Badge Border Radius",
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size",
+      "min": 24,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Title Font Size",
+      "default": 48
+    },
+    {
+      "type": "select",
+      "id": "title_font_weight",
+      "label": "Title Font Weight",
+      "options": [
+        {
+          "value": "300",
+          "label": "Light"
+        },
+        {
+          "value": "400",
+          "label": "Regular"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi Bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        },
+        {
+          "value": "800",
+          "label": "Extra Bold"
+        }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "range",
+      "id": "title_line_height",
+      "min": 1,
+      "max": 2,
+      "step": 0.1,
+      "label": "Title Line Height",
+      "default": 1.2
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "subtitle_font_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle Font Size",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "subtitle_line_height",
+      "min": 1.2,
+      "max": 2,
+      "step": 0.1,
+      "label": "Subtitle Line Height",
+      "default": 1.6
+    },
+    {
+      "type": "header",
+      "content": "🔲 Features Grid"
+    },
+    {
+      "type": "range",
+      "id": "grid_columns_mobile",
+      "min": 1,
+      "max": 2,
+      "step": 1,
+      "label": "Grid Columns (Mobile)",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "grid_columns_tablet",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "Grid Columns (Tablet)",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "grid_columns_desktop",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "label": "Grid Columns (Desktop)",
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "grid_gap",
+      "min": 0.5,
+      "max": 4,
+      "step": 0.25,
+      "unit": "rem",
+      "label": "Grid Gap",
+      "default": 2
+    },
+    {
+      "type": "header",
+      "content": "🖼️ Lifestyle Images"
+    },
+    {
+      "type": "range",
+      "id": "lifestyle_columns_mobile",
+      "min": 1,
+      "max": 2,
+      "step": 1,
+      "label": "Lifestyle Columns (Mobile)",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "lifestyle_columns_tablet",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "Lifestyle Columns (Tablet)",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "lifestyle_columns_desktop",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "label": "Lifestyle Columns (Desktop)",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "lifestyle_gap",
+      "min": 0.5,
+      "max": 4,
+      "step": 0.25,
+      "unit": "rem",
+      "label": "Lifestyle Gap",
+      "default": 2
+    },
+    {
+      "type": "header",
+      "content": "🎨 Section Styling"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background Color"
     },
     {
       "type": "image_picker",
-      "id": "lifestyle_image_2",
-      "label": "Lifestyle Image 2"
+      "id": "section_bg_image",
+      "label": "Section Background Image"
+    },
+    {
+      "type": "select",
+      "id": "section_bg_size",
+      "label": "Background Size",
+      "options": [
+        {
+          "value": "cover",
+          "label": "Cover"
+        },
+        {
+          "value": "contain",
+          "label": "Contain"
+        },
+        {
+          "value": "auto",
+          "label": "Auto"
+        }
+      ],
+      "default": "cover"
+    },
+    {
+      "type": "select",
+      "id": "section_bg_position",
+      "label": "Background Position",
+      "options": [
+        {
+          "value": "center center",
+          "label": "Center"
+        },
+        {
+          "value": "top center",
+          "label": "Top Center"
+        },
+        {
+          "value": "bottom center",
+          "label": "Bottom Center"
+        },
+        {
+          "value": "left center",
+          "label": "Left Center"
+        },
+        {
+          "value": "right center",
+          "label": "Right Center"
+        }
+      ],
+      "default": "center center"
+    },
+    {
+      "type": "range",
+      "id": "container_max_width",
+      "min": 800,
+      "max": 2000,
+      "step": 50,
+      "unit": "px",
+      "label": "Container Max Width",
+      "default": 1200
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Section Padding Top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Section Padding Bottom",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "section_margin_top",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Section Margin Top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "section_margin_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Section Margin Bottom",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "🎨 Custom Classes"
+    },
+    {
+      "type": "text",
+      "id": "section_classes",
+      "label": "Section CSS Classes"
+    },
+    {
+      "type": "text",
+      "id": "container_classes",
+      "label": "Container CSS Classes"
+    },
+    {
+      "type": "text",
+      "id": "header_classes",
+      "label": "Header CSS Classes"
+    },
+    {
+      "type": "text",
+      "id": "badge_classes",
+      "label": "Badge CSS Classes"
+    },
+    {
+      "type": "text",
+      "id": "title_classes",
+      "label": "Title CSS Classes"
+    },
+    {
+      "type": "text",
+      "id": "subtitle_classes",
+      "label": "Subtitle CSS Classes"
+    },
+    {
+      "type": "text",
+      "id": "grid_classes",
+      "label": "Grid CSS Classes"
+    },
+    {
+      "type": "text",
+      "id": "card_classes",
+      "label": "Card CSS Classes"
+    },
+    {
+      "type": "text",
+      "id": "icon_classes",
+      "label": "Icon CSS Classes"
+    },
+    {
+      "type": "text",
+      "id": "card_title_classes",
+      "label": "Card Title CSS Classes"
+    },
+    {
+      "type": "text",
+      "id": "card_description_classes",
+      "label": "Card Description CSS Classes"
+    },
+    {
+      "type": "text",
+      "id": "button_classes",
+      "label": "Button CSS Classes"
+    },
+    {
+      "type": "text",
+      "id": "lifestyle_classes",
+      "label": "Lifestyle Grid CSS Classes"
+    },
+    {
+      "type": "text",
+      "id": "lifestyle_item_classes",
+      "label": "Lifestyle Item CSS Classes"
+    },
+    {
+      "type": "text",
+      "id": "lifestyle_image_classes",
+      "label": "Lifestyle Image CSS Classes"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_icon",
+          "label": "Show Icon",
+          "default": true
+        },
+        {
+          "type": "select",
+          "id": "icon_type",
+          "label": "Icon Type",
+          "options": [
+            {
+              "value": "preset",
+              "label": "Preset Icon"
+            },
+            {
+              "value": "image",
+              "label": "Custom Image"
+            },
+            {
+              "value": "svg",
+              "label": "Custom SVG"
+            }
+          ],
+          "default": "preset"
+        },
+        {
+          "type": "select",
+          "id": "icon_name",
+          "label": "Preset Icon",
+          "options": [
+            {
+              "value": "star",
+              "label": "Star"
+            },
+            {
+              "value": "zap",
+              "label": "Lightning"
+            },
+            {
+              "value": "heart",
+              "label": "Heart"
+            },
+            {
+              "value": "shield",
+              "label": "Shield"
+            },
+            {
+              "value": "settings",
+              "label": "Settings"
+            },
+            {
+              "value": "check",
+              "label": "Check"
+            }
+          ],
+          "default": "star"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Custom Icon Image"
+        },
+        {
+          "type": "textarea",
+          "id": "custom_svg",
+          "label": "Custom SVG Code"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_title",
+          "label": "Show Title",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Feature Title"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_description",
+          "label": "Show Description",
+          "default": true
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Feature description goes here."
+        },
+        {
+          "type": "checkbox",
+          "id": "show_button",
+          "label": "Show Button",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Learn More"
+        },
+        {
+          "type": "url",
+          "id": "button_url",
+          "label": "Button URL",
+          "default": "#"
+        },
+        {
+          "type": "header",
+          "content": "🎨 Styling"
+        },
+        {
+          "type": "color",
+          "id": "glow_color",
+          "label": "Glow Color",
+          "default": "#00E5FF"
+        },
+        {
+          "type": "color",
+          "id": "icon_color",
+          "label": "Icon Color",
+          "default": "#00E5FF"
+        },
+        {
+          "type": "text",
+          "id": "icon_bg_color",
+          "label": "Icon Background",
+          "default": "linear-gradient(135deg, currentColor, currentColor)"
+        },
+        {
+          "type": "range",
+          "id": "icon_size",
+          "min": 24,
+          "max": 80,
+          "step": 4,
+          "unit": "px",
+          "label": "Icon Size",
+          "default": 48
+        },
+        {
+          "type": "range",
+          "id": "icon_border_radius",
+          "min": 0,
+          "max": 50,
+          "step": 1,
+          "unit": "%",
+          "label": "Icon Border Radius",
+          "default": 50
+        },
+        {
+          "type": "color",
+          "id": "card_bg_color",
+          "label": "Card Background Color",
+          "default": "rgba(255, 255, 255, 0.1)"
+        },
+        {
+          "type": "range",
+          "id": "card_border_radius",
+          "min": 0,
+          "max": 50,
+          "step": 1,
+          "unit": "px",
+          "label": "Card Border Radius",
+          "default": 16
+        },
+        {
+          "type": "text",
+          "id": "card_padding",
+          "label": "Card Padding",
+          "default": "1.5rem"
+        },
+        {
+          "type": "text",
+          "id": "card_margin",
+          "label": "Card Margin",
+          "default": "0"
+        },
+        {
+          "type": "checkbox",
+          "id": "card_shadow_enabled",
+          "label": "Enable Card Shadow",
+          "default": true
+        },
+        {
+          "type": "range",
+          "id": "card_shadow_blur",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "unit": "px",
+          "label": "Card Shadow Blur",
+          "default": 30
+        },
+        {
+          "type": "range",
+          "id": "card_shadow_opacity",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "unit": "%",
+          "label": "Card Shadow Opacity",
+          "default": 40
+        },
+        {
+          "type": "color",
+          "id": "card_shadow_color",
+          "label": "Card Shadow Color",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "Title Color",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "range",
+          "id": "title_font_size",
+          "min": 14,
+          "max": 32,
+          "step": 1,
+          "unit": "px",
+          "label": "Title Font Size",
+          "default": 20
+        },
+        {
+          "type": "select",
+          "id": "title_font_weight",
+          "label": "Title Font Weight",
+          "options": [
+            {
+              "value": "400",
+              "label": "Regular"
+            },
+            {
+              "value": "500",
+              "label": "Medium"
+            },
+            {
+              "value": "600",
+              "label": "Semi Bold"
+            },
+            {
+              "value": "700",
+              "label": "Bold"
+            }
+          ],
+          "default": "600"
+        },
+        {
+          "type": "color",
+          "id": "description_color",
+          "label": "Description Color",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "range",
+          "id": "description_font_size",
+          "min": 12,
+          "max": 18,
+          "step": 1,
+          "unit": "px",
+          "label": "Description Font Size",
+          "default": 14
+        },
+        {
+          "type": "range",
+          "id": "description_line_height",
+          "min": 1.2,
+          "max": 2,
+          "step": 0.1,
+          "label": "Description Line Height",
+          "default": 1.6
+        },
+        {
+          "type": "color",
+          "id": "button_bg_color",
+          "label": "Button Background Color",
+          "default": "#00E5FF"
+        },
+        {
+          "type": "color",
+          "id": "button_text_color",
+          "label": "Button Text Color",
+          "default": "#000000"
+        },
+        {
+          "type": "range",
+          "id": "button_border_radius",
+          "min": 0,
+          "max": 50,
+          "step": 1,
+          "unit": "px",
+          "label": "Button Border Radius",
+          "default": 8
+        },
+        {
+          "type": "text",
+          "id": "button_padding",
+          "label": "Button Padding",
+          "default": "0.75rem 1.5rem"
+        },
+        {
+          "type": "header",
+          "content": "🎨 Custom Classes"
+        },
+        {
+          "type": "text",
+          "id": "card_classes",
+          "label": "Card CSS Classes"
+        },
+        {
+          "type": "text",
+          "id": "icon_classes",
+          "label": "Icon CSS Classes"
+        },
+        {
+          "type": "text",
+          "id": "title_classes",
+          "label": "Title CSS Classes"
+        },
+        {
+          "type": "text",
+          "id": "description_classes",
+          "label": "Description CSS Classes"
+        },
+        {
+          "type": "text",
+          "id": "button_classes",
+          "label": "Button CSS Classes"
+        }
+      ]
+    },
+    {
+      "type": "lifestyle_image",
+      "name": "Lifestyle Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "Image Alt Text",
+          "default": "Lifestyle image"
+        },
+        {
+          "type": "select",
+          "id": "image_size",
+          "label": "Image Size",
+          "options": [
+            {
+              "value": "400x",
+              "label": "400px"
+            },
+            {
+              "value": "600x",
+              "label": "600px"
+            },
+            {
+              "value": "800x",
+              "label": "800px"
+            },
+            {
+              "value": "1000x",
+              "label": "1000px"
+            },
+            {
+              "value": "1200x",
+              "label": "1200px"
+            }
+          ],
+          "default": "800x"
+        },
+        {
+          "type": "select",
+          "id": "animation_direction",
+          "label": "Animation Direction",
+          "options": [
+            {
+              "value": "left",
+              "label": "From Left"
+            },
+            {
+              "value": "right",
+              "label": "From Right"
+            }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_glow",
+          "label": "Show Glow Effect",
+          "default": true
+        },
+        {
+          "type": "color",
+          "id": "glow_color_1",
+          "label": "Glow Color 1",
+          "default": "#00E5FF"
+        },
+        {
+          "type": "color",
+          "id": "glow_color_2",
+          "label": "Glow Color 2",
+          "default": "#BF00FF"
+        },
+        {
+          "type": "range",
+          "id": "glow_opacity",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "unit": "%",
+          "label": "Glow Opacity",
+          "default": 40
+        },
+        {
+          "type": "range",
+          "id": "glow_blur",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "unit": "px",
+          "label": "Glow Blur",
+          "default": 20
+        },
+        {
+          "type": "checkbox",
+          "id": "show_overlay",
+          "label": "Show Text Overlay",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "overlay_title",
+          "label": "Overlay Title"
+        },
+        {
+          "type": "textarea",
+          "id": "overlay_description",
+          "label": "Overlay Description"
+        },
+        {
+          "type": "color",
+          "id": "overlay_bg_color",
+          "label": "Overlay Background Color",
+          "default": "rgba(0, 0, 0, 0.7)"
+        },
+        {
+          "type": "color",
+          "id": "overlay_text_color",
+          "label": "Overlay Text Color",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "range",
+          "id": "image_border_radius",
+          "min": 0,
+          "max": 50,
+          "step": 1,
+          "unit": "px",
+          "label": "Image Border Radius",
+          "default": 16
+        },
+        {
+          "type": "checkbox",
+          "id": "image_shadow_enabled",
+          "label": "Enable Image Shadow",
+          "default": true
+        },
+        {
+          "type": "range",
+          "id": "image_shadow_blur",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "unit": "px",
+          "label": "Image Shadow Blur",
+          "default": 40
+        },
+        {
+          "type": "range",
+          "id": "image_shadow_opacity",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "unit": "%",
+          "label": "Image Shadow Opacity",
+          "default": 50
+        },
+        {
+          "type": "color",
+          "id": "image_shadow_color",
+          "label": "Image Shadow Color",
+          "default": "#9333EA"
+        },
+        {
+          "type": "text",
+          "id": "item_padding",
+          "label": "Item Padding",
+          "default": "0"
+        },
+        {
+          "type": "text",
+          "id": "item_margin",
+          "label": "Item Margin",
+          "default": "0"
+        },
+        {
+          "type": "header",
+          "content": "🎨 Custom Classes"
+        },
+        {
+          "type": "text",
+          "id": "item_classes",
+          "label": "Item CSS Classes"
+        },
+        {
+          "type": "text",
+          "id": "image_classes",
+          "label": "Image CSS Classes"
+        },
+        {
+          "type": "text",
+          "id": "overlay_classes",
+          "label": "Overlay CSS Classes"
+        },
+        {
+          "type": "text",
+          "id": "overlay_title_classes",
+          "label": "Overlay Title CSS Classes"
+        },
+        {
+          "type": "text",
+          "id": "overlay_description_classes",
+          "label": "Overlay Description CSS Classes"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Features",
+      "settings": {
+        "show_header": true,
+        "show_features_grid": true,
+        "show_lifestyle_images": true,
+        "enable_mouse_glow": true,
+        "title_text": "Powerful Features",
+        "subtitle_text": "Discover what makes our LED ambient lighting solution the perfect choice for your entertainment setup."
+      }
     }
   ]
 }
