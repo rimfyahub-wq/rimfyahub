@@ -365,7 +365,7 @@
     position: relative;
     border-radius: 1rem;
     overflow: hidden;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: {{ section.settings.aspect_ratio | default: '16/9' }};
     box-shadow: 0 0 60px rgba(147, 51, 234, 0.5);
     transition: box-shadow 0.5s;
     {%- if section.settings.border_width > 0 -%}
@@ -466,6 +466,42 @@
     {
       "type": "header",
       "content": "Image Settings"
+    },
+    {
+      "type": "select",
+      "id": "aspect_ratio",
+      "label": "TV Container Aspect Ratio",
+      "options": [
+        {
+          "value": "16/9",
+          "label": "16:9 (Standard TV)"
+        },
+        {
+          "value": "4/3",
+          "label": "4:3 (Classic TV)"
+        },
+        {
+          "value": "21/9",
+          "label": "21:9 (Ultrawide)"
+        },
+        {
+          "value": "1/1",
+          "label": "1:1 (Square)"
+        },
+        {
+          "value": "3/2",
+          "label": "3:2"
+        },
+        {
+          "value": "2/1",
+          "label": "2:1 (Cinema)"
+        },
+        {
+          "value": "auto",
+          "label": "Auto (fit to image)"
+        }
+      ],
+      "default": "16/9"
     },
     {
       "type": "select",
