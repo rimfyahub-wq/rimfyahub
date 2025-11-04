@@ -5,6 +5,7 @@
     "search": "Search",
     "menu": "Products",
     "close_menu": "Close Menu",
+    "close": "Close",
     "404": {
       "title": "Page Not Found",
       "subtext": "The page you requested does not exist.",
@@ -14,11 +15,30 @@
     "loading": "Loading...",
     "error": "An error occurred. Please try again."
   },
+  "customer": {
+    "account": {
+      "title": "My Account"
+    },
+    "login_page": {
+      "title": "Login"
+    },
+    "register": {
+      "title": "Sign Up"
+    },
+    "orders": {
+      "title": "Orders"
+    },
+    "addresses": {
+      "title": "Addresses"
+    },
+    "log_out": "Logout"
+  },
   "products": {
     "product": {
       "add_to_cart": "Add to Cart",
       "sold_out": "Sold Out",
       "unavailable": "Unavailable",
+      "on_sale": "Sale",
       "price": "Price",
       "quantity": "Quantity",
       "in_stock": "In Stock",
@@ -29,6 +49,10 @@
       "reviews": "Reviews",
       "share": "Share",
       "similar_products": "You may also like"
+    },
+    "general": {
+      "no_products": "No products found",
+      "view_all": "View All Products"
     }
   },
   "cart": {
@@ -40,7 +64,8 @@
       "total": "Total",
       "tax": "Tax",
       "shipping": "Shipping",
-      "checkout": "Checkout",
+      "taxes_and_shipping": "Shipping and taxes calculated at checkout",
+      "checkout": "Proceed to Checkout",
       "update": "Update Cart",
       "remove": "Remove"
     }
@@ -57,11 +82,17 @@
       "title": "Revolutionary Features",
       "subtitle": "Experience the perfect blend of innovation and simplicity with Glow Edge F1",
       "easy_setup": "Easy Setup",
+      "easy_setup_desc": "No tools, no adhesives. Install in under 2 minutes with our innovative snap-on design.",
       "rgbic": "RGBIC LED Technology",
+      "rgbic_desc": "Access over 16 million colors with independent color control for stunning ambient effects.",
       "smart_home": "Smart Home Integration",
+      "smart_home_desc": "Control via Tuya App, compatible with Alexa and Google Home for seamless voice control.",
       "universal": "Universal VESA Compatibility",
+      "universal_desc": "Fits all standard VESA mount sizes (75x75, 100x100, 200x100, 200x200, 400x400mm).",
       "dual_control": "Dual Control Options",
-      "experience": "Ultimate Experience"
+      "dual_control_desc": "Includes wireless remote control and attached control unit for maximum convenience.",
+      "premium_quality": "Premium Quality",
+      "premium_quality_desc": "Durable construction designed for 40-50\" TVs with long-lasting LED performance."
     },
     "products": {
       "title": "Shop Glow Edge",
@@ -69,6 +100,7 @@
     }
   },
   "footer": {
+    "description": "Transform your viewing experience with innovative LED ambient lighting solutions.",
     "quick_links": "Quick Links",
     "legal": "Legal",
     "contact": "Contact",
@@ -76,6 +108,11 @@
     "about": "About Us",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
+    "shipping_policy": "Shipping Policy",
+    "refund_policy": "Refund Policy",
+    "cookie_policy": "Cookie Policy",
+    "accessibility": "Accessibility",
+    "sitemap": "Sitemap",
     "copyright": "© {{ year }} {{ shop_name }}. All rights reserved."
   },
   "accessibility": {

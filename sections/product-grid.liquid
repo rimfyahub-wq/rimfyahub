@@ -6,11 +6,19 @@
       <h2 class="section-title text-center mb-4">
         {{ section.settings.title }}
       </h2>
+    {% else %}
+      <h2 class="section-title text-center mb-4">
+        {{ 'sections.products.title' | t }}
+      </h2>
     {% endif %}
     
     {% if section.settings.subtitle != blank %}
       <p class="section-description text-center mb-12">
         {{ section.settings.subtitle }}
+      </p>
+    {% else %}
+      <p class="section-description text-center mb-12">
+        {{ 'sections.products.description' | t }}
       </p>
     {% endif %}
 
@@ -42,7 +50,7 @@
                     height="500"
                   >
                   {% if product.compare_at_price > product.price %}
-                    <span class="product-badge">Sale</span>
+                    <span class="product-badge">{{ 'products.product.on_sale' | t }}</span>
                   {% endif %}
                 </div>
               {% endif %}
@@ -65,10 +73,7 @@
       {% else %}
         <div style="grid-column: 1/-1; text-align: center; padding: 3rem;">
           <p style="color: rgba(255,255,255,0.7); font-size: 1.125rem;">
-            No products found. Make sure your products are published to the "Online Store" sales channel.
-          </p>
-          <p style="color: rgba(255,255,255,0.5); margin-top: 1rem;">
-            Go to Shopify Admin → Products → Select your product → Sales channels → Add to Online Store
+            {{ 'products.general.no_products' | t }}
           </p>
         </div>
       {% endif %}
@@ -77,7 +82,11 @@
     {% if section.settings.show_view_all and section.settings.collection != blank %}
       <div class="text-center mt-12">
         <a href="{{ collections[section.settings.collection].url }}" class="btn btn-primary">
-          {{ section.settings.button_text | default: "View All Products" }}
+          {% if section.settings.button_text != blank %}
+            {{ section.settings.button_text }}
+          {% else %}
+            {{ 'products.general.view_all' | t }}
+          {% endif %}
         </a>
       </div>
     {% endif %}

@@ -47,9 +47,9 @@
       {% unless product.available %}disabled{% endunless %}
     >
       {% if product.available %}
-        Add to Cart
+        {{ 'products.product.add_to_cart' | t }}
       {% else %}
-        Sold Out
+        {{ 'products.product.sold_out' | t }}
       {% endif %}
     </button>
   </form>

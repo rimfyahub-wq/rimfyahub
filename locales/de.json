@@ -5,6 +5,7 @@
     "search": "Suchen",
     "menu": "Produkte",
     "close_menu": "Menü schließen",
+    "close": "Schließen",
     "404": {
       "title": "Seite nicht gefunden",
       "subtext": "Die gesuchte Seite existiert nicht.",
@@ -14,11 +15,30 @@
     "loading": "Lädt...",
     "error": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
   },
+  "customer": {
+    "account": {
+      "title": "Mein Konto"
+    },
+    "login_page": {
+      "title": "Anmelden"
+    },
+    "register": {
+      "title": "Registrieren"
+    },
+    "orders": {
+      "title": "Bestellungen"
+    },
+    "addresses": {
+      "title": "Adressen"
+    },
+    "log_out": "Abmelden"
+  },
   "products": {
     "product": {
       "add_to_cart": "In den Warenkorb",
       "sold_out": "Ausverkauft",
       "unavailable": "Nicht verfügbar",
+      "on_sale": "Angebot",
       "price": "Preis",
       "quantity": "Menge",
       "in_stock": "Auf Lager",
@@ -29,6 +49,10 @@
       "reviews": "Bewertungen",
       "share": "Teilen",
       "similar_products": "Das könnte Ihnen auch gefallen"
+    },
+    "general": {
+      "no_products": "Keine Produkte gefunden",
+      "view_all": "Alle Produkte ansehen"
     }
   },
   "cart": {
@@ -40,7 +64,8 @@
       "total": "Gesamt",
       "tax": "MwSt.",
       "shipping": "Versand",
-      "checkout": "Zur Kasse",
+      "taxes_and_shipping": "Versand und Steuern werden an der Kasse berechnet",
+      "checkout": "Zur Kasse gehen",
       "update": "Warenkorb aktualisieren",
       "remove": "Entfernen"
     }
@@ -57,11 +82,17 @@
       "title": "Revolutionäre Funktionen",
       "subtitle": "Erleben Sie die perfekte Mischung aus Innovation und Einfachheit mit Glow Edge F1",
       "easy_setup": "Einfache Einrichtung",
+      "easy_setup_desc": "Keine Werkzeuge, keine Klebstoffe. Installieren Sie in unter 2 Minuten mit unserem innovativen Snap-on-Design.",
       "rgbic": "RGBIC LED-Technologie",
+      "rgbic_desc": "Zugriff auf über 16 Millionen Farben mit unabhängiger Farbsteuerung für beeindruckende Umgebungseffekte.",
       "smart_home": "Smart Home Integration",
+      "smart_home_desc": "Steuerung über Tuya App, kompatibel mit Alexa und Google Home für nahtlose Sprachsteuerung.",
       "universal": "Universelle VESA-Kompatibilität",
+      "universal_desc": "Passt für alle Standard-VESA-Montage-Größen (75x75, 100x100, 200x100, 200x200, 400x400mm).",
       "dual_control": "Duale Steuerungsoptionen",
-      "experience": "Ultimatives Erlebnis"
+      "dual_control_desc": "Enthält kabellose Fernbedienung und angeschlossene Steuereinheit für maximalen Komfort.",
+      "premium_quality": "Premium-Qualität",
+      "premium_quality_desc": "Langlebige Konstruktion für 40-50\" Fernseher mit langanhaltender LED-Leistung."
     },
     "products": {
       "title": "Glow Edge Shop",
@@ -69,6 +100,7 @@
     }
   },
   "footer": {
+    "description": "Verwandeln Sie Ihr Seherlebnis mit innovativen LED-Ambientebeleuchtungslösungen.",
     "quick_links": "Schnelllinks",
     "legal": "Rechtliches",
     "contact": "Kontakt",
@@ -76,6 +108,11 @@
     "about": "Über uns",
     "privacy": "Datenschutz",
     "terms": "Nutzungsbedingungen",
+    "shipping_policy": "Versandrichtlinie",
+    "refund_policy": "Rückgaberecht",
+    "cookie_policy": "Cookie-Richtlinie",
+    "accessibility": "Barrierefreiheit",
+    "sitemap": "Sitemap",
     "copyright": "© {{ year }} {{ shop_name }}. Alle Rechte vorbehalten."
   },
   "accessibility": {

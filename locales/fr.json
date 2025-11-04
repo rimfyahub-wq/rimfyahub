@@ -5,6 +5,7 @@
     "search": "Rechercher",
     "menu": "Produits",
     "close_menu": "Fermer le menu",
+    "close": "Fermer",
     "404": {
       "title": "Page non trouvée",
       "subtext": "La page que vous recherchez n'existe pas.",
@@ -14,11 +15,30 @@
     "loading": "Chargement...",
     "error": "Une erreur s'est produite. Veuillez réessayer."
   },
+  "customer": {
+    "account": {
+      "title": "Mon compte"
+    },
+    "login_page": {
+      "title": "Connexion"
+    },
+    "register": {
+      "title": "S'inscrire"
+    },
+    "orders": {
+      "title": "Commandes"
+    },
+    "addresses": {
+      "title": "Adresses"
+    },
+    "log_out": "Déconnexion"
+  },
   "products": {
     "product": {
       "add_to_cart": "Ajouter au panier",
       "sold_out": "Épuisé",
       "unavailable": "Indisponible",
+      "on_sale": "En promotion",
       "price": "Prix",
       "quantity": "Quantité",
       "in_stock": "En stock",
@@ -29,6 +49,10 @@
       "reviews": "Avis",
       "share": "Partager",
       "similar_products": "Vous aimerez aussi"
+    },
+    "general": {
+      "no_products": "Aucun produit trouvé",
+      "view_all": "Voir tous les produits"
     }
   },
   "cart": {
@@ -40,7 +64,8 @@
       "total": "Total",
       "tax": "Taxes",
       "shipping": "Livraison",
-      "checkout": "Commander",
+      "taxes_and_shipping": "Les frais de livraison et les taxes sont calculés au moment du paiement",
+      "checkout": "Procéder au paiement",
       "update": "Mettre à jour le panier",
       "remove": "Supprimer"
     }
@@ -57,11 +82,17 @@
       "title": "Fonctionnalités révolutionnaires",
       "subtitle": "Découvrez le mélange parfait d'innovation et de simplicité avec Glow Edge F1",
       "easy_setup": "Installation facile",
+      "easy_setup_desc": "Pas d'outils, pas d'adhésifs. Installation en moins de 2 minutes grâce à notre conception innovante à encliquetage.",
       "rgbic": "Technologie LED RGBIC",
+      "rgbic_desc": "Accédez à plus de 16 millions de couleurs avec un contrôle indépendant pour des effets d'ambiance époustouflants.",
       "smart_home": "Intégration domotique",
+      "smart_home_desc": "Contrôle via l'application Tuya, compatible avec Alexa et Google Home pour un contrôle vocal fluide.",
       "universal": "Compatibilité VESA universelle",
+      "universal_desc": "S'adapte à toutes les tailles de montage VESA standard (75x75, 100x100, 200x100, 200x200, 400x400mm).",
       "dual_control": "Options de contrôle double",
-      "experience": "Expérience ultime"
+      "dual_control_desc": "Comprend une télécommande sans fil et une unité de contrôle attachée pour un confort maximal.",
+      "premium_quality": "Qualité premium",
+      "premium_quality_desc": "Construction durable conçue pour les téléviseurs 40-50\" avec des performances LED durables."
     },
     "products": {
       "title": "Boutique Glow Edge",
@@ -69,6 +100,7 @@
     }
   },
   "footer": {
+    "description": "Transformez votre expérience visuelle avec des solutions d'éclairage LED ambiantes innovantes.",
     "quick_links": "Liens rapides",
     "legal": "Mentions légales",
     "contact": "Contact",
@@ -76,6 +108,11 @@
     "about": "À propos",
     "privacy": "Politique de confidentialité",
     "terms": "Conditions d'utilisation",
+    "shipping_policy": "Politique d'expédition",
+    "refund_policy": "Politique de remboursement",
+    "cookie_policy": "Politique de cookies",
+    "accessibility": "Accessibilité",
+    "sitemap": "Plan du site",
     "copyright": "© {{ year }} {{ shop_name }}. Tous droits réservés."
   },
   "accessibility": {

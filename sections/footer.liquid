@@ -18,7 +18,11 @@
           {% endif %}
           
           <p class="footer-description">
-            {{ section.settings.description | default: "Transform your viewing experience with innovative LED ambient lighting solutions." }}
+            {% if section.settings.description != blank %}
+              {{ section.settings.description }}
+            {% else %}
+              {{ 'footer.description' | t }}
+            {% endif %}
           </p>
           
           <div class="social-links">
@@ -61,29 +65,29 @@
 
         <!-- Quick Links -->
         <div class="footer-column">
-          <h3 class="footer-heading">Quick Links</h3>
+          <h3 class="footer-heading">{{ 'footer.quick_links' | t }}</h3>
           <ul class="footer-links">
-            <li><a href="/collections/all">Products</a></li>
-            <li><a href="#features">Features</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="/collections/all">{{ 'general.menu' | t }}</a></li>
+            <li><a href="#features">{{ 'sections.features.title' | t }}</a></li>
+            <li><a href="#about">{{ 'footer.about' | t }}</a></li>
+            <li><a href="#contact">{{ 'footer.contact' | t }}</a></li>
           </ul>
         </div>
 
         <!-- Legal -->
         <div class="footer-column">
-          <h3 class="footer-heading">Legal</h3>
+          <h3 class="footer-heading">{{ 'footer.legal' | t }}</h3>
           <ul class="footer-links">
-            <li><a href="/pages/privacy-policy">Privacy Policy</a></li>
-            <li><a href="/pages/terms-of-service">Terms of Service</a></li>
-            <li><a href="/pages/shipping-policy">Shipping Policy</a></li>
-            <li><a href="/pages/refund-policy">Refund Policy</a></li>
+            <li><a href="/pages/privacy-policy">{{ 'footer.privacy' | t }}</a></li>
+            <li><a href="/pages/terms-of-service">{{ 'footer.terms' | t }}</a></li>
+            <li><a href="/pages/shipping-policy">{{ 'footer.shipping_policy' | t }}</a></li>
+            <li><a href="/pages/refund-policy">{{ 'footer.refund_policy' | t }}</a></li>
           </ul>
         </div>
 
         <!-- Contact -->
         <div class="footer-column">
-          <h3 class="footer-heading">Contact</h3>
+          <h3 class="footer-heading">{{ 'footer.contact' | t }}</h3>
           <ul class="footer-contact">
             {% if section.settings.email %}
             <li class="contact-item">
@@ -126,9 +130,9 @@
           © {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.
         </p>
         <div class="footer-bottom-links">
-          <a href="/pages/cookie-policy">Cookie Policy</a>
-          <a href="/pages/accessibility">Accessibility</a>
-          <a href="/sitemap.xml">Sitemap</a>
+          <a href="/pages/cookie-policy">{{ 'footer.cookie_policy' | t }}</a>
+          <a href="/pages/accessibility">{{ 'footer.accessibility' | t }}</a>
+          <a href="/sitemap.xml">{{ 'footer.sitemap' | t }}</a>
         </div>
       </div>
     </div>
