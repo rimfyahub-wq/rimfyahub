@@ -503,41 +503,96 @@
   .hero-stats {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    padding-top: 2rem;
+    gap: 1.5rem;
+    padding-top: 3rem;
   }
 
   @media (min-width: 640px) {
     .hero-stats {
       grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
     }
   }
 
   .stat-item {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+
+  .stat-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.1), transparent);
+    transition: left 0.5s;
+  }
+
+  .stat-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 229, 255, 0.15);
+    border-color: rgba(0, 229, 255, 0.3);
+  }
+
+  .stat-item:hover::before {
+    left: 100%;
   }
 
   @media (min-width: 1024px) {
     .stat-item {
-      text-align: left;
+      text-align: center;
+      padding: 2.5rem 2rem;
     }
   }
 
   .stat-value {
-    font-size: 1.875rem;
-    font-weight: 700;
-    color: hsl(193, 100%, 65%);
+    font-size: 2rem;
+    font-weight: 800;
+    color: #00E5FF;
+    margin-bottom: 0.5rem;
+    display: block;
+    text-shadow: 0 0 20px rgba(0, 229, 255, 0.5);
+    position: relative;
+    z-index: 2;
   }
 
   @media (min-width: 640px) {
     .stat-value {
-      font-size: 2.25rem;
+      font-size: 2.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .stat-value {
+      font-size: 3rem;
+      margin-bottom: 0.75rem;
     }
   }
 
   .stat-label {
-    font-size: 0.875rem;
-    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    z-index: 2;
+  }
+
+  @media (min-width: 640px) {
+    .stat-label {
+      font-size: 1rem;
+    }
   }
 
   .hero-media {
