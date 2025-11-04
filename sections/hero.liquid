@@ -365,17 +365,34 @@
     aspect-ratio: 16 / 9;
     box-shadow: 0 0 60px rgba(147, 51, 234, 0.5);
     transition: box-shadow 0.5s;
+    {%- if section.settings.border_width > 0 -%}
+    border: {{ section.settings.border_width }}px {{ section.settings.border_style }} {{ section.settings.border_color }};
+    {%- endif -%}
+    {%- if section.settings.border_radius > 0 -%}
+    border-radius: {{ section.settings.border_radius }}px;
+    {%- endif -%}
+    padding: {{ section.settings.image_padding_top }}px {{ section.settings.image_padding_right }}px {{ section.settings.image_padding_bottom }}px {{ section.settings.image_padding_left }}px;
+    margin: {{ section.settings.image_margin_top }}px {{ section.settings.image_margin_right }}px {{ section.settings.image_margin_bottom }}px {{ section.settings.image_margin_left }}px;
+    {%- if section.settings.enable_shadow -%}
+    box-shadow: 0 0 {{ section.settings.shadow_blur }}px {{ section.settings.shadow_color | color_modify: 'alpha', section.settings.shadow_opacity | divided_by: 100.0 }};
+    {%- endif -%}
   }
 
   .hero-media:hover .hero-video-wrapper {
+    {%- if section.settings.enable_shadow -%}
+    box-shadow: 0 0 {{ section.settings.shadow_blur | plus: 20 }}px {{ section.settings.shadow_color | color_modify: 'alpha', section.settings.shadow_opacity | plus: 20 | divided_by: 100.0 }};
+    {%- else -%}
     box-shadow: 0 0 80px rgba(147, 51, 234, 0.7);
+    {%- endif -%}
   }
 
   .hero-video,
   .hero-image {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+    width: {{ section.settings.image_width | default: 100 }}%;
+    height: {{ section.settings.image_height | default: 100 }}%;
+    object-fit: {{ section.settings.image_fit | default: 'contain' }};
+    object-position: {{ section.settings.image_position | default: 'center center' }};
+    transform: scale({{ section.settings.image_scale | default: 100 | divided_by: 100.0 }});
     transition: opacity 1000ms ease-in-out;
   }
 
@@ -412,6 +429,294 @@
       "type": "image_picker",
       "id": "hero_image",
       "label": "Hero Image (fallback)"
+    },
+    {
+      "type": "header",
+      "content": "Image Settings"
+    },
+    {
+      "type": "select",
+      "id": "image_fit",
+      "label": "Image Fit",
+      "options": [
+        {
+          "value": "contain",
+          "label": "Contain (fit entire image)"
+        },
+        {
+          "value": "cover",
+          "label": "Cover (fill container)"
+        },
+        {
+          "value": "fill",
+          "label": "Fill (stretch to fit)"
+        },
+        {
+          "value": "none",
+          "label": "None (original size)"
+        },
+        {
+          "value": "scale-down",
+          "label": "Scale Down (smaller of contain/none)"
+        }
+      ],
+      "default": "contain"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image Position",
+      "options": [
+        {
+          "value": "center center",
+          "label": "Center"
+        },
+        {
+          "value": "top center",
+          "label": "Top Center"
+        },
+        {
+          "value": "bottom center",
+          "label": "Bottom Center"
+        },
+        {
+          "value": "center left",
+          "label": "Center Left"
+        },
+        {
+          "value": "center right",
+          "label": "Center Right"
+        },
+        {
+          "value": "top left",
+          "label": "Top Left"
+        },
+        {
+          "value": "top right",
+          "label": "Top Right"
+        },
+        {
+          "value": "bottom left",
+          "label": "Bottom Left"
+        },
+        {
+          "value": "bottom right",
+          "label": "Bottom Right"
+        }
+      ],
+      "default": "center center"
+    },
+    {
+      "type": "range",
+      "id": "image_scale",
+      "min": 50,
+      "max": 200,
+      "step": 5,
+      "unit": "%",
+      "label": "Image Scale",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "image_width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Image Width",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "image_height",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Image Height",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Border Settings"
+    },
+    {
+      "type": "range",
+      "id": "border_width",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Border Width",
+      "default": 0
+    },
+    {
+      "type": "select",
+      "id": "border_style",
+      "label": "Border Style",
+      "options": [
+        {
+          "value": "solid",
+          "label": "Solid"
+        },
+        {
+          "value": "dashed",
+          "label": "Dashed"
+        },
+        {
+          "value": "dotted",
+          "label": "Dotted"
+        },
+        {
+          "value": "double",
+          "label": "Double"
+        },
+        {
+          "value": "groove",
+          "label": "Groove"
+        },
+        {
+          "value": "ridge",
+          "label": "Ridge"
+        }
+      ],
+      "default": "solid"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border Color",
+      "default": "#00D9FF"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "label": "Border Radius (rounded corners)",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Spacing Settings"
+    },
+    {
+      "type": "range",
+      "id": "image_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "image_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "image_padding_left",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Left",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "image_padding_right",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Right",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "image_margin_top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Margin Top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "image_margin_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Margin Bottom",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "image_margin_left",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Margin Left",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "image_margin_right",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Margin Right",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Shadow Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_shadow",
+      "label": "Enable Shadow",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "shadow_blur",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Shadow Blur",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "shadow_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Shadow Opacity",
+      "default": 50
+    },
+    {
+      "type": "color",
+      "id": "shadow_color",
+      "label": "Shadow Color",
+      "default": "#00D9FF"
     }
   ]
 }
