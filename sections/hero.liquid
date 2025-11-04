@@ -15,12 +15,12 @@
       <div class="hero-content" data-parallax-content>
         <div class="hero-text">
           <p class="hero-subtitle">
-            {{ section.settings.subtitle | default: "Transform Your Viewing Experience" }}
+            {{ section.settings.subtitle | default: 'sections.hero.subtitle' | t }}
           </p>
           <h1 class="hero-title">
-            <span class="hero-title-main">{{ section.settings.title | default: "Glow Edge" }}</span>
+            <span class="hero-title-main">{{ section.settings.title | default: 'sections.hero.title' | t }}</span>
             <span class="hero-title-sub">
-              Model <span class="hero-model">{{ section.settings.model | default: "F1" }}</span>
+              Model <span class="hero-model">{{ section.settings.model | default: 'sections.hero.model' | t }}</span>
             </span>
           </h1>
           <p class="hero-description">
@@ -30,10 +30,10 @@
 
         <div class="hero-cta">
           <a href="{{ section.settings.button_primary_link | default: '/collections/all' }}" class="btn btn-primary glow-pulse">
-            {{ section.settings.button_primary_text | default: "Shop Now" }}
+            {{ section.settings.button_primary_text | default: 'sections.hero.shop_now' | t }}
           </a>
           <a href="{{ section.settings.button_secondary_link | default: '#features' }}" class="btn btn-outline">
-            {{ section.settings.button_secondary_text | default: "Learn More" }}
+            {{ section.settings.button_secondary_text | default: 'sections.hero.learn_more' | t }}
           </a>
         </div>
 
