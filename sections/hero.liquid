@@ -14,31 +14,17 @@
       <!-- Content -->
       <div class="hero-content" data-parallax-content>
         <div class="hero-text">
-          <p class="hero-subtitle">
-            {{ 'sections.hero.subtitle' | t }}
-          </p>
+          <p class="hero-subtitle">{{ 'sections.hero.subtitle' | t }}</p>
           <h1 class="hero-title">
-            <span class="hero-title-main">
-              {{ 'sections.hero.title' | t }}
-            </span>
-            <span class="hero-title-sub">
-              Model <span class="hero-model">
-                {{ 'sections.hero.model' | t }}
-              </span>
-            </span>
+            <span class="hero-title-main">{{ 'sections.hero.title' | t }}</span>
+            <span class="hero-title-sub">Model <span class="hero-model">{{ 'sections.hero.model' | t }}</span></span>
           </h1>
-          <p class="hero-description">
-            {{ 'sections.hero.description' | t }}
-          </p>
+          <p class="hero-description">{{ 'sections.hero.description' | t }}</p>
         </div>
 
         <div class="hero-cta">
-          <a href="{{ section.settings.button_primary_link | default: '/collections/all' }}" class="btn btn-primary glow-pulse">
-            {{ 'sections.hero.shop_now' | t }}
-          </a>
-          <a href="{{ section.settings.button_secondary_link | default: '#features' }}" class="btn btn-outline">
-            {{ 'sections.hero.learn_more' | t }}
-          </a>
+          <a href="/collections/all" class="btn btn-primary glow-pulse">{{ 'sections.hero.shop_now' | t }}</a>
+          <a href="#features" class="btn btn-outline">{{ 'sections.hero.learn_more' | t }}</a>
         </div>
 
         <!-- Key Features -->
@@ -423,30 +409,6 @@
   "name": "Hero",
   "settings": [
     {
-      "type": "text",
-      "id": "subtitle",
-      "label": "Subtitle",
-      "default": "Transform Your Viewing Experience"
-    },
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Title",
-      "default": "Glow Edge"
-    },
-    {
-      "type": "text",
-      "id": "model",
-      "label": "Model",
-      "default": "F1"
-    },
-    {
-      "type": "textarea",
-      "id": "description",
-      "label": "Description",
-      "default": "The first-ever LED ambient lighting frame designed exclusively for 40-50\" TVs."
-    },
-    {
       "type": "url",
       "id": "hero_video",
       "label": "Hero Video URL (MP4)"
@@ -455,30 +417,6 @@
       "type": "image_picker",
       "id": "hero_image",
       "label": "Hero Image (fallback)"
-    },
-    {
-      "type": "text",
-      "id": "button_primary_text",
-      "label": "Primary Button Text",
-      "default": "Shop Now"
-    },
-    {
-      "type": "url",
-      "id": "button_primary_link",
-      "label": "Primary Button Link",
-      "default": "/collections/all"
-    },
-    {
-      "type": "text",
-      "id": "button_secondary_text",
-      "label": "Secondary Button Text",
-      "default": "Learn More"
-    },
-    {
-      "type": "text",
-      "id": "button_secondary_link",
-      "label": "Secondary Button Link",
-      "default": "#features"
     }
   ]
 }
