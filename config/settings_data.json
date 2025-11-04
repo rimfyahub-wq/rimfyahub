@@ -32,9 +32,7 @@
       },
       "hero": {
         "type": "hero",
-        "settings": {
-          "hero_video": ""
-        }
+        "settings": {}
       },
       "features": {
         "type": "features",
