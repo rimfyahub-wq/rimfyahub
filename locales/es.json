@@ -1,0 +1,90 @@
+{
+  "general": {
+    "shop_name": "Glow Edge",
+    "continue_shopping": "Continuar comprando",
+    "search": "Buscar",
+    "menu": "Menú",
+    "close_menu": "Cerrar menú",
+    "404": {
+      "title": "Página no encontrada",
+      "subtext": "La página que buscas no existe.",
+      "link": "Continuar comprando"
+    },
+    "skip_to_content": "Ir al contenido",
+    "loading": "Cargando...",
+    "error": "Ocurrió un error. Por favor, inténtalo de nuevo."
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Añadir al carrito",
+      "sold_out": "Agotado",
+      "unavailable": "No disponible",
+      "price": "Precio",
+      "quantity": "Cantidad",
+      "in_stock": "En stock",
+      "out_of_stock": "Sin stock",
+      "sku": "SKU",
+      "description": "Descripción",
+      "specifications": "Especificaciones",
+      "reviews": "Reseñas",
+      "share": "Compartir",
+      "similar_products": "También te puede gustar"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Carrito",
+      "empty": "Tu carrito está vacío",
+      "continue_shopping": "Continuar comprando",
+      "subtotal": "Subtotal",
+      "total": "Total",
+      "tax": "Impuestos",
+      "shipping": "Envío",
+      "checkout": "Finalizar compra",
+      "update": "Actualizar carrito",
+      "remove": "Eliminar"
+    }
+  },
+  "sections": {
+    "hero": {
+      "subtitle": "Transforma tu experiencia visual",
+      "title": "Glow Edge",
+      "model": "F1",
+      "shop_now": "Comprar ahora",
+      "learn_more": "Saber más"
+    },
+    "features": {
+      "title": "Características revolucionarias",
+      "subtitle": "Experimenta la combinación perfecta de innovación y simplicidad con Glow Edge F1",
+      "easy_setup": "Instalación fácil",
+      "rgbic": "Tecnología LED RGBIC",
+      "smart_home": "Integración domótica",
+      "universal": "Compatibilidad VESA universal",
+      "dual_control": "Opciones de control dual",
+      "experience": "Experiencia definitiva"
+    },
+    "products": {
+      "title": "Tienda Glow Edge",
+      "description": "Transforma tu espacio de entretenimiento con nuestra revolucionaria iluminación LED ambiental"
+    }
+  },
+  "footer": {
+    "quick_links": "Enlaces rápidos",
+    "legal": "Legal",
+    "contact": "Contacto",
+    "social": "Síguenos",
+    "about": "Sobre nosotros",
+    "privacy": "Política de privacidad",
+    "terms": "Términos de servicio",
+    "copyright": "© {{ year }} {{ shop_name }}. Todos los derechos reservados."
+  },
+  "accessibility": {
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "open_menu": "Abrir menú de navegación",
+    "close_menu": "Cerrar menú de navegación",
+    "open_search": "Abrir búsqueda",
+    "added_to_cart": "{{ product_title }} añadido al carrito",
+    "error_adding": "Error al añadir {{ product_title }} al carrito"
+  }
+}

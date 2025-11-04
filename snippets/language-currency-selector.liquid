@@ -43,9 +43,16 @@
       {% endform %}
     </div>
   {% else %}
-    {% comment %} Debug: Show how many languages available {% endcomment %}
-    <div style="padding: 0.5rem 0.75rem; background: rgba(255, 200, 0, 0.2); border: 1px solid rgba(255, 200, 0, 0.5); border-radius: 8px; color: #ffc800; font-size: 0.75rem; white-space: nowrap;">
-      🌐 {{ localization.available_languages.size }} lang
+    {% comment %} Show current language even if only one available {% endcomment %}
+    <div class="locale-selector__item" style="position: relative;">
+      <div class="locale-button" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0.75rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; color: rgba(255, 255, 255, 0.9); font-size: 0.875rem; opacity: 0.7;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="2" y1="12" x2="22" y2="12"></line>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+        </svg>
+        <span class="locale-text">{{ localization.language.endonym_name }}</span>
+      </div>
     </div>
   {% endif %}
 </div>

@@ -1,0 +1,90 @@
+{
+  "general": {
+    "shop_name": "Glow Edge",
+    "continue_shopping": "Weiter einkaufen",
+    "search": "Suchen",
+    "menu": "Menü",
+    "close_menu": "Menü schließen",
+    "404": {
+      "title": "Seite nicht gefunden",
+      "subtext": "Die gesuchte Seite existiert nicht.",
+      "link": "Weiter einkaufen"
+    },
+    "skip_to_content": "Zum Inhalt springen",
+    "loading": "Lädt...",
+    "error": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "In den Warenkorb",
+      "sold_out": "Ausverkauft",
+      "unavailable": "Nicht verfügbar",
+      "price": "Preis",
+      "quantity": "Menge",
+      "in_stock": "Auf Lager",
+      "out_of_stock": "Nicht auf Lager",
+      "sku": "SKU",
+      "description": "Beschreibung",
+      "specifications": "Spezifikationen",
+      "reviews": "Bewertungen",
+      "share": "Teilen",
+      "similar_products": "Das könnte Ihnen auch gefallen"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Warenkorb",
+      "empty": "Ihr Warenkorb ist leer",
+      "continue_shopping": "Weiter einkaufen",
+      "subtotal": "Zwischensumme",
+      "total": "Gesamt",
+      "tax": "MwSt.",
+      "shipping": "Versand",
+      "checkout": "Zur Kasse",
+      "update": "Warenkorb aktualisieren",
+      "remove": "Entfernen"
+    }
+  },
+  "sections": {
+    "hero": {
+      "subtitle": "Verwandeln Sie Ihr Seherlebnis",
+      "title": "Glow Edge",
+      "model": "F1",
+      "shop_now": "Jetzt kaufen",
+      "learn_more": "Mehr erfahren"
+    },
+    "features": {
+      "title": "Revolutionäre Funktionen",
+      "subtitle": "Erleben Sie die perfekte Mischung aus Innovation und Einfachheit mit Glow Edge F1",
+      "easy_setup": "Einfache Einrichtung",
+      "rgbic": "RGBIC LED-Technologie",
+      "smart_home": "Smart Home Integration",
+      "universal": "Universelle VESA-Kompatibilität",
+      "dual_control": "Duale Steuerungsoptionen",
+      "experience": "Ultimatives Erlebnis"
+    },
+    "products": {
+      "title": "Glow Edge Shop",
+      "description": "Verwandeln Sie Ihren Unterhaltungsbereich mit unserer revolutionären LED-Ambientebeleuchtung"
+    }
+  },
+  "footer": {
+    "quick_links": "Schnelllinks",
+    "legal": "Rechtliches",
+    "contact": "Kontakt",
+    "social": "Folgen Sie uns",
+    "about": "Über uns",
+    "privacy": "Datenschutz",
+    "terms": "Nutzungsbedingungen",
+    "copyright": "© {{ year }} {{ shop_name }}. Alle Rechte vorbehalten."
+  },
+  "accessibility": {
+    "previous": "Zurück",
+    "next": "Weiter",
+    "open_menu": "Navigationsmenü öffnen",
+    "close_menu": "Navigationsmenü schließen",
+    "open_search": "Suche öffnen",
+    "added_to_cart": "{{ product_title }} zum Warenkorb hinzugefügt",
+    "error_adding": "Fehler beim Hinzufügen von {{ product_title }} zum Warenkorb"
+  }
+}
