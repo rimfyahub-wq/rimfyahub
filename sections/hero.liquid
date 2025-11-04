@@ -525,7 +525,15 @@
     overflow: hidden;
     transition: all 0.3s ease;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(30px);
+    animation: statFadeInUp 0.8s ease-out forwards;
   }
+
+  .stat-item:nth-child(1) { animation-delay: 0.1s; }
+  .stat-item:nth-child(2) { animation-delay: 0.3s; }
+  .stat-item:nth-child(3) { animation-delay: 0.5s; }
+  .stat-item:nth-child(4) { animation-delay: 0.7s; }
 
   .stat-item::before {
     content: '';
@@ -667,6 +675,17 @@
     }
     50% {
       transform: translateX(-50%) translateY(-10px);
+    }
+  }
+
+  @keyframes statFadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 </style>
