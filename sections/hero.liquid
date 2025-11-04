@@ -14,11 +14,11 @@
       <!-- Content -->
       <div class="hero-content" data-parallax-content>
         <div class="hero-text">
-          <p class="hero-subtitle">{{ 'sections.hero.subtitle' | t }}</p>
           <h1 class="hero-title">
             <span class="hero-title-main">{{ 'sections.hero.title' | t }}</span>
-            <span class="hero-title-sub">Model <span class="hero-model">{{ 'sections.hero.model' | t }}</span></span>
           </h1>
+          <p class="hero-subtitle">Model <span class="hero-model">{{ 'sections.hero.model' | t }}</span></p>
+          <p class="hero-tagline">{{ 'sections.hero.subtitle' | t }}</p>
           <p class="hero-description">{{ 'sections.hero.description' | t }}</p>
         </div>
 
@@ -163,63 +163,64 @@
     }
   }
 
-  .hero-subtitle {
-    color: hsl(193, 100%, 65%);
-    font-size: 0.875rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-
-  @media (min-width: 640px) {
-    .hero-subtitle {
-      font-size: 1rem;
-    }
-  }
-
   .hero-title {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .hero-title-main {
     font-size: 2.5rem;
     font-weight: 700;
     line-height: 1.2;
+    margin-bottom: 0.5rem;
   }
 
   @media (min-width: 640px) {
-    .hero-title-main {
+    .hero-title {
       font-size: 3rem;
     }
   }
 
   @media (min-width: 1024px) {
-    .hero-title-main {
+    .hero-title {
       font-size: 4.5rem;
     }
   }
 
-  .hero-title-sub {
+  .hero-title-main {
+    display: block;
+  }
+
+  .hero-subtitle {
     font-size: 1.5rem;
     color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 1rem;
   }
 
   @media (min-width: 640px) {
-    .hero-title-sub {
+    .hero-subtitle {
       font-size: 1.875rem;
     }
   }
 
   @media (min-width: 1024px) {
-    .hero-title-sub {
+    .hero-subtitle {
       font-size: 2.25rem;
     }
   }
 
   .hero-model {
     color: hsl(193, 100%, 65%);
+  }
+
+  .hero-tagline {
+    color: hsl(193, 100%, 65%);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .hero-tagline {
+      font-size: 1rem;
+    }
   }
 
   .hero-description {
