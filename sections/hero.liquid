@@ -153,8 +153,7 @@
           </div>
           {%- endif -%}
 
-          {%- if section.settings.show_stats -%}
-          <!-- Key Features -->
+          <!-- Key Features - Always Visible -->
           <div class="hero-stats {{ section.settings.stats_classes }}"
                style="
                  {%- if section.settings.stats_columns -%}grid-template-columns: repeat({{ section.settings.stats_columns }}, 1fr);{%- endif -%}
@@ -183,7 +182,6 @@
             {%- endif -%}
             {%- endfor -%}
           </div>
-          {%- endif -%}
         </div>
         {%- endif -%}
 
