@@ -1,0 +1,53 @@
+═══════════════════════════════════════════════════════════════
+🇫🇷 COPY THESE TO SHOPIFY ADMIN → SETTINGS → LANGUAGES → FRENCH
+═══════════════════════════════════════════════════════════════
+
+Go to: Shopify Admin > Settings > Languages > French > Edit translations
+
+Search for "sections.hero" and fill in these values:
+
+sections.hero.subtitle
+Transformez votre expérience visuelle
+
+sections.hero.title
+Glow Edge
+
+sections.hero.model
+F1
+
+sections.hero.description
+Le premier cadre d'éclairage LED ambiant conçu exclusivement pour les téléviseurs 40-50". Découvrez des millions de couleurs qui transforment votre espace en moins de 2 minutes.
+
+sections.hero.shop_now
+Acheter maintenant
+
+sections.hero.learn_more
+En savoir plus
+
+sections.hero.stat_setup_value
+<2 min
+
+sections.hero.stat_setup_label
+Installation
+
+sections.hero.stat_colors_value
+16M+
+
+sections.hero.stat_colors_label
+Couleurs
+
+sections.hero.stat_voice_value
+Voix
+
+sections.hero.stat_voice_label
+Contrôle
+
+sections.hero.stat_install_value
+Sans outils
+
+sections.hero.stat_install_label
+Montage
+
+═══════════════════════════════════════════════════════════════
+After entering all values, click SAVE and hard refresh your site!
+═══════════════════════════════════════════════════════════════
