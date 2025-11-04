@@ -2,6 +2,11 @@
  * Glow Edge Shopify Theme - Main Styles
  */
 
+/* ===== Global Smooth Scroll ===== */
+html {
+  scroll-behavior: smooth;
+}
+
 /* ===== Accessibility ===== */
 .skip-link {
   position: absolute;

@@ -17,6 +17,8 @@
     try {
       animateFeatureCards();
       animateGradientBackground();
+      animateHeroElements();
+      animateOnScroll();
     } catch (error) {
       console.error('Animation init error:', error);
     }
@@ -94,5 +96,67 @@
 
     setTimeout(cycleGradients, 5000);
     setInterval(cycleGradients, 6000);
+  }
+
+  // Animate hero elements on page load
+  function animateHeroElements() {
+    const heroTitle = document.querySelector('.hero-title');
+    const heroSubtitle = document.querySelector('.hero-subtitle');
+    const heroTagline = document.querySelector('.hero-tagline');
+    const heroDescription = document.querySelector('.hero-description');
+    const heroCta = document.querySelector('.hero-cta');
+    const heroStats = document.querySelector('.hero-stats');
+    const heroMedia = document.querySelector('.hero-media');
+
+    const elements = [
+      { el: heroTitle, delay: 100 },
+      { el: heroSubtitle, delay: 300 },
+      { el: heroTagline, delay: 500 },
+      { el: heroDescription, delay: 700 },
+      { el: heroCta, delay: 900 },
+      { el: heroStats, delay: 1100 },
+      { el: heroMedia, delay: 600 }
+    ];
+
+    elements.forEach(({ el, delay }) => {
+      if (el) {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+        
+        setTimeout(() => {
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        }, delay);
+      }
+    });
+  }
+
+  // General scroll animations
+  function animateOnScroll() {
+    const animatedElements = document.querySelectorAll(
+      '.testimonial-card, .faq-item, .newsletter, section[class*="section"]:not(.hero-section)'
+    );
+
+    if (animatedElements.length === 0) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    animatedElements.forEach(element => {
+      element.style.opacity = '0';
+      element.style.transform = 'translateY(30px)';
+      element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(element);
+    });
   }
 })();
