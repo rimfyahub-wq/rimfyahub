@@ -160,8 +160,10 @@
                  {%- if section.settings.stats_columns -%}grid-template-columns: repeat({{ section.settings.stats_columns }}, 1fr);{%- endif -%}
                  gap: {{ section.settings.stats_gap }}rem;
                ">
-            {%- for block in section.blocks -%}
-            {%- if block.type == 'statistic' -%}
+            {%- for i in (1..4) -%}
+            {%- assign stat_value = 'stat_' | append: i | append: '_value' -%}
+            {%- assign stat_label = 'stat_' | append: i | append: '_label' -%}
+            {%- if section.settings[stat_value] != blank -%}
             <div class="stat-item {{ section.settings.stat_classes }}"
                  style="
                    {%- if section.settings.stat_bg_color -%}background-color: {{ section.settings.stat_bg_color }};{%- endif -%}
@@ -171,12 +173,12 @@
                  style="
                    {%- if section.settings.stat_value_color -%}color: {{ section.settings.stat_value_color }};{%- endif -%}
                    {%- if section.settings.stat_value_font_size -%}font-size: {{ section.settings.stat_value_font_size }}px;{%- endif -%}
-                 ">{{ block.settings.value }}</p>
+                 ">{{ section.settings[stat_value] }}</p>
               <p class="stat-label {{ section.settings.stat_label_classes }}"
                  style="
                    {%- if section.settings.stat_label_color -%}color: {{ section.settings.stat_label_color }};{%- endif -%}
                    {%- if section.settings.stat_label_font_size -%}font-size: {{ section.settings.stat_label_font_size }}px;{%- endif -%}
-                 ">{{ block.settings.label }}</p>
+                 ">{{ section.settings[stat_label] }}</p>
             </div>
             {%- endif -%}
             {%- endfor -%}
