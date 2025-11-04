@@ -11,19 +11,53 @@
   "sections": {
     "hero": {
       "type": "hero",
-      "settings": {}
+      "settings": {
+        "hero_video": "",
+        "hero_image": "shopify://shop_images/Gold_Black_Classy_Personal_Business_Card.png",
+        "background_opacity": 60,
+        "gradient_blur": 80,
+        "hide_background": false,
+        "aspect_ratio": "16/9",
+        "image_fit": "contain",
+        "image_position": "center center",
+        "image_scale": 100,
+        "image_width": 100,
+        "image_height": 100,
+        "border_width": 0,
+        "border_style": "solid",
+        "border_color": "#00d9ff",
+        "border_radius": 0,
+        "image_padding_top": 0,
+        "image_padding_bottom": 0,
+        "image_padding_left": 0,
+        "image_padding_right": 0,
+        "image_margin_top": 0,
+        "image_margin_bottom": 0,
+        "image_margin_left": 0,
+        "image_margin_right": 0,
+        "enable_shadow": false,
+        "shadow_blur": 20,
+        "shadow_opacity": 50,
+        "shadow_color": "#00d9ff"
+      }
     },
     "features": {
       "type": "features",
-      "settings": {}
+      "settings": {
+        "show_lifestyle_images": true
+      }
     },
     "products": {
       "type": "product-grid",
       "settings": {
         "title": "Featured Products",
         "subtitle": "Explore our premium LED ambient lighting solutions",
+        "collection": "",
         "products_per_row": 3,
-        "products_to_show": 6
+        "products_to_show": 6,
+        "show_description": true,
+        "show_view_all": true,
+        "button_text": "View All Products"
       }
     }
   },
