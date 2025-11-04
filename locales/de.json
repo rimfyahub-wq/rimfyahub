@@ -75,8 +75,17 @@
       "subtitle": "Verwandeln Sie Ihr Seherlebnis",
       "title": "Glow Edge",
       "model": "F1",
+      "description": "Der erste LED-Ambientebeleuchtungsrahmen, der exklusiv für 40-50\" Fernseher entwickelt wurde. Erleben Sie Millionen von Farben, die Ihren Raum in weniger als 2 Minuten verwandeln.",
       "shop_now": "Jetzt kaufen",
-      "learn_more": "Mehr erfahren"
+      "learn_more": "Mehr erfahren",
+      "stat_setup_value": "<2 Min",
+      "stat_setup_label": "Einrichtung",
+      "stat_colors_value": "16M+",
+      "stat_colors_label": "Farben",
+      "stat_voice_value": "Sprache",
+      "stat_voice_label": "Steuerung",
+      "stat_install_value": "Werkzeugfrei",
+      "stat_install_label": "Installation"
     },
     "features": {
       "title": "Revolutionäre Funktionen",

@@ -75,8 +75,17 @@
       "subtitle": "Transforma tu experiencia visual",
       "title": "Glow Edge",
       "model": "F1",
+      "description": "El primer marco de iluminación LED ambiental diseñado exclusivamente para televisores de 40-50\". Experimenta millones de colores que transforman tu espacio en menos de 2 minutos.",
       "shop_now": "Comprar ahora",
-      "learn_more": "Saber más"
+      "learn_more": "Saber más",
+      "stat_setup_value": "<2 min",
+      "stat_setup_label": "Instalación",
+      "stat_colors_value": "16M+",
+      "stat_colors_label": "Colores",
+      "stat_voice_value": "Voz",
+      "stat_voice_label": "Control",
+      "stat_install_value": "Sin herramientas",
+      "stat_install_label": "Montaje"
     },
     "features": {
       "title": "Características revolucionarias",

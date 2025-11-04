@@ -75,8 +75,17 @@
       "subtitle": "Transformez votre expérience visuelle",
       "title": "Glow Edge",
       "model": "F1",
+      "description": "Le premier cadre d'éclairage LED ambiant conçu exclusivement pour les téléviseurs 40-50\". Découvrez des millions de couleurs qui transforment votre espace en moins de 2 minutes.",
       "shop_now": "Acheter maintenant",
-      "learn_more": "En savoir plus"
+      "learn_more": "En savoir plus",
+      "stat_setup_value": "<2 min",
+      "stat_setup_label": "Installation",
+      "stat_colors_value": "16M+",
+      "stat_colors_label": "Couleurs",
+      "stat_voice_value": "Voix",
+      "stat_voice_label": "Contrôle",
+      "stat_install_value": "Sans outils",
+      "stat_install_label": "Montage"
     },
     "features": {
       "title": "Fonctionnalités révolutionnaires",

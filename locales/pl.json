@@ -75,8 +75,17 @@
       "subtitle": "Zmień swoje doświadczenie oglądania",
       "title": "Glow Edge",
       "model": "F1",
+      "description": "Pierwsza na świecie ramka z oświetleniem LED zaprojektowana wyłącznie dla telewizorów 40-50\". Doświadcz milionów kolorów, które przekształcą Twoją przestrzeń w mniej niż 2 minuty.",
       "shop_now": "Kup teraz",
-      "learn_more": "Dowiedz się więcej"
+      "learn_more": "Dowiedz się więcej",
+      "stat_setup_value": "<2 min",
+      "stat_setup_label": "Instalacja",
+      "stat_colors_value": "16M+",
+      "stat_colors_label": "Kolorów",
+      "stat_voice_value": "Głos",
+      "stat_voice_label": "Sterowanie",
+      "stat_install_value": "Bez narzędzi",
+      "stat_install_label": "Montaż"
     },
     "features": {
       "title": "Rewolucyjne funkcje",
