@@ -317,11 +317,25 @@
 
   .stat-item {
     text-align: center;
+    padding: 1.5rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .stat-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(0, 229, 255, 0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 229, 255, 0.2);
   }
 
   @media (min-width: 1024px) {
     .stat-item {
-      text-align: left;
+      text-align: center;
     }
   }
 
@@ -329,6 +343,7 @@
     font-size: 1.875rem;
     font-weight: 700;
     color: hsl(193, 100%, 65%);
+    margin-bottom: 0.25rem;
   }
 
   @media (min-width: 640px) {
@@ -339,7 +354,8 @@
 
   .stat-label {
     font-size: 0.875rem;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
   }
 
   .hero-media {
