@@ -15,53 +15,29 @@
       <div class="hero-content" data-parallax-content>
         <div class="hero-text">
           <p class="hero-subtitle">
-            {% if section.settings.subtitle != blank %}
-              {{ section.settings.subtitle }}
-            {% else %}
-              {{ 'sections.hero.subtitle' | t }}
-            {% endif %}
+            {{ 'sections.hero.subtitle' | t }}
           </p>
           <h1 class="hero-title">
             <span class="hero-title-main">
-              {% if section.settings.title != blank %}
-                {{ section.settings.title }}
-              {% else %}
-                {{ 'sections.hero.title' | t }}
-              {% endif %}
+              {{ 'sections.hero.title' | t }}
             </span>
             <span class="hero-title-sub">
               Model <span class="hero-model">
-                {% if section.settings.model != blank %}
-                  {{ section.settings.model }}
-                {% else %}
-                  {{ 'sections.hero.model' | t }}
-                {% endif %}
+                {{ 'sections.hero.model' | t }}
               </span>
             </span>
           </h1>
           <p class="hero-description">
-            {% if section.settings.description != blank %}
-              {{ section.settings.description }}
-            {% else %}
-              {{ 'sections.hero.description' | t }}
-            {% endif %}
+            {{ 'sections.hero.description' | t }}
           </p>
         </div>
 
         <div class="hero-cta">
           <a href="{{ section.settings.button_primary_link | default: '/collections/all' }}" class="btn btn-primary glow-pulse">
-            {% if section.settings.button_primary_text != blank %}
-              {{ section.settings.button_primary_text }}
-            {% else %}
-              {{ 'sections.hero.shop_now' | t }}
-            {% endif %}
+            {{ 'sections.hero.shop_now' | t }}
           </a>
           <a href="{{ section.settings.button_secondary_link | default: '#features' }}" class="btn btn-outline">
-            {% if section.settings.button_secondary_text != blank %}
-              {{ section.settings.button_secondary_text }}
-            {% else %}
-              {{ 'sections.hero.learn_more' | t }}
-            {% endif %}
+            {{ 'sections.hero.learn_more' | t }}
           </a>
         </div>
 
