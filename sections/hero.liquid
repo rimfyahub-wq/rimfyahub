@@ -101,13 +101,16 @@
   .hero-bg-gradient {
     position: absolute;
     inset: 0;
-    filter: blur(80px);
+    filter: blur({{ section.settings.gradient_blur | default: 80 }}px);
     transition: opacity 3s ease-in-out;
+    {%- if section.settings.hide_background -%}
+    display: none;
+    {%- endif -%}
   }
 
   .hero-bg-current {
     background: linear-gradient(135deg, hsl(30, 100%, 60%), hsl(220, 100%, 60%), hsl(60, 100%, 60%));
-    opacity: 0.6;
+    opacity: {{ section.settings.background_opacity | default: 60 | divided_by: 100.0 }};
   }
 
   .hero-bg-next {
@@ -429,6 +432,36 @@
       "type": "image_picker",
       "id": "hero_image",
       "label": "Hero Image (fallback)"
+    },
+    {
+      "type": "header",
+      "content": "Background Settings"
+    },
+    {
+      "type": "range",
+      "id": "background_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Background Opacity (0 = fully transparent)",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "gradient_blur",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Background Blur",
+      "default": 80
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_background",
+      "label": "Hide Background Completely",
+      "default": false
     },
     {
       "type": "header",
