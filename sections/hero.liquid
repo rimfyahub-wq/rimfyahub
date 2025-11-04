@@ -591,8 +591,8 @@
   .hero-image {
     width: {{ section.settings.image_width | default: 100 }}%;
     height: {{ section.settings.image_height | default: 100 }}%;
-    object-fit: {{ section.settings.image_fit | default: 'contain' }};
-    object-position: {{ section.settings.image_position | default: 'center center' }};
+    object-fit: {{ section.settings.image_object_fit | default: 'cover' }};
+    object-position: {{ section.settings.image_object_position | default: 'center center' }};
     transform: scale({{ section.settings.image_scale | default: 100 | divided_by: 100.0 }});
     transition: opacity 1000ms ease-in-out;
   }
