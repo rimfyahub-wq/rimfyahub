@@ -23,7 +23,7 @@
         "type": "header",
         "settings": {
           "logo": "shopify://shop_images/2.png",
-          "logo_text": "RIMFYA",
+          "logo_text": "",
           "logo_width_mobile": 100,
           "logo_width_desktop": 140,
           "main_menu": "main-menu",
