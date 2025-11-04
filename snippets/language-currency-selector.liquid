@@ -3,10 +3,10 @@
   Usage: {% render 'language-currency-selector', location: 'header' %}
 {% endcomment %}
 
-{% assign show_language = settings.show_language_selector %}
-{% assign show_currency = settings.show_currency_selector %}
-{% assign selector_style = settings.selector_style %}
-{% assign selector_position = settings.selector_position %}
+{% assign show_language = settings.show_language_selector | default: true %}
+{% assign show_currency = settings.show_currency_selector | default: true %}
+{% assign selector_style = settings.selector_style | default: 'dropdown' %}
+{% assign selector_position = settings.selector_position | default: 'header' %}
 {% assign location = location | default: 'header' %}
 
 {% comment %} Only show if position matches {% endcomment %}
