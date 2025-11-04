@@ -15,9 +15,56 @@
     <div class="locale-selector {% if location == 'header' %}locale-selector--header{% else %}locale-selector--footer{% endif %}">
       
       {% comment %} Language Selector {% endcomment %}
-      {% if show_language and localization.available_languages.size > 1 %}
-        <div class="locale-selector__item">
-          {% form 'localization', class: 'locale-form', id: 'localization_form_language' %}
+      {% if show_language %}
+        {% if localization.available_languages.size > 1 %}
+          <div class="locale-selector__item">
+            {% form 'localization', class: 'locale-form', id: 'localization_form_language' %}
+              <button type="button" class="locale-button" onclick="toggleLocaleDropdown('language')">
+                {% if selector_style == 'flags' %}
+                  <span class="locale-flag">{{ localization.language.iso_code | upcase }}</span>
+                {% endif %}
+                <span class="locale-text">{{ localization.language.endonym_name }}</span>
+                <svg class="locale-icon" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </button>
+              
+              <div class="locale-dropdown" id="language-dropdown" style="display: none;">
+                {% for language in localization.available_languages %}
+                  <button 
+                    type="submit" 
+                    name="language_code" 
+                    value="{{ language.iso_code }}"
+                    class="locale-option {% if language.iso_code == localization.language.iso_code %}locale-option--active{% endif %}"
+                  >
+                    {% if selector_style == 'flags' %}
+                      <span class="locale-flag">{{ language.iso_code | upcase }}</span>
+                    {% endif %}
+                    <span>{{ language.endonym_name }}</span>
+                    {% if language.iso_code == localization.language.iso_code %}
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M13 4L6 11L3 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    {% endif %}
+                  </button>
+                {% endfor %}
+              </div>
+            {% endform %}
+          </div>
+        {% else %}
+          {% comment %} Show placeholder when no languages set up {% endcomment %}
+          <div class="locale-selector__item">
+            <div class="locale-button locale-button--placeholder">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              </svg>
+              <span class="locale-text">English</span>
+            </div>
+          </div>
+        {% endif %}
+      {% endif %}
             <button type="button" class="locale-button" onclick="toggleLocaleDropdown('language')">
               {% if selector_style == 'flags' %}
                 <span class="locale-flag">{{ localization.language.iso_code | upcase }}</span>
@@ -53,7 +100,50 @@
       {% endif %}
 
       {% comment %} Currency Selector {% endcomment %}
-      {% if show_currency and localization.available_countries.size > 1 %}
+      {% if show_currency %}
+        {% if localization.available_countries.size > 1 %}
+          <div class="locale-selector__item">
+            {% form 'localization', class: 'locale-form', id: 'localization_form_currency' %}
+              <button type="button" class="locale-button" onclick="toggleLocaleDropdown('currency')">
+                <span class="locale-text">{{ localization.country.currency.iso_code }} {{ localization.country.currency.symbol }}</span>
+                <svg class="locale-icon" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </button>
+              
+              <div class="locale-dropdown" id="currency-dropdown" style="display: none;">
+                {% for country in localization.available_countries %}
+                  <button 
+                    type="submit" 
+                    name="country_code" 
+                    value="{{ country.iso_code }}"
+                    class="locale-option {% if country.iso_code == localization.country.iso_code %}locale-option--active{% endif %}"
+                  >
+                    <span>{{ country.currency.iso_code }} {{ country.currency.symbol }}</span>
+                    <span class="locale-option__country">{{ country.name }}</span>
+                    {% if country.iso_code == localization.country.iso_code %}
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M13 4L6 11L3 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    {% endif %}
+                  </button>
+                {% endfor %}
+              </div>
+            {% endform %}
+          </div>
+        {% else %}
+          {% comment %} Show placeholder when no currencies set up {% endcomment %}
+          <div class="locale-selector__item">
+            <div class="locale-button locale-button--placeholder">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="1" x2="12" y2="23"></line>
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+              </svg>
+              <span class="locale-text">USD $</span>
+            </div>
+          </div>
+        {% endif %}
+      {% endif %}
         <div class="locale-selector__item">
           {% form 'localization', class: 'locale-form', id: 'localization_form_currency' %}
             <button type="button" class="locale-button" onclick="toggleLocaleDropdown('currency')">
@@ -132,6 +222,12 @@
     background: rgba(0, 229, 255, 0.1);
     border-color: rgba(0, 229, 255, 0.3);
     color: hsl(193, 100%, 65%);
+  }
+
+  .locale-button--placeholder {
+    opacity: 0.6;
+    cursor: default;
+    pointer-events: none;
   }
 
   .locale-flag {
