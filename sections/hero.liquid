@@ -209,6 +209,7 @@
                  {%- if section.settings.media_padding -%}padding: {{ section.settings.media_padding }};{%- endif -%}
                  {%- if section.settings.media_margin -%}margin: {{ section.settings.media_margin }};{%- endif -%}
                  {%- if section.settings.media_shadow_enabled -%}box-shadow: 0 0 {{ section.settings.media_shadow_blur }}px {{ section.settings.media_shadow_color | color_modify: 'alpha', section.settings.media_shadow_opacity | divided_by: 100.0 }};{%- endif -%}
+                 {%- if section.settings.image_bg_color != blank and section.settings.image_bg_opacity > 0 -%}background-color: {{ section.settings.image_bg_color | color_modify: 'alpha', section.settings.image_bg_opacity | divided_by: 100.0 }};{%- endif -%}
                  aspect-ratio: {{ section.settings.media_aspect_ratio }};
                ">
 
@@ -1559,6 +1560,22 @@
       "content": "🖼️ Image Settings"
     },
     {
+      "type": "color",
+      "id": "image_bg_color",
+      "label": "Image Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "image_bg_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Image Background Opacity",
+      "default": 0
+    },
+    {
       "type": "select",
       "id": "image_size",
       "label": "Image Size",
@@ -1624,7 +1641,7 @@
           "label": "Scale Down"
         }
       ],
-      "default": "contain"
+      "default": "cover"
     },
     {
       "type": "select",
