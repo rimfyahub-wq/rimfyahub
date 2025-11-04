@@ -15,35 +15,35 @@
       <div class="hero-content" data-parallax-content>
         <div class="hero-text">
           <h1 class="hero-title">
-            <span class="hero-title-main">{{ 'sections.hero.title' | t }}</span>
+            <span class="hero-title-main">{{ section.settings.hero_title | default: 'Glow Edge' }}</span>
           </h1>
-          <p class="hero-subtitle">Model <span class="hero-model">{{ 'sections.hero.model' | t }}</span></p>
-          <p class="hero-tagline">{{ 'sections.hero.subtitle' | t }}</p>
-          <p class="hero-description">{{ 'sections.hero.description' | t }}</p>
+          <p class="hero-subtitle">Model <span class="hero-model">{{ section.settings.hero_model | default: 'F1' }}</span></p>
+          <p class="hero-tagline">{{ section.settings.hero_tagline | default: 'TRANSFORM YOUR VIEWING EXPERIENCE' }}</p>
+          <p class="hero-description">{{ section.settings.hero_description | default: 'The first-ever LED ambient lighting frame designed exclusively for 40-50" TVs.' }}</p>
         </div>
 
         <div class="hero-cta">
-          <a href="/collections/all" class="btn btn-primary glow-pulse">{{ 'sections.hero.shop_now' | t }}</a>
-          <a href="#features" class="btn btn-outline">{{ 'sections.hero.learn_more' | t }}</a>
+          <a href="{{ section.settings.button_shop_url | default: '/collections/all' }}" class="btn btn-primary glow-pulse">{{ section.settings.button_shop_text | default: 'Shop Now' }}</a>
+          <a href="{{ section.settings.button_learn_url | default: '#features' }}" class="btn btn-outline">{{ section.settings.button_learn_text | default: 'Learn More' }}</a>
         </div>
 
         <!-- Key Features -->
         <div class="hero-stats">
           <div class="stat-item">
-            <p class="stat-value">{{ 'sections.hero.stat_setup_value' | t }}</p>
-            <p class="stat-label">{{ 'sections.hero.stat_setup_label' | t }}</p>
+            <p class="stat-value">{{ section.settings.stat1_value | default: '<2 min' }}</p>
+            <p class="stat-label">{{ section.settings.stat1_label | default: 'Setup' }}</p>
           </div>
           <div class="stat-item">
-            <p class="stat-value">{{ 'sections.hero.stat_colors_value' | t }}</p>
-            <p class="stat-label">{{ 'sections.hero.stat_colors_label' | t }}</p>
+            <p class="stat-value">{{ section.settings.stat2_value | default: '16M+' }}</p>
+            <p class="stat-label">{{ section.settings.stat2_label | default: 'Colors' }}</p>
           </div>
           <div class="stat-item">
-            <p class="stat-value">{{ 'sections.hero.stat_voice_value' | t }}</p>
-            <p class="stat-label">{{ 'sections.hero.stat_voice_label' | t }}</p>
+            <p class="stat-value">{{ section.settings.stat3_value | default: 'Voice' }}</p>
+            <p class="stat-label">{{ section.settings.stat3_label | default: 'Control' }}</p>
           </div>
           <div class="stat-item">
-            <p class="stat-value">{{ 'sections.hero.stat_install_value' | t }}</p>
-            <p class="stat-label">{{ 'sections.hero.stat_install_label' | t }}</p>
+            <p class="stat-value">{{ section.settings.stat4_value | default: 'Tool-Free' }}</p>
+            <p class="stat-label">{{ section.settings.stat4_label | default: 'Install' }}</p>
           </div>
         </div>
       </div>
@@ -424,6 +424,114 @@
 {
   "name": "Hero",
   "settings": [
+    {
+      "type": "header",
+      "content": "Hero Content"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title",
+      "default": "Glow Edge"
+    },
+    {
+      "type": "text",
+      "id": "hero_model",
+      "label": "Model Name",
+      "default": "F1"
+    },
+    {
+      "type": "text",
+      "id": "hero_tagline",
+      "label": "Tagline",
+      "default": "TRANSFORM YOUR VIEWING EXPERIENCE"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_description",
+      "label": "Description",
+      "default": "The first-ever LED ambient lighting frame designed exclusively for 40-50\" TVs. Experience millions of colors that transform your space in less than 2 minutes."
+    },
+    {
+      "type": "text",
+      "id": "button_shop_text",
+      "label": "Shop Button Text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_shop_url",
+      "label": "Shop Button URL",
+      "default": "/collections/all"
+    },
+    {
+      "type": "text",
+      "id": "button_learn_text",
+      "label": "Learn More Button Text",
+      "default": "Learn More"
+    },
+    {
+      "type": "url",
+      "id": "button_learn_url",
+      "label": "Learn More Button URL",
+      "default": "#features"
+    },
+    {
+      "type": "header",
+      "content": "Stats Boxes Content"
+    },
+    {
+      "type": "text",
+      "id": "stat1_value",
+      "label": "Stat 1 Value",
+      "default": "<2 min"
+    },
+    {
+      "type": "text",
+      "id": "stat1_label",
+      "label": "Stat 1 Label",
+      "default": "Setup"
+    },
+    {
+      "type": "text",
+      "id": "stat2_value",
+      "label": "Stat 2 Value",
+      "default": "16M+"
+    },
+    {
+      "type": "text",
+      "id": "stat2_label",
+      "label": "Stat 2 Label",
+      "default": "Colors"
+    },
+    {
+      "type": "text",
+      "id": "stat3_value",
+      "label": "Stat 3 Value",
+      "default": "Voice"
+    },
+    {
+      "type": "text",
+      "id": "stat3_label",
+      "label": "Stat 3 Label",
+      "default": "Control"
+    },
+    {
+      "type": "text",
+      "id": "stat4_value",
+      "label": "Stat 4 Value",
+      "default": "Tool-Free"
+    },
+    {
+      "type": "text",
+      "id": "stat4_label",
+      "label": "Stat 4 Label",
+      "default": "Install"
+    },
+    {
+      "type": "header",
+      "content": "Media Settings"
+    },
     {
       "type": "url",
       "id": "hero_video",
