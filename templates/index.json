@@ -3,16 +3,8 @@
     "hero": {
       "type": "hero",
       "settings": {
-        "subtitle": "",
-        "title": "",
-        "model": "",
-        "description": "",
         "hero_video": "",
-        "hero_image": "https://cdn.shopify.com/s/files/1/0784/8096/5890/files/Gold_Black_Classy_Personal_Business_Card.png?v=1762194398",
-        "button_primary_text": "",
-        "button_primary_link": "/collections/all",
-        "button_secondary_text": "",
-        "button_secondary_link": "#features"
+        "hero_image": "https://cdn.shopify.com/s/files/1/0784/8096/5890/files/Gold_Black_Classy_Personal_Business_Card.png?v=1762194398"
       }
     },
     "features": {
