@@ -1,288 +1,90 @@
-<section class="hero-section {{ section.settings.section_classes }}" data-mouse-glow data-scroll-parallax
-         style="
-           {%- if section.settings.section_bg_color != blank -%}background-color: {{ section.settings.section_bg_color }};{%- endif -%}
-           {%- if section.settings.section_padding_top > 0 -%}padding-top: {{ section.settings.section_padding_top }}px;{%- endif -%}
-           {%- if section.settings.section_padding_bottom > 0 -%}padding-bottom: {{ section.settings.section_padding_bottom }}px;{%- endif -%}
-           {%- if section.settings.section_margin_top > 0 -%}margin-top: {{ section.settings.section_margin_top }}px;{%- endif -%}
-           {%- if section.settings.section_margin_bottom > 0 -%}margin-bottom: {{ section.settings.section_margin_bottom }}px;{%- endif -%}
-         ">
-
-  {%- if section.settings.enable_background_gradient -%}
+<section class="hero-section" data-mouse-glow data-scroll-parallax>
   <!-- Animated Background Gradients -->
-  <div class="hero-bg-gradient hero-bg-current" data-gradient-layer="current"
-       style="background: linear-gradient({{ section.settings.gradient_angle }}deg, {{ section.settings.gradient_color_1 }}, {{ section.settings.gradient_color_2 }}, {{ section.settings.gradient_color_3 }}); opacity: {{ section.settings.gradient_opacity | divided_by: 100.0 }}; filter: blur({{ section.settings.gradient_blur }}px);"></div>
-  <div class="hero-bg-gradient hero-bg-next" data-gradient-layer="next"
-       style="background: linear-gradient({{ section.settings.gradient_angle | plus: 180 }}deg, {{ section.settings.gradient_color_2 }}, {{ section.settings.gradient_color_3 }}, {{ section.settings.gradient_color_1 }}); opacity: 0;"></div>
-  {%- endif -%}
-
-  {%- if section.settings.enable_mouse_glow -%}
+  <div class="hero-bg-gradient hero-bg-current" data-gradient-layer="current"></div>
+  <div class="hero-bg-gradient hero-bg-next" data-gradient-layer="next"></div>
+  
   <!-- Mouse Follow Glow -->
-  <div class="mouse-glow-overlay" style="opacity: {{ section.settings.mouse_glow_opacity | divided_by: 100.0 }}; filter: blur({{ section.settings.mouse_glow_blur }}px);"></div>
-  {%- endif -%}
-
-  {%- if section.settings.enable_secondary_glow -%}
+  <div class="mouse-glow-overlay"></div>
+  
   <!-- Secondary Glow Layer -->
-  <div class="secondary-glow" style="opacity: {{ section.settings.secondary_glow_opacity | divided_by: 100.0 }};"></div>
-  {%- endif -%}
+  <div class="secondary-glow"></div>
 
-  <div class="container hero-container {{ section.settings.container_classes }}"
-       style="max-width: {{ section.settings.container_max_width }}px;">
+  <div class="container hero-container">
+    <div class="hero-grid">
+      <!-- Content -->
+      <div class="hero-content" data-parallax-content>
+        <div class="hero-text">
+          <h1 class="hero-title">
+            <span class="hero-title-main">{{ 'sections.hero.title' | t }}</span>
+          </h1>
+          <p class="hero-subtitle">Model <span class="hero-model">{{ 'sections.hero.model' | t }}</span></p>
+          <p class="hero-tagline">{{ 'sections.hero.subtitle' | t }}</p>
+          <p class="hero-description">{{ 'sections.hero.description' | t }}</p>
+        </div>
 
-    {%- if section.settings.layout_style == 'grid' -%}
-    <div class="hero-grid {{ section.settings.grid_classes }}"
-         style="
-           {%- if section.settings.grid_columns_mobile -%}--grid-cols-mobile: {{ section.settings.grid_columns_mobile }};{%- endif -%}
-           {%- if section.settings.grid_columns_tablet -%}--grid-cols-tablet: {{ section.settings.grid_columns_tablet }};{%- endif -%}
-           {%- if section.settings.grid_columns_desktop -%}--grid-cols-desktop: {{ section.settings.grid_columns_desktop }};{%- endif -%}
-           gap: {{ section.settings.grid_gap }}rem;
-         ">
-    {%- endif -%}
+        <div class="hero-cta">
+          <a href="/collections/all" class="btn btn-primary glow-pulse">{{ 'sections.hero.shop_now' | t }}</a>
+          <a href="#features" class="btn btn-outline">{{ 'sections.hero.learn_more' | t }}</a>
+        </div>
 
-      {%- if section.settings.layout_style == 'flex' -%}
-      <div class="hero-flex {{ section.settings.flex_classes }}"
-           style="
-             flex-direction: {{ section.settings.flex_direction }};
-             justify-content: {{ section.settings.flex_justify }};
-             align-items: {{ section.settings.flex_align }};
-             gap: {{ section.settings.flex_gap }}rem;
-           ">
-      {%- endif -%}
-
-        <!-- Content Column -->
-        {%- if section.settings.show_content -%}
-        <div class="hero-content {{ section.settings.content_classes }}" data-parallax-content
-             style="
-               {%- if section.settings.content_width -%}flex-basis: {{ section.settings.content_width }}%;{%- endif -%}
-               {%- if section.settings.content_order -%}order: {{ section.settings.content_order }};{%- endif -%}
-               text-align: {{ section.settings.content_alignment }};
-             ">
-
-          {%- if section.settings.show_badge and section.settings.badge_text != blank -%}
-          <div class="hero-badge {{ section.settings.badge_classes }}"
-               style="
-                 {%- if section.settings.badge_bg_color -%}background-color: {{ section.settings.badge_bg_color }};{%- endif -%}
-                 {%- if section.settings.badge_text_color -%}color: {{ section.settings.badge_text_color }};{%- endif -%}
-                 {%- if section.settings.badge_border_radius -%}border-radius: {{ section.settings.badge_border_radius }}px;{%- endif -%}
-               ">
-            {{ section.settings.badge_text }}
+        <!-- Key Features -->
+        <div class="hero-stats">
+          <div class="stat-item">
+            <p class="stat-value">{{ 'sections.hero.stat_setup_value' | t }}</p>
+            <p class="stat-label">{{ 'sections.hero.stat_setup_label' | t }}</p>
           </div>
-          {%- endif -%}
-
-          {%- if section.settings.show_title and section.settings.title_text != blank -%}
-          <div class="hero-text">
-            <h1 class="hero-title {{ section.settings.title_classes }}"
-                style="
-                  {%- if section.settings.title_font_size -%}font-size: {{ section.settings.title_font_size }}px;{%- endif -%}
-                  {%- if section.settings.title_color -%}color: {{ section.settings.title_color }};{%- endif -%}
-                  {%- if section.settings.title_font_weight -%}font-weight: {{ section.settings.title_font_weight }};{%- endif -%}
-                  {%- if section.settings.title_line_height -%}line-height: {{ section.settings.title_line_height }};{%- endif -%}
-                ">
-              {%- if section.settings.title_highlight_word and section.settings.title_highlight_text != blank -%}
-                {%- assign words = section.settings.title_text | split: ' ' -%}
-                {%- for word in words -%}
-                  {%- if word == section.settings.title_highlight_text -%}
-                    <span class="hero-title-highlight"
-                          style="
-                            {%- if section.settings.title_highlight_color -%}color: {{ section.settings.title_highlight_color }};{%- endif -%}
-                            {%- if section.settings.title_highlight_bg -%}background: {{ section.settings.title_highlight_bg }};{%- endif -%}
-                          ">{{ word }}</span>
-                  {%- else -%}
-                    {{ word }}
-                  {%- endif -%}
-                  {%- unless forloop.last -%} {% endunless -%}
-                {%- endfor -%}
-              {%- else -%}
-                {{ section.settings.title_text }}
-              {%- endif -%}
-            </h1>
+          <div class="stat-item">
+            <p class="stat-value">{{ 'sections.hero.stat_colors_value' | t }}</p>
+            <p class="stat-label">{{ 'sections.hero.stat_colors_label' | t }}</p>
           </div>
-          {%- endif -%}
-
-          {%- if section.settings.show_subtitle and section.settings.subtitle_text != blank -%}
-          <p class="hero-subtitle {{ section.settings.subtitle_classes }}"
-             style="
-               {%- if section.settings.subtitle_font_size -%}font-size: {{ section.settings.subtitle_font_size }}px;{%- endif -%}
-               {%- if section.settings.subtitle_color -%}color: {{ section.settings.subtitle_color }};{%- endif -%}
-               {%- if section.settings.subtitle_font_weight -%}font-weight: {{ section.settings.subtitle_font_weight }};{%- endif -%}
-             ">
-            {{ section.settings.subtitle_text }}
-          </p>
-          {%- endif -%}
-
-          {%- if section.settings.show_description and section.settings.description_text != blank -%}
-          <p class="hero-description {{ section.settings.description_classes }}"
-             style="
-               {%- if section.settings.description_font_size -%}font-size: {{ section.settings.description_font_size }}px;{%- endif -%}
-               {%- if section.settings.description_color -%}color: {{ section.settings.description_color }};{%- endif -%}
-               {%- if section.settings.description_line_height -%}line-height: {{ section.settings.description_line_height }};{%- endif -%}
-             ">
-            {{ section.settings.description_text }}
-          </p>
-          {%- endif -%}
-
-          {%- if section.settings.show_buttons -%}
-          <div class="hero-cta {{ section.settings.buttons_classes }}"
-               style="
-                 {%- if section.settings.buttons_layout == 'vertical' -%}flex-direction: column;{%- endif -%}
-                 gap: {{ section.settings.buttons_gap }}rem;
-               ">
-
-            {%- if section.settings.primary_button_text != blank -%}
-            <a href="{{ section.settings.primary_button_url }}" class="btn btn-primary {{ section.settings.primary_button_classes }} glow-pulse"
-               style="
-                 {%- if section.settings.primary_button_bg -%}background: {{ section.settings.primary_button_bg }};{%- endif -%}
-                 {%- if section.settings.primary_button_color -%}color: {{ section.settings.primary_button_color }};{%- endif -%}
-                 {%- if section.settings.primary_button_border_radius -%}border-radius: {{ section.settings.primary_button_border_radius }}px;{%- endif -%}
-                 {%- if section.settings.primary_button_padding -%}padding: {{ section.settings.primary_button_padding }};{%- endif -%}
-               ">
-              {{ section.settings.primary_button_text }}
-            </a>
-            {%- endif -%}
-
-            {%- if section.settings.secondary_button_text != blank -%}
-            <a href="{{ section.settings.secondary_button_url }}" class="btn btn-outline {{ section.settings.secondary_button_classes }}"
-               style="
-                 {%- if section.settings.secondary_button_border_color -%}border-color: {{ section.settings.secondary_button_border_color }};{%- endif -%}
-                 {%- if section.settings.secondary_button_color -%}color: {{ section.settings.secondary_button_color }};{%- endif -%}
-                 {%- if section.settings.secondary_button_border_radius -%}border-radius: {{ section.settings.secondary_button_border_radius }}px;{%- endif -%}
-                 {%- if section.settings.secondary_button_padding -%}padding: {{ section.settings.secondary_button_padding }};{%- endif -%}
-               ">
-              {{ section.settings.secondary_button_text }}
-            </a>
-            {%- endif -%}
+          <div class="stat-item">
+            <p class="stat-value">{{ 'sections.hero.stat_voice_value' | t }}</p>
+            <p class="stat-label">{{ 'sections.hero.stat_voice_label' | t }}</p>
           </div>
-          {%- endif -%}
-
-          <!-- Key Features - Always Visible -->
-          <div class="hero-stats {{ section.settings.stats_classes }}"
-               style="
-                 {%- if section.settings.stats_columns -%}grid-template-columns: repeat({{ section.settings.stats_columns }}, 1fr);{%- endif -%}
-                 gap: {{ section.settings.stats_gap }}rem;
-               ">
-            {%- for i in (1..4) -%}
-            {%- assign stat_value = 'stat_' | append: i | append: '_value' -%}
-            {%- assign stat_label = 'stat_' | append: i | append: '_label' -%}
-            {%- if section.settings[stat_value] != blank -%}
-            <div class="stat-item {{ section.settings.stat_classes }}"
-                 style="
-                   {%- if section.settings.stat_bg_color -%}background-color: {{ section.settings.stat_bg_color }};{%- endif -%}
-                   {%- if section.settings.stat_border_radius -%}border-radius: {{ section.settings.stat_border_radius }}px;{%- endif -%}
-                 ">
-              <p class="stat-value {{ section.settings.stat_value_classes }}"
-                 style="
-                   {%- if section.settings.stat_value_color -%}color: {{ section.settings.stat_value_color }};{%- endif -%}
-                   {%- if section.settings.stat_value_font_size -%}font-size: {{ section.settings.stat_value_font_size }}px;{%- endif -%}
-                 ">{{ section.settings[stat_value] }}</p>
-              <p class="stat-label {{ section.settings.stat_label_classes }}"
-                 style="
-                   {%- if section.settings.stat_label_color -%}color: {{ section.settings.stat_label_color }};{%- endif -%}
-                   {%- if section.settings.stat_label_font_size -%}font-size: {{ section.settings.stat_label_font_size }}px;{%- endif -%}
-                 ">{{ section.settings[stat_label] }}</p>
-            </div>
-            {%- endif -%}
-            {%- endfor -%}
+          <div class="stat-item">
+            <p class="stat-value">{{ 'sections.hero.stat_install_value' | t }}</p>
+            <p class="stat-label">{{ 'sections.hero.stat_install_label' | t }}</p>
           </div>
         </div>
-        {%- endif -%}
-
-        <!-- Media Column -->
-        {%- if section.settings.show_media -%}
-        <div class="hero-media {{ section.settings.media_classes }}" data-parallax-media
-             style="
-               {%- if section.settings.media_width -%}flex-basis: {{ section.settings.media_width }}%;{%- endif -%}
-               {%- if section.settings.media_order -%}order: {{ section.settings.media_order }};{%- endif -%}
-             ">
-
-          {%- if section.settings.media_glow_enabled -%}
-          <div class="hero-video-glow"
-               style="
-                 background: linear-gradient(135deg, {{ section.settings.media_glow_color_1 }}, {{ section.settings.media_glow_color_2 }});
-                 opacity: {{ section.settings.media_glow_opacity | divided_by: 100.0 }};
-                 filter: blur({{ section.settings.media_glow_blur }}px);
-               "></div>
-          {%- endif -%}
-
-          <div class="hero-video-wrapper {{ section.settings.media_wrapper_classes }}"
-               style="
-                 {%- if section.settings.media_border_width > 0 -%}border: {{ section.settings.media_border_width }}px {{ section.settings.media_border_style }} {{ section.settings.media_border_color }};{%- endif -%}
-                 {%- if section.settings.media_border_radius > 0 -%}border-radius: {{ section.settings.media_border_radius }}px;{%- endif -%}
-                 {%- if section.settings.media_padding -%}padding: {{ section.settings.media_padding }};{%- endif -%}
-                 {%- if section.settings.media_margin -%}margin: {{ section.settings.media_margin }};{%- endif -%}
-                 {%- if section.settings.media_shadow_enabled -%}box-shadow: 0 0 {{ section.settings.media_shadow_blur }}px {{ section.settings.media_shadow_color | color_modify: 'alpha', section.settings.media_shadow_opacity | divided_by: 100.0 }};{%- endif -%}
-                 {%- if section.settings.image_bg_color != blank and section.settings.image_bg_opacity > 0 -%}background-color: {{ section.settings.image_bg_color | color_modify: 'alpha', section.settings.image_bg_opacity | divided_by: 100.0 }};{%- endif -%}
-                 aspect-ratio: {{ section.settings.media_aspect_ratio }};
-               ">
-
-            {%- if section.settings.media_type == 'video' and section.settings.hero_video != blank -%}
-              <video
-                class="hero-video {{ section.settings.video_classes }}"
-                autoplay="{{ section.settings.video_autoplay }}"
-                loop="{{ section.settings.video_loop }}"
-                muted="{{ section.settings.video_muted }}"
-                playsinline="{{ section.settings.video_playsinline }}"
-                data-video-fade
-                style="
-                  {%- if section.settings.video_object_fit -%}object-fit: {{ section.settings.video_object_fit }};{%- endif -%}
-                  {%- if section.settings.video_scale -%}transform: scale({{ section.settings.video_scale | divided_by: 100.0 }});{%- endif -%}
-                "
-              >
-                <source src="{{ section.settings.hero_video }}" type="video/mp4">
-              </video>
-            {%- elsif section.settings.media_type == 'image' and section.settings.hero_image != blank -%}
-              <img
-                src="{{ section.settings.hero_image | img_url: section.settings.image_size }}"
-                alt="{{ section.settings.hero_image.alt | default: section.settings.title_text }}"
-                class="hero-image {{ section.settings.image_classes }}"
-                style="
-                  {%- if section.settings.image_object_fit -%}object-fit: {{ section.settings.image_object_fit }};{%- endif -%}
-                  {%- if section.settings.image_object_position -%}object-position: {{ section.settings.image_object_position }};{%- endif -%}
-                  {%- if section.settings.image_scale -%}transform: scale({{ section.settings.image_scale | divided_by: 100.0 }});{%- endif -%}
-                  width: {{ section.settings.image_width }}%;
-                  height: {{ section.settings.image_height }}%;
-                "
-              >
-            {%- else -%}
-              <div class="hero-placeholder {{ section.settings.placeholder_classes }}"
-                   style="
-                     {%- if section.settings.placeholder_bg -%}background: {{ section.settings.placeholder_bg }};{%- endif -%}
-                     {%- if section.settings.placeholder_color -%}color: {{ section.settings.placeholder_color }};{%- endif -%}
-                   ">
-                {{ section.settings.placeholder_text | default: 'Add media content' }}
-              </div>
-            {%- endif -%}
-          </div>
-        </div>
-        {%- endif -%}
-
-      {%- if section.settings.layout_style == 'flex' -%}
       </div>
-      {%- endif -%}
 
-    {%- if section.settings.layout_style == 'grid' -%}
+      <!-- Hero Video -->
+      <div class="hero-media" data-parallax-media>
+        <div class="hero-video-glow"></div>
+        <div class="hero-video-wrapper">
+          {% if section.settings.hero_video != blank %}
+            <video 
+              class="hero-video" 
+              autoplay 
+              loop 
+              muted 
+              playsinline
+              data-video-fade
+            >
+              <source src="{{ section.settings.hero_video }}" type="video/mp4">
+            </video>
+          {% elsif section.settings.hero_image != blank %}
+            <img 
+              src="{{ section.settings.hero_image | img_url: '1200x' }}" 
+              alt="{{ section.settings.title }}"
+              class="hero-image"
+            >
+          {% else %}
+            <div style="width: 100%; height: 100%; background: linear-gradient(135deg, rgba(0,229,255,0.2), rgba(191,0,255,0.2)); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.5); font-size: 1.5rem; border-radius: 1rem;">
+              Product Image/Video
+            </div>
+          {% endif %}
+        </div>
+      </div>
     </div>
-    {%- endif -%}
-
   </div>
 
-  {%- if section.settings.show_scroll_indicator -%}
   <!-- Scroll Indicator -->
-  <div class="scroll-indicator {{ section.settings.scroll_indicator_classes }}"
-       style="
-         {%- if section.settings.scroll_indicator_color -%}color: {{ section.settings.scroll_indicator_color }};{%- endif -%}
-         bottom: {{ section.settings.scroll_indicator_position }}px;
-       ">
-    {%- if section.settings.scroll_indicator_type == 'arrow' -%}
-    <svg xmlns="http://www.w3.org/2000/svg" width="{{ section.settings.scroll_indicator_size }}" height="{{ section.settings.scroll_indicator_size }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+  <div class="scroll-indicator">
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       <polyline points="6 9 12 15 18 9"></polyline>
     </svg>
-    {%- elsif section.settings.scroll_indicator_type == 'chevron' -%}
-    <svg xmlns="http://www.w3.org/2000/svg" width="{{ section.settings.scroll_indicator_size }}" height="{{ section.settings.scroll_indicator_size }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <polyline points="6 9 12 15 18 9"></polyline>
-      <polyline points="6 15 12 21 18 15"></polyline>
-    </svg>
-    {%- endif -%}
   </div>
-  {%- endif -%}
 </section>
 
 <style>
@@ -503,104 +305,41 @@
   .hero-stats {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-    padding-top: 3rem;
+    gap: 1rem;
+    padding-top: 2rem;
   }
 
   @media (min-width: 640px) {
     .hero-stats {
       grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
     }
   }
 
   .stat-item {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
-    padding: 2rem 1.5rem;
     text-align: center;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    opacity: 0;
-    transform: translateY(30px);
-    animation: statFadeInUp 0.8s ease-out forwards;
-  }
-
-  .stat-item:nth-child(1) { animation-delay: 0.1s; }
-  .stat-item:nth-child(2) { animation-delay: 0.3s; }
-  .stat-item:nth-child(3) { animation-delay: 0.5s; }
-  .stat-item:nth-child(4) { animation-delay: 0.7s; }
-
-  .stat-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.1), transparent);
-    transition: left 0.5s;
-  }
-
-  .stat-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0, 229, 255, 0.15);
-    border-color: rgba(0, 229, 255, 0.3);
-  }
-
-  .stat-item:hover::before {
-    left: 100%;
   }
 
   @media (min-width: 1024px) {
     .stat-item {
-      text-align: center;
-      padding: 2.5rem 2rem;
+      text-align: left;
     }
   }
 
   .stat-value {
-    font-size: 2rem;
-    font-weight: 800;
-    color: #00E5FF;
-    margin-bottom: 0.5rem;
-    display: block;
-    text-shadow: 0 0 20px rgba(0, 229, 255, 0.5);
-    position: relative;
-    z-index: 2;
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: hsl(193, 100%, 65%);
   }
 
   @media (min-width: 640px) {
     .stat-value {
-      font-size: 2.5rem;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .stat-value {
-      font-size: 3rem;
-      margin-bottom: 0.75rem;
+      font-size: 2.25rem;
     }
   }
 
   .stat-label {
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.8);
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    position: relative;
-    z-index: 2;
-  }
-
-  @media (min-width: 640px) {
-    .stat-label {
-      font-size: 1rem;
-    }
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.6);
   }
 
   .hero-media {
@@ -654,8 +393,8 @@
   .hero-image {
     width: {{ section.settings.image_width | default: 100 }}%;
     height: {{ section.settings.image_height | default: 100 }}%;
-    object-fit: {{ section.settings.image_object_fit | default: 'cover' }};
-    object-position: {{ section.settings.image_object_position | default: 'center center' }};
+    object-fit: {{ section.settings.image_fit | default: 'contain' }};
+    object-position: {{ section.settings.image_position | default: 'center center' }};
     transform: scale({{ section.settings.image_scale | default: 100 | divided_by: 100.0 }});
     transition: opacity 1000ms ease-in-out;
   }
@@ -677,17 +416,6 @@
       transform: translateX(-50%) translateY(-10px);
     }
   }
-
-  @keyframes statFadeInUp {
-    0% {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
 </style>
 </section>
 
@@ -695,198 +423,6 @@
 {
   "name": "Hero",
   "settings": [
-    {
-      "type": "header",
-      "content": "🎯 Content Settings"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_content",
-      "label": "Show Content Section",
-      "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "show_badge",
-      "label": "Show Badge",
-      "default": false
-    },
-    {
-      "type": "text",
-      "id": "badge_text",
-      "label": "Badge Text",
-      "default": "NEW"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_title",
-      "label": "Show Title",
-      "default": true
-    },
-    {
-      "type": "text",
-      "id": "title_text",
-      "label": "Title Text",
-      "default": "Transform Your Viewing Experience"
-    },
-    {
-      "type": "checkbox",
-      "id": "title_highlight_word",
-      "label": "Highlight Word in Title",
-      "default": false
-    },
-    {
-      "type": "text",
-      "id": "title_highlight_text",
-      "label": "Word to Highlight",
-      "default": "Experience"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_subtitle",
-      "label": "Show Subtitle",
-      "default": true
-    },
-    {
-      "type": "text",
-      "id": "subtitle_text",
-      "label": "Subtitle Text",
-      "default": "Model Glow Edge"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_description",
-      "label": "Show Description",
-      "default": true
-    },
-    {
-      "type": "textarea",
-      "id": "description_text",
-      "label": "Description Text",
-      "default": "Experience the future of ambient lighting with our revolutionary LED technology that transforms any TV into an immersive visual masterpiece."
-    },
-    {
-      "type": "checkbox",
-      "id": "show_buttons",
-      "label": "Show Buttons",
-      "default": true
-    },
-    {
-      "type": "text",
-      "id": "primary_button_text",
-      "label": "Primary Button Text",
-      "default": "Shop Now"
-    },
-    {
-      "type": "url",
-      "id": "primary_button_url",
-      "label": "Primary Button URL",
-      "default": "/collections/all"
-    },
-    {
-      "type": "text",
-      "id": "secondary_button_text",
-      "label": "Secondary Button Text",
-      "default": "Learn More"
-    },
-    {
-      "type": "url",
-      "id": "secondary_button_url",
-      "label": "Secondary Button URL",
-      "default": "#features"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_stats",
-      "label": "Show Statistics",
-      "default": true
-    },
-    {
-      "type": "number",
-      "id": "stats_columns",
-      "label": "Stats Columns",
-      "min": 1,
-      "max": 6,
-      "default": 4
-    },
-    {
-      "type": "header",
-      "content": "📊 Statistics Items"
-    },
-    {
-      "type": "text",
-      "id": "stat_1_value",
-      "label": "Stat 1 Value",
-      "default": "5 min"
-    },
-    {
-      "type": "text",
-      "id": "stat_1_label",
-      "label": "Stat 1 Label",
-      "default": "Setup Time"
-    },
-    {
-      "type": "text",
-      "id": "stat_2_value",
-      "label": "Stat 2 Value",
-      "default": "16M"
-    },
-    {
-      "type": "text",
-      "id": "stat_2_label",
-      "label": "Stat 2 Label",
-      "default": "Color Options"
-    },
-    {
-      "type": "text",
-      "id": "stat_3_value",
-      "label": "Stat 3 Value",
-      "default": "Voice"
-    },
-    {
-      "type": "text",
-      "id": "stat_3_label",
-      "label": "Stat 3 Label",
-      "default": "Control"
-    },
-    {
-      "type": "text",
-      "id": "stat_4_value",
-      "label": "Stat 4 Value",
-      "default": "1 min"
-    },
-    {
-      "type": "text",
-      "id": "stat_4_label",
-      "label": "Stat 4 Label",
-      "default": "Install Time"
-    },
-    {
-      "type": "header",
-      "content": "🎬 Media Settings"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_media",
-      "label": "Show Media Section",
-      "default": true
-    },
-    {
-      "type": "select",
-      "id": "media_type",
-      "label": "Media Type",
-      "options": [
-        {
-          "value": "video",
-          "label": "Video"
-        },
-        {
-          "value": "image",
-          "label": "Image"
-        }
-      ],
-      "default": "video"
-    },
     {
       "type": "url",
       "id": "hero_video",
@@ -898,511 +434,43 @@
       "label": "Hero Image (fallback)"
     },
     {
-      "type": "text",
-      "id": "placeholder_text",
-      "label": "Placeholder Text",
-      "default": "Add media content"
-    },
-    {
       "type": "header",
-      "content": "🎨 Layout & Design"
-    },
-    {
-      "type": "select",
-      "id": "layout_style",
-      "label": "Layout Style",
-      "options": [
-        {
-          "value": "grid",
-          "label": "Grid Layout"
-        },
-        {
-          "value": "flex",
-          "label": "Flex Layout"
-        }
-      ],
-      "default": "grid"
-    },
-    {
-      "type": "select",
-      "id": "content_alignment",
-      "label": "Content Alignment",
-      "options": [
-        {
-          "value": "left",
-          "label": "Left"
-        },
-        {
-          "value": "center",
-          "label": "Center"
-        },
-        {
-          "value": "right",
-          "label": "Right"
-        }
-      ],
-      "default": "center"
+      "content": "Background Settings"
     },
     {
       "type": "range",
-      "id": "content_width",
-      "min": 30,
-      "max": 70,
-      "step": 5,
-      "unit": "%",
-      "label": "Content Column Width",
-      "default": 50
-    },
-    {
-      "type": "range",
-      "id": "media_width",
-      "min": 30,
-      "max": 70,
-      "step": 5,
-      "unit": "%",
-      "label": "Media Column Width",
-      "default": 50
-    },
-    {
-      "type": "number",
-      "id": "content_order",
-      "label": "Content Order",
-      "min": 1,
-      "max": 2,
-      "default": 1
-    },
-    {
-      "type": "number",
-      "id": "media_order",
-      "label": "Media Order",
-      "min": 1,
-      "max": 2,
-      "default": 2
-    },
-    {
-      "type": "header",
-      "content": "🌈 Background & Effects"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_background_gradient",
-      "label": "Enable Background Gradient",
-      "default": true
-    },
-    {
-      "type": "color",
-      "id": "gradient_color_1",
-      "label": "Gradient Color 1",
-      "default": "#00E5FF"
-    },
-    {
-      "type": "color",
-      "id": "gradient_color_2",
-      "label": "Gradient Color 2",
-      "default": "#BF00FF"
-    },
-    {
-      "type": "color",
-      "id": "gradient_color_3",
-      "label": "Gradient Color 3",
-      "default": "#FF0080"
-    },
-    {
-      "type": "range",
-      "id": "gradient_angle",
-      "min": 0,
-      "max": 360,
-      "step": 15,
-      "unit": "deg",
-      "label": "Gradient Angle",
-      "default": 135
-    },
-    {
-      "type": "range",
-      "id": "gradient_opacity",
+      "id": "background_opacity",
       "min": 0,
       "max": 100,
       "step": 5,
       "unit": "%",
-      "label": "Gradient Opacity",
+      "label": "Background Opacity (0 = fully transparent)",
       "default": 60
     },
     {
       "type": "range",
       "id": "gradient_blur",
       "min": 0,
-      "max": 300,
-      "step": 10,
-      "unit": "px",
-      "label": "Gradient Blur",
-      "default": 80
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_mouse_glow",
-      "label": "Enable Mouse Glow Effect",
-      "default": true
-    },
-    {
-      "type": "range",
-      "id": "mouse_glow_opacity",
-      "min": 0,
-      "max": 100,
-      "step": 5,
-      "unit": "%",
-      "label": "Mouse Glow Opacity",
-      "default": 80
-    },
-    {
-      "type": "range",
-      "id": "mouse_glow_blur",
-      "min": 0,
       "max": 200,
       "step": 10,
       "unit": "px",
-      "label": "Mouse Glow Blur",
-      "default": 40
+      "label": "Background Blur",
+      "default": 80
     },
     {
       "type": "checkbox",
-      "id": "enable_secondary_glow",
-      "label": "Enable Secondary Glow",
-      "default": true
-    },
-    {
-      "type": "range",
-      "id": "secondary_glow_opacity",
-      "min": 0,
-      "max": 100,
-      "step": 5,
-      "unit": "%",
-      "label": "Secondary Glow Opacity",
-      "default": 70
+      "id": "hide_background",
+      "label": "Hide Background Completely",
+      "default": false
     },
     {
       "type": "header",
-      "content": "🎭 Typography & Colors"
-    },
-    {
-      "type": "color",
-      "id": "title_color",
-      "label": "Title Color",
-      "default": "#FFFFFF"
-    },
-    {
-      "type": "range",
-      "id": "title_font_size",
-      "min": 24,
-      "max": 120,
-      "step": 2,
-      "unit": "px",
-      "label": "Title Font Size",
-      "default": 56
+      "content": "Image Settings"
     },
     {
       "type": "select",
-      "id": "title_font_weight",
-      "label": "Title Font Weight",
-      "options": [
-        {
-          "value": "300",
-          "label": "Light"
-        },
-        {
-          "value": "400",
-          "label": "Regular"
-        },
-        {
-          "value": "500",
-          "label": "Medium"
-        },
-        {
-          "value": "600",
-          "label": "Semi Bold"
-        },
-        {
-          "value": "700",
-          "label": "Bold"
-        },
-        {
-          "value": "800",
-          "label": "Extra Bold"
-        }
-      ],
-      "default": "700"
-    },
-    {
-      "type": "range",
-      "id": "title_line_height",
-      "min": 1,
-      "max": 2,
-      "step": 0.1,
-      "label": "Title Line Height",
-      "default": 1.2
-    },
-    {
-      "type": "color",
-      "id": "title_highlight_color",
-      "label": "Title Highlight Color",
-      "default": "#00E5FF"
-    },
-    {
-      "type": "text",
-      "id": "title_highlight_bg",
-      "label": "Title Highlight Background",
-      "default": "linear-gradient(135deg, #00E5FF, #BF00FF)"
-    },
-    {
-      "type": "color",
-      "id": "subtitle_color",
-      "label": "Subtitle Color",
-      "default": "#FFFFFF"
-    },
-    {
-      "type": "range",
-      "id": "subtitle_font_size",
-      "min": 14,
-      "max": 48,
-      "step": 1,
-      "unit": "px",
-      "label": "Subtitle Font Size",
-      "default": 24
-    },
-    {
-      "type": "select",
-      "id": "subtitle_font_weight",
-      "label": "Subtitle Font Weight",
-      "options": [
-        {
-          "value": "300",
-          "label": "Light"
-        },
-        {
-          "value": "400",
-          "label": "Regular"
-        },
-        {
-          "value": "500",
-          "label": "Medium"
-        },
-        {
-          "value": "600",
-          "label": "Semi Bold"
-        },
-        {
-          "value": "700",
-          "label": "Bold"
-        }
-      ],
-      "default": "400"
-    },
-    {
-      "type": "color",
-      "id": "description_color",
-      "label": "Description Color",
-      "default": "#FFFFFF"
-    },
-    {
-      "type": "range",
-      "id": "description_font_size",
-      "min": 12,
-      "max": 24,
-      "step": 1,
-      "unit": "px",
-      "label": "Description Font Size",
-      "default": 18
-    },
-    {
-      "type": "range",
-      "id": "description_line_height",
-      "min": 1.2,
-      "max": 2,
-      "step": 0.1,
-      "label": "Description Line Height",
-      "default": 1.75
-    },
-    {
-      "type": "header",
-      "content": "🎨 Badge Styling"
-    },
-    {
-      "type": "color",
-      "id": "badge_bg_color",
-      "label": "Badge Background Color",
-      "default": "#00E5FF"
-    },
-    {
-      "type": "color",
-      "id": "badge_text_color",
-      "label": "Badge Text Color",
-      "default": "#000000"
-    },
-    {
-      "type": "range",
-      "id": "badge_border_radius",
-      "min": 0,
-      "max": 50,
-      "step": 1,
-      "unit": "px",
-      "label": "Badge Border Radius",
-      "default": 20
-    },
-    {
-      "type": "header",
-      "content": "🔘 Button Styling"
-    },
-    {
-      "type": "select",
-      "id": "buttons_layout",
-      "label": "Buttons Layout",
-      "options": [
-        {
-          "value": "horizontal",
-          "label": "Horizontal"
-        },
-        {
-          "value": "vertical",
-          "label": "Vertical"
-        }
-      ],
-      "default": "horizontal"
-    },
-    {
-      "type": "range",
-      "id": "buttons_gap",
-      "min": 0,
-      "max": 50,
-      "step": 5,
-      "unit": "rem",
-      "label": "Buttons Gap",
-      "default": 1
-    },
-    {
-      "type": "text",
-      "id": "primary_button_bg",
-      "label": "Primary Button Background",
-      "default": "linear-gradient(135deg, #00E5FF, #BF00FF, #FF0080)"
-    },
-    {
-      "type": "color",
-      "id": "primary_button_color",
-      "label": "Primary Button Text Color",
-      "default": "#FFFFFF"
-    },
-    {
-      "type": "range",
-      "id": "primary_button_border_radius",
-      "min": 0,
-      "max": 50,
-      "step": 1,
-      "unit": "px",
-      "label": "Primary Button Border Radius",
-      "default": 8
-    },
-    {
-      "type": "text",
-      "id": "primary_button_padding",
-      "label": "Primary Button Padding",
-      "default": "1rem 2rem"
-    },
-    {
-      "type": "color",
-      "id": "secondary_button_border_color",
-      "label": "Secondary Button Border Color",
-      "default": "#00E5FF"
-    },
-    {
-      "type": "color",
-      "id": "secondary_button_color",
-      "label": "Secondary Button Text Color",
-      "default": "#FFFFFF"
-    },
-    {
-      "type": "range",
-      "id": "secondary_button_border_radius",
-      "min": 0,
-      "max": 50,
-      "step": 1,
-      "unit": "px",
-      "label": "Secondary Button Border Radius",
-      "default": 8
-    },
-    {
-      "type": "text",
-      "id": "secondary_button_padding",
-      "label": "Secondary Button Padding",
-      "default": "1rem 2rem"
-    },
-    {
-      "type": "header",
-      "content": "📊 Statistics Styling"
-    },
-    {
-      "type": "color",
-      "id": "stat_value_color",
-      "label": "Stat Value Color",
-      "default": "#00E5FF"
-    },
-    {
-      "type": "range",
-      "id": "stat_value_font_size",
-      "min": 12,
-      "max": 48,
-      "step": 1,
-      "unit": "px",
-      "label": "Stat Value Font Size",
-      "default": 28
-    },
-    {
-      "type": "color",
-      "id": "stat_label_color",
-      "label": "Stat Label Color",
-      "default": "#FFFFFF"
-    },
-    {
-      "type": "range",
-      "id": "stat_label_font_size",
-      "min": 10,
-      "max": 24,
-      "step": 1,
-      "unit": "px",
-      "label": "Stat Label Font Size",
-      "default": 14
-    },
-    {
-      "type": "color",
-      "id": "stat_bg_color",
-      "label": "Stat Background Color",
-      "default": "rgba(255, 255, 255, 0.1)"
-    },
-    {
-      "type": "range",
-      "id": "stat_border_radius",
-      "min": 0,
-      "max": 50,
-      "step": 1,
-      "unit": "px",
-      "label": "Stat Border Radius",
-      "default": 8
-    },
-    {
-      "type": "range",
-      "id": "stats_gap",
-      "min": 0.5,
-      "max": 4,
-      "step": 0.25,
-      "unit": "rem",
-      "label": "Stats Gap",
-      "default": 1
-    },
-    {
-      "type": "header",
-      "content": "🎬 Media Styling"
-    },
-    {
-      "type": "select",
-      "id": "media_aspect_ratio",
-      "label": "Media Aspect Ratio",
+      "id": "aspect_ratio",
+      "label": "TV Container Aspect Ratio",
       "options": [
         {
           "value": "16/9",
@@ -1427,300 +495,46 @@
         {
           "value": "2/1",
           "label": "2:1 (Cinema)"
+        },
+        {
+          "value": "auto",
+          "label": "Auto (fit to image)"
         }
       ],
       "default": "16/9"
     },
     {
-      "type": "checkbox",
-      "id": "media_glow_enabled",
-      "label": "Enable Media Glow",
-      "default": true
-    },
-    {
-      "type": "color",
-      "id": "media_glow_color_1",
-      "label": "Media Glow Color 1",
-      "default": "#00E5FF"
-    },
-    {
-      "type": "color",
-      "id": "media_glow_color_2",
-      "label": "Media Glow Color 2",
-      "default": "#BF00FF"
-    },
-    {
-      "type": "range",
-      "id": "media_glow_opacity",
-      "min": 0,
-      "max": 100,
-      "step": 5,
-      "unit": "%",
-      "label": "Media Glow Opacity",
-      "default": 80
-    },
-    {
-      "type": "range",
-      "id": "media_glow_blur",
-      "min": 0,
-      "max": 200,
-      "step": 10,
-      "unit": "px",
-      "label": "Media Glow Blur",
-      "default": 80
-    },
-    {
-      "type": "range",
-      "id": "media_border_width",
-      "min": 0,
-      "max": 20,
-      "step": 1,
-      "unit": "px",
-      "label": "Media Border Width",
-      "default": 0
-    },
-    {
       "type": "select",
-      "id": "media_border_style",
-      "label": "Media Border Style",
-      "options": [
-        {
-          "value": "solid",
-          "label": "Solid"
-        },
-        {
-          "value": "dashed",
-          "label": "Dashed"
-        },
-        {
-          "value": "dotted",
-          "label": "Dotted"
-        },
-        {
-          "value": "double",
-          "label": "Double"
-        }
-      ],
-      "default": "solid"
-    },
-    {
-      "type": "color",
-      "id": "media_border_color",
-      "label": "Media Border Color",
-      "default": "#00E5FF"
-    },
-    {
-      "type": "range",
-      "id": "media_border_radius",
-      "min": 0,
-      "max": 100,
-      "step": 5,
-      "unit": "px",
-      "label": "Media Border Radius",
-      "default": 16
-    },
-    {
-      "type": "text",
-      "id": "media_padding",
-      "label": "Media Padding",
-      "default": "0"
-    },
-    {
-      "type": "text",
-      "id": "media_margin",
-      "label": "Media Margin",
-      "default": "0"
-    },
-    {
-      "type": "checkbox",
-      "id": "media_shadow_enabled",
-      "label": "Enable Media Shadow",
-      "default": true
-    },
-    {
-      "type": "range",
-      "id": "media_shadow_blur",
-      "min": 0,
-      "max": 100,
-      "step": 5,
-      "unit": "px",
-      "label": "Media Shadow Blur",
-      "default": 60
-    },
-    {
-      "type": "range",
-      "id": "media_shadow_opacity",
-      "min": 0,
-      "max": 100,
-      "step": 5,
-      "unit": "%",
-      "label": "Media Shadow Opacity",
-      "default": 50
-    },
-    {
-      "type": "color",
-      "id": "media_shadow_color",
-      "label": "Media Shadow Color",
-      "default": "#9333EA"
-    },
-    {
-      "type": "header",
-      "content": "🎥 Video Settings"
-    },
-    {
-      "type": "checkbox",
-      "id": "video_autoplay",
-      "label": "Video Autoplay",
-      "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "video_loop",
-      "label": "Video Loop",
-      "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "video_muted",
-      "label": "Video Muted",
-      "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "video_playsinline",
-      "label": "Video Plays Inline (Mobile)",
-      "default": true
-    },
-    {
-      "type": "select",
-      "id": "video_object_fit",
-      "label": "Video Object Fit",
+      "id": "image_fit",
+      "label": "Image Fit",
       "options": [
         {
           "value": "contain",
-          "label": "Contain"
+          "label": "Contain (fit entire image)"
         },
         {
           "value": "cover",
-          "label": "Cover"
+          "label": "Cover (fill container)"
         },
         {
           "value": "fill",
-          "label": "Fill"
+          "label": "Fill (stretch to fit)"
         },
         {
           "value": "none",
-          "label": "None"
+          "label": "None (original size)"
         },
         {
           "value": "scale-down",
-          "label": "Scale Down"
+          "label": "Scale Down (smaller of contain/none)"
         }
       ],
       "default": "contain"
     },
     {
-      "type": "range",
-      "id": "video_scale",
-      "min": 50,
-      "max": 200,
-      "step": 5,
-      "unit": "%",
-      "label": "Video Scale",
-      "default": 100
-    },
-    {
-      "type": "header",
-      "content": "🖼️ Image Settings"
-    },
-    {
-      "type": "color",
-      "id": "image_bg_color",
-      "label": "Image Background Color",
-      "default": "#000000"
-    },
-    {
-      "type": "range",
-      "id": "image_bg_opacity",
-      "min": 0,
-      "max": 100,
-      "step": 5,
-      "unit": "%",
-      "label": "Image Background Opacity",
-      "default": 0
-    },
-    {
       "type": "select",
-      "id": "image_size",
-      "label": "Image Size",
-      "options": [
-        {
-          "value": "100x",
-          "label": "100px"
-        },
-        {
-          "value": "200x",
-          "label": "200px"
-        },
-        {
-          "value": "400x",
-          "label": "400px"
-        },
-        {
-          "value": "600x",
-          "label": "600px"
-        },
-        {
-          "value": "800x",
-          "label": "800px"
-        },
-        {
-          "value": "1200x",
-          "label": "1200px"
-        },
-        {
-          "value": "1600x",
-          "label": "1600px"
-        },
-        {
-          "value": "2000x",
-          "label": "2000px"
-        }
-      ],
-      "default": "1200x"
-    },
-    {
-      "type": "select",
-      "id": "image_object_fit",
-      "label": "Image Object Fit",
-      "options": [
-        {
-          "value": "contain",
-          "label": "Contain"
-        },
-        {
-          "value": "cover",
-          "label": "Cover"
-        },
-        {
-          "value": "fill",
-          "label": "Fill"
-        },
-        {
-          "value": "none",
-          "label": "None"
-        },
-        {
-          "value": "scale-down",
-          "label": "Scale Down"
-        }
-      ],
-      "default": "cover"
-    },
-    {
-      "type": "select",
-      "id": "image_object_position",
-      "label": "Image Object Position",
+      "id": "image_position",
+      "label": "Image Position",
       "options": [
         {
           "value": "center center",
@@ -1793,401 +607,185 @@
     },
     {
       "type": "header",
-      "content": "📍 Layout & Grid"
+      "content": "Border Settings"
     },
     {
       "type": "range",
-      "id": "grid_columns_mobile",
-      "min": 1,
-      "max": 2,
+      "id": "border_width",
+      "min": 0,
+      "max": 20,
       "step": 1,
-      "label": "Grid Columns (Mobile)",
-      "default": 1
-    },
-    {
-      "type": "range",
-      "id": "grid_columns_tablet",
-      "min": 1,
-      "max": 2,
-      "step": 1,
-      "label": "Grid Columns (Tablet)",
-      "default": 1
-    },
-    {
-      "type": "range",
-      "id": "grid_columns_desktop",
-      "min": 1,
-      "max": 2,
-      "step": 1,
-      "label": "Grid Columns (Desktop)",
-      "default": 2
-    },
-    {
-      "type": "range",
-      "id": "grid_gap",
-      "min": 1,
-      "max": 10,
-      "step": 0.5,
-      "unit": "rem",
-      "label": "Grid Gap",
-      "default": 3
-    },
-    {
-      "type": "select",
-      "id": "flex_direction",
-      "label": "Flex Direction",
-      "options": [
-        {
-          "value": "row",
-          "label": "Row"
-        },
-        {
-          "value": "row-reverse",
-          "label": "Row Reverse"
-        },
-        {
-          "value": "column",
-          "label": "Column"
-        },
-        {
-          "value": "column-reverse",
-          "label": "Column Reverse"
-        }
-      ],
-      "default": "row"
-    },
-    {
-      "type": "select",
-      "id": "flex_justify",
-      "label": "Flex Justify Content",
-      "options": [
-        {
-          "value": "flex-start",
-          "label": "Start"
-        },
-        {
-          "value": "center",
-          "label": "Center"
-        },
-        {
-          "value": "flex-end",
-          "label": "End"
-        },
-        {
-          "value": "space-between",
-          "label": "Space Between"
-        },
-        {
-          "value": "space-around",
-          "label": "Space Around"
-        },
-        {
-          "value": "space-evenly",
-          "label": "Space Evenly"
-        }
-      ],
-      "default": "center"
-    },
-    {
-      "type": "select",
-      "id": "flex_align",
-      "label": "Flex Align Items",
-      "options": [
-        {
-          "value": "flex-start",
-          "label": "Start"
-        },
-        {
-          "value": "center",
-          "label": "Center"
-        },
-        {
-          "value": "flex-end",
-          "label": "End"
-        },
-        {
-          "value": "stretch",
-          "label": "Stretch"
-        },
-        {
-          "value": "baseline",
-          "label": "Baseline"
-        }
-      ],
-      "default": "center"
-    },
-    {
-      "type": "range",
-      "id": "flex_gap",
-      "min": 1,
-      "max": 10,
-      "step": 0.5,
-      "unit": "rem",
-      "label": "Flex Gap",
-      "default": 3
-    },
-    {
-      "type": "header",
-      "content": "📏 Spacing & Dimensions"
-    },
-    {
-      "type": "range",
-      "id": "container_max_width",
-      "min": 800,
-      "max": 2000,
-      "step": 50,
       "unit": "px",
-      "label": "Container Max Width",
-      "default": 1200
+      "label": "Border Width",
+      "default": 0
+    },
+    {
+      "type": "select",
+      "id": "border_style",
+      "label": "Border Style",
+      "options": [
+        {
+          "value": "solid",
+          "label": "Solid"
+        },
+        {
+          "value": "dashed",
+          "label": "Dashed"
+        },
+        {
+          "value": "dotted",
+          "label": "Dotted"
+        },
+        {
+          "value": "double",
+          "label": "Double"
+        },
+        {
+          "value": "groove",
+          "label": "Groove"
+        },
+        {
+          "value": "ridge",
+          "label": "Ridge"
+        }
+      ],
+      "default": "solid"
     },
     {
       "type": "color",
-      "id": "section_bg_color",
-      "label": "Section Background Color"
+      "id": "border_color",
+      "label": "Border Color",
+      "default": "#00D9FF"
     },
     {
       "type": "range",
-      "id": "section_padding_top",
+      "id": "border_radius",
       "min": 0,
-      "max": 200,
-      "step": 10,
+      "max": 50,
+      "step": 1,
       "unit": "px",
-      "label": "Section Padding Top",
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "section_padding_bottom",
-      "min": 0,
-      "max": 200,
-      "step": 10,
-      "unit": "px",
-      "label": "Section Padding Bottom",
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "section_margin_top",
-      "min": 0,
-      "max": 200,
-      "step": 10,
-      "unit": "px",
-      "label": "Section Margin Top",
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "section_margin_bottom",
-      "min": 0,
-      "max": 200,
-      "step": 10,
-      "unit": "px",
-      "label": "Section Margin Bottom",
+      "label": "Border Radius (rounded corners)",
       "default": 0
     },
     {
       "type": "header",
-      "content": "📍 Scroll Indicator"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_scroll_indicator",
-      "label": "Show Scroll Indicator",
-      "default": true
-    },
-    {
-      "type": "select",
-      "id": "scroll_indicator_type",
-      "label": "Scroll Indicator Type",
-      "options": [
-        {
-          "value": "arrow",
-          "label": "Arrow"
-        },
-        {
-          "value": "chevron",
-          "label": "Chevron"
-        }
-      ],
-      "default": "arrow"
-    },
-    {
-      "type": "color",
-      "id": "scroll_indicator_color",
-      "label": "Scroll Indicator Color",
-      "default": "#00E5FF"
+      "content": "Spacing Settings"
     },
     {
       "type": "range",
-      "id": "scroll_indicator_size",
-      "min": 16,
-      "max": 64,
-      "step": 4,
-      "unit": "px",
-      "label": "Scroll Indicator Size",
-      "default": 32
-    },
-    {
-      "type": "range",
-      "id": "scroll_indicator_position",
+      "id": "image_padding_top",
       "min": 0,
       "max": 100,
       "step": 5,
       "unit": "px",
-      "label": "Scroll Indicator Position",
-      "default": 32
+      "label": "Padding Top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "image_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "image_padding_left",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Left",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "image_padding_right",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Right",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "image_margin_top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Margin Top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "image_margin_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Margin Bottom",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "image_margin_left",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Margin Left",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "image_margin_right",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Margin Right",
+      "default": 0
     },
     {
       "type": "header",
-      "content": "🎨 Custom Classes"
+      "content": "Shadow Settings"
     },
     {
-      "type": "text",
-      "id": "section_classes",
-      "label": "Section CSS Classes"
+      "type": "checkbox",
+      "id": "enable_shadow",
+      "label": "Enable Shadow",
+      "default": false
     },
     {
-      "type": "text",
-      "id": "container_classes",
-      "label": "Container CSS Classes"
+      "type": "range",
+      "id": "shadow_blur",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Shadow Blur",
+      "default": 20
     },
     {
-      "type": "text",
-      "id": "grid_classes",
-      "label": "Grid CSS Classes"
+      "type": "range",
+      "id": "shadow_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Shadow Opacity",
+      "default": 50
     },
     {
-      "type": "text",
-      "id": "flex_classes",
-      "label": "Flex CSS Classes"
-    },
-    {
-      "type": "text",
-      "id": "content_classes",
-      "label": "Content CSS Classes"
-    },
-    {
-      "type": "text",
-      "id": "media_classes",
-      "label": "Media CSS Classes"
-    },
-    {
-      "type": "text",
-      "id": "title_classes",
-      "label": "Title CSS Classes"
-    },
-    {
-      "type": "text",
-      "id": "subtitle_classes",
-      "label": "Subtitle CSS Classes"
-    },
-    {
-      "type": "text",
-      "id": "description_classes",
-      "label": "Description CSS Classes"
-    },
-    {
-      "type": "text",
-      "id": "badge_classes",
-      "label": "Badge CSS Classes"
-    },
-    {
-      "type": "text",
-      "id": "buttons_classes",
-      "label": "Buttons CSS Classes"
-    },
-    {
-      "type": "text",
-      "id": "primary_button_classes",
-      "label": "Primary Button CSS Classes"
-    },
-    {
-      "type": "text",
-      "id": "secondary_button_classes",
-      "label": "Secondary Button CSS Classes"
-    },
-    {
-      "type": "text",
-      "id": "stats_classes",
-      "label": "Stats CSS Classes"
-    },
-    {
-      "type": "text",
-      "id": "stat_classes",
-      "label": "Stat Item CSS Classes"
-    },
-    {
-      "type": "text",
-      "id": "stat_value_classes",
-      "label": "Stat Value CSS Classes"
-    },
-    {
-      "type": "text",
-      "id": "stat_label_classes",
-      "label": "Stat Label CSS Classes"
-    },
-    {
-      "type": "text",
-      "id": "media_wrapper_classes",
-      "label": "Media Wrapper CSS Classes"
-    },
-    {
-      "type": "text",
-      "id": "video_classes",
-      "label": "Video CSS Classes"
-    },
-    {
-      "type": "text",
-      "id": "image_classes",
-      "label": "Image CSS Classes"
-    },
-    {
-      "type": "text",
-      "id": "placeholder_classes",
-      "label": "Placeholder CSS Classes"
-    },
-    {
-      "type": "text",
-      "id": "scroll_indicator_classes",
-      "label": "Scroll Indicator CSS Classes"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "statistic",
-      "name": "Statistic",
-      "settings": [
-        {
-          "type": "text",
-          "id": "value",
-          "label": "Value",
-          "default": "5 min"
-        },
-        {
-          "type": "text",
-          "id": "label",
-          "label": "Label",
-          "default": "Setup Time"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Hero",
-      "settings": {
-        "show_content": true,
-        "show_title": true,
-        "show_subtitle": true,
-        "show_description": true,
-        "show_buttons": true,
-        "show_stats": true,
-        "show_media": true,
-        "enable_background_gradient": true,
-        "enable_mouse_glow": true,
-        "enable_secondary_glow": true,
-        "show_scroll_indicator": true
-      }
+      "type": "color",
+      "id": "shadow_color",
+      "label": "Shadow Color",
+      "default": "#00D9FF"
     }
   ]
 }
