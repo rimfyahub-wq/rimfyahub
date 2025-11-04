@@ -36,6 +36,9 @@
 
       <!-- Mobile & Cart Actions -->
       <div class="header-actions">
+        <!-- Language/Currency Selector -->
+        {% render 'language-currency-selector', location: 'header' %}
+
         <!-- Account Button -->
         <div class="account-wrapper">
           <button type="button" class="account-button" onclick="{% if customer %}window.location.href='{{ routes.account_url }}'{% else %}openAuthModal('login'){% endif %}">

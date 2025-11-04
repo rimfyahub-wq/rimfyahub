@@ -434,6 +434,46 @@
         "id": "cart_bubble_count",
         "label": "Show Cart Item Count",
         "default": true
+      },
+      {
+        "type": "header",
+        "content": "Language & Currency Selector"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_language_selector",
+        "label": "Show Language Selector",
+        "default": true,
+        "info": "Requires Shopify's Translate & Adapt app or Markets"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_currency_selector",
+        "label": "Show Currency Selector",
+        "default": true,
+        "info": "Requires multi-currency setup in Markets"
+      },
+      {
+        "type": "select",
+        "id": "selector_style",
+        "label": "Selector Style",
+        "options": [
+          { "value": "dropdown", "label": "Dropdown Menu" },
+          { "value": "flags", "label": "Flag Icons" },
+          { "value": "text", "label": "Text Only" }
+        ],
+        "default": "dropdown"
+      },
+      {
+        "type": "select",
+        "id": "selector_position",
+        "label": "Selector Position",
+        "options": [
+          { "value": "header", "label": "Header (Next to Cart)" },
+          { "value": "footer", "label": "Footer Only" },
+          { "value": "both", "label": "Header & Footer" }
+        ],
+        "default": "header"
       }
     ]
   },
